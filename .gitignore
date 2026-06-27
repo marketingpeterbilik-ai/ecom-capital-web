@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # original single-file export (zachované lokálne, netreba verziovať)
 ecom-capital-web.html
+
+# stiahnuté nástroje (gh CLI)
+.tools/
