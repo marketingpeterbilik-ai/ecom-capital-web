@@ -1,0 +1,48 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base
+  title="Blog — Ecom Capital"
+  description="Praktické články o PPC, meraní, trackingu a dátach v BigQuery. Z reálnej praxe, po slovensky, bez omáčky."
+>
+  <section class="phero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Blog</span>
+      <h1 class="display reveal">Z praxe — PPC, meranie a dáta.</h1>
+      <p class="lead reveal">Praktické postrehy o reklame, trackingu a dátach. Po slovensky, bez omáčky, z reálnych účtov.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:16px">
+    <div class="wrap">
+      {
+        posts.length === 0 ? (
+          <p class="lead reveal">Čoskoro tu pribudnú prvé články.</p>
+        ) : (
+          <div class="post-grid">
+            {posts.map((post) => (
+              <a href={`/blog/${post.id}`} class="post-card reveal">
+                <div class="meta">
+                  {fmt(post.data.pubDate)}
+                  {post.data.tags.length ? ` · ${post.data.tags.join(' · ')}` : ''}
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+                <span class="more">Čítať →</span>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,46 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+
+const links = [
+  { href: '/', label: 'Domov' },
+  { href: '/sluzby', label: 'Služby' },
+  { href: '/data', label: 'Dáta & BigQuery' },
+  { href: '/kalkulacka', label: 'Kalkulačka' },
+  { href: '/proces', label: 'Proces' },
+  { href: '/o-mne', label: 'O mne' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+---
+
+<div class="topbar" aria-hidden="true">
+  <div class="ticker">
+    <span>Google Ads<i>/</i>Meta Ads<i>/</i>GA4<i>/</i>Server-side tracking (sGTM)<i>/</i>Meta CAPI<i>/</i>BigQuery<i>/</i>Looker Studio<i>/</i>Merchant Center &amp; feedy<i>/</i>Google Ads scripts<i>/</i></span>
+    <span>Google Ads<i>/</i>Meta Ads<i>/</i>GA4<i>/</i>Server-side tracking (sGTM)<i>/</i>Meta CAPI<i>/</i>BigQuery<i>/</i>Looker Studio<i>/</i>Merchant Center &amp; feedy<i>/</i>Google Ads scripts<i>/</i></span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a href="/" class="mark"><b>Ecom<span>.</span>Capital</b><small>Performance · Analytics · Data</small></a>
+    <nav class="nav-links" id="navlinks">
+      {links.map((l) => (
+        <a href={l.href} class={isActive(l.href) ? 'active' : ''} set:html={l.label} />
+      ))}
+    </nav>
+    <div class="nav-cta"><a href="/kalkulacka" class="btn btn--primary">Spočítať cenu</a></div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const burger = document.getElementById('burger');
+  const nl = document.getElementById('navlinks');
+  burger?.addEventListener('click', () => {
+    const open = nl?.classList.toggle('open');
+    burger.classList.toggle('open', !!open);
+  });
+</script>

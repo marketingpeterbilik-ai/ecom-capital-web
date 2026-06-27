@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<Base title={`${post.data.title} — Ecom Capital`} description={post.data.description}>
+  <section class="phero">
+    <div class="wrap article">
+      <a href="/blog" class="back-link reveal">← Späť na blog</a>
+      <div class="meta reveal" style="margin-top:18px">
+        {fmt(post.data.pubDate)}
+        {post.data.tags.length ? ` · ${post.data.tags.join(' · ')}` : ''}
+      </div>
+      <h1 class="display reveal" style="margin-top:10px; font-size:clamp(2rem,5vw,3.2rem)">
+        {post.data.title}
+      </h1>
+      <p class="lead reveal" style="margin-top:16px">{post.data.description}</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:8px">
+    <div class="wrap article">
+      <div class="prose reveal">
+        <Content />
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--tint">
+    <div class="wrap">
+      <div class="ctaband reveal">
+        <h2>Riešiš niečo z článku na vlastnom účte?</h2>
+        <a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a>
+      </div>
+    </div>
+  </section>
+</Base>

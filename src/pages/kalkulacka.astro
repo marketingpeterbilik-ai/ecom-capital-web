@@ -1,0 +1,179 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="Kalkulačka ceny — Ecom Capital"
+  description="Spočítaj si orientačnú cenu správy PPC. Vyber platformy, rozpočet a doplnkové služby a hneď uvidíš odhad mesačnej ceny pri sadzbe 30 €/h."
+>
+  <section class="phero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Kalkulačka ceny</span>
+      <h1 class="display reveal">Spočítaj si, koľko by stála správa u mňa.</h1>
+      <p class="lead reveal">Vyber platformy, rozpočet a doplnkové služby a hneď uvidíš orientačný odhad mesačnej ceny. Sadzba je <b>30 €/h</b> — finálnu cenu vždy doladíme po konzultácii podľa reálneho rozsahu.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:16px">
+    <div class="wrap">
+      <div class="calc">
+        <div class="calc-controls reveal">
+          <div class="cgroup">
+            <div class="clabel">Ktoré platformy chceš riešiť?</div>
+            <div class="chint">Vyber jednu alebo viac. Každá platforma znamená ďalšiu správu navyše.</div>
+            <div class="toggles" id="platforms">
+              <button class="tg pf on" data-h="8"><span class="mk">✓</span> Google Ads</button>
+              <button class="tg pf on" data-h="7"><span class="mk">✓</span> Meta Ads</button>
+              <button class="tg pf" data-h="6"><span class="mk"></span> TikTok Ads</button>
+              <button class="tg pf" data-h="4"><span class="mk"></span> Microsoft Ads</button>
+            </div>
+          </div>
+
+          <div class="cgroup">
+            <div class="slider-row">
+              <div class="clabel">Mesačný rozpočet na reklamu</div>
+              <div class="slider-val" id="budgetVal">3 000 €</div>
+            </div>
+            <div class="chint">Koľko plánuješ mesačne minúť na samotné reklamy (bez mojej odmeny).</div>
+            <input type="range" id="budget" min="200" max="50000" step="100" value="3000" />
+            <div class="slider-ends"><span>200 €</span><span>50 000 €+</span></div>
+          </div>
+
+          <div class="cgroup">
+            <div class="clabel">Na koľkých trhoch / jazykoch bežíš?</div>
+            <div class="chint">Viac trhov = viac kampaní, prekladov a optimalizácie.</div>
+            <div class="seg" id="markets">
+              <button class="mk-btn on" data-f="1">1 trh</button>
+              <button class="mk-btn" data-f="1.3">2–3 trhy</button>
+              <button class="mk-btn" data-f="1.6">4+ trhov</button>
+            </div>
+          </div>
+
+          <div class="cgroup">
+            <div class="clabel">Doplnkové služby</div>
+            <div class="chint">Voliteľné. Tracking, dáta a feedy majú jednorazové nastavenie + menšiu mesačnú údržbu.</div>
+            <div class="ad-grid" id="addons">
+              <button class="tg ad" data-m="1" data-s="12"><span class="ad-t">Tracking &amp; meranie <span class="mk"></span></span><span class="ad-d">setup ~12h · +1h/mes</span></button>
+              <button class="tg ad" data-m="4" data-s="20"><span class="ad-t">Dáta &amp; BigQuery <span class="mk"></span></span><span class="ad-d">setup ~20h · +4h/mes</span></button>
+              <button class="tg ad" data-m="2" data-s="8"><span class="ad-t">Produktové feedy <span class="mk"></span></span><span class="ad-d">setup ~8h · +2h/mes</span></button>
+              <button class="tg ad" data-m="3" data-s="0"><span class="ad-t">Pravidelný reporting <span class="mk"></span></span><span class="ad-d">+3h/mes</span></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-result reveal" id="result">
+          <div class="cr-lbl">Odhad mesačnej správy</div>
+          <div class="cr-big" id="rMonthly">≈ 0 €</div>
+          <div class="cr-range" id="rRange">vyber aspoň jednu platformu</div>
+
+          <div class="cr-setup" id="rSetupWrap" hidden>
+            <div class="s-lbl">Jednorazové nastavenie</div>
+            <div class="s-val" id="rSetup">≈ 0 €</div>
+          </div>
+
+          <div class="cr-break">
+            <div class="row"><span>Správa platforiem</span><b id="rPlatH">0 h/mes</b></div>
+            <div class="row"><span>Doplnková údržba</span><b id="rAddH">0 h/mes</b></div>
+            <div class="row"><span>Hodinová sadzba</span><b>30 €/h</b></div>
+          </div>
+
+          <p class="cr-note">Orientačný odhad pre predstavu, nie záväzná ponuka. Finálnu cenu doladíme na nezáväznej konzultácii podľa stavu účtu a reálneho rozsahu práce.</p>
+          <div class="cr-cta"><a href="/kontakt" class="btn btn--lg">Chcem presnú ponuku →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const RATE = 30,
+    FLOOR = 150;
+  const elBudget = document.getElementById('budget') as HTMLInputElement | null;
+  const elBudgetVal = document.getElementById('budgetVal');
+
+  function fmtEur(v: number) {
+    return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' €';
+  }
+  function roundTo(v: number, s: number) {
+    return Math.round(v / s) * s;
+  }
+  function budgetFactor(v: number) {
+    if (v < 1000) return 0.8;
+    if (v < 5000) return 1;
+    if (v < 15000) return 1.3;
+    if (v < 30000) return 1.6;
+    return 2;
+  }
+
+  function recompute() {
+    if (!elBudget || !elBudgetVal) return;
+    const budget = parseInt(elBudget.value, 10);
+    elBudgetVal.textContent = budget >= 50000 ? '50 000 €+' : fmtEur(budget);
+
+    let platH = 0;
+    document.querySelectorAll<HTMLElement>('#platforms .pf.on').forEach((b) => {
+      platH += parseFloat(b.dataset.h || '0');
+    });
+    let mkF = 1;
+    const amk = document.querySelector<HTMLElement>('#markets .mk-btn.on');
+    if (amk) mkF = parseFloat(amk.dataset.f || '1');
+    let addMonth = 0,
+      setupH = 0;
+    document.querySelectorAll<HTMLElement>('#addons .ad.on').forEach((b) => {
+      addMonth += parseFloat(b.dataset.m || '0');
+      setupH += parseFloat(b.dataset.s || '0');
+    });
+
+    const mgmtPlat = platH * budgetFactor(budget) * mkF;
+    const totalH = mgmtPlat + addMonth;
+
+    const monthly = totalH > 0 ? Math.max(roundTo(totalH * RATE, 10), FLOOR) : 0;
+    const setup = setupH > 0 ? roundTo(setupH * RATE, 10) : 0;
+
+    document.getElementById('rPlatH')!.textContent = Math.round(mgmtPlat * 10) / 10 + ' h/mes';
+    document.getElementById('rAddH')!.textContent = addMonth + ' h/mes';
+
+    const rMonthly = document.getElementById('rMonthly')!;
+    const rRange = document.getElementById('rRange')!;
+    if (monthly > 0) {
+      rMonthly.textContent = '≈ ' + fmtEur(monthly) + ' / mes';
+      const lo = roundTo(monthly * 0.9, 10),
+        hi = roundTo(monthly * 1.15, 10);
+      rRange.textContent = 'rozpätie ' + fmtEur(lo) + ' – ' + fmtEur(hi) + ' / mes';
+    } else {
+      rMonthly.textContent = '≈ 0 €';
+      rRange.textContent = 'vyber aspoň jednu platformu alebo službu';
+    }
+
+    const sw = document.getElementById('rSetupWrap') as HTMLElement;
+    if (setup > 0) {
+      sw.hidden = false;
+      document.getElementById('rSetup')!.textContent = '≈ ' + fmtEur(setup);
+    } else {
+      sw.hidden = true;
+    }
+  }
+
+  // platform & addon toggles
+  document.querySelectorAll<HTMLElement>('#platforms .pf, #addons .ad').forEach((b) => {
+    b.addEventListener('click', () => {
+      b.classList.toggle('on');
+      const mk = b.querySelector('.mk');
+      if (mk) mk.textContent = b.classList.contains('on') ? '✓' : '';
+      recompute();
+    });
+  });
+  // markets segmented
+  document.querySelectorAll<HTMLElement>('#markets .mk-btn').forEach((b) => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('#markets .mk-btn').forEach((x) => x.classList.remove('on'));
+      b.classList.add('on');
+      recompute();
+    });
+  });
+  elBudget?.addEventListener('input', recompute);
+
+  // init marks for pre-selected platforms
+  document.querySelectorAll('#platforms .pf.on .mk').forEach((m) => (m.textContent = '✓'));
+  recompute();
+</script>
