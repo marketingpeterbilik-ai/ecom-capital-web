@@ -17,6 +17,14 @@ import Base from '../layouts/Base.astro';
   <section class="sec" style="padding-top:20px">
     <div class="wrap">
       <div class="grid grid-2">
+        <div class="card reveal" style="grid-column:1/-1; border-color:var(--lime); box-shadow:0 0 0 2px var(--lime), var(--shadow); background:linear-gradient(180deg,#fff,var(--lime-tint))">
+          <div class="mono" style="font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--forest-2); margin-bottom:14px">Požiadavka Googlu od 03/2024 · GDPR</div>
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Cookie lišta &amp; Consent Mode v2</h3>
+          <p>Weby, ktoré merajú cez GA4 alebo reklamné pixely bez platného súhlasu, porušujú GDPR a od marca 2024 nespĺňajú podmienky Googlu — s priamym dopadom na remarketing a výkon kampaní. Nasadenie CMP s Consent Mode v2 je pritom otázka dní.</p>
+          <ul class="deliv"><li>Audit skriptov a cookies pred súhlasom</li><li>Nasadenie CMP certifikovanej Googlom</li><li>Consent Mode v2 cez GTM aj server-side</li><li>Test prijatia aj odmietnutia + dokumentácia</li></ul>
+          <a href="/cookie-consent" class="more">Detail služby a bezplatná kontrola webu →</a>
+        </div>
         <div class="card reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="currentColor" stroke-width="1.6"/></svg></div>
           <h3>PPC — Google &amp; Meta Ads</h3>
