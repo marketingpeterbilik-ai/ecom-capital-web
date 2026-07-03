@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import CalEmbed from '../components/CalEmbed.astro';
 
 // 👉 ZMEŇ na svoj Cal.com link (formát: "uzivatel/typ-eventu").
 // Vytvoríš si ho zadarmo na https://cal.com — napr. "ecom-capital/konzultacia".
@@ -28,58 +29,8 @@ const CAL_LINK = 'ecom-capital/konzultacia';
         <p style="margin-top:24px; color:var(--ink-soft)">Termín konzultácie je možné rezervovať priamo v kalendári vpravo. Pre orientačnú predstavu o cene ešte pred hovorom slúži <a href="/kalkulacka" style="color:var(--forest); border-bottom:2px solid var(--lime)">kalkulačka</a>.</p>
       </div>
       <div class="reveal">
-        <div class="cal-embed" id="my-cal-inline" style="width:100%;height:640px;overflow:auto"></div>
-        <noscript>
-          <p style="color:var(--ink-soft); margin-top:12px">Pre rezerváciu termínu zapni JavaScript, alebo napíš priamo na <a href="mailto:peter@ecomcapital.sk" style="color:var(--forest); border-bottom:2px solid var(--lime)">peter@ecomcapital.sk</a>.</p>
-        </noscript>
+        <CalEmbed calLink={CAL_LINK} noscriptText="Pre rezerváciu termínu zapni JavaScript, alebo napíš priamo na" />
       </div>
     </div>
   </section>
 </Base>
-
-<script is:inline define:vars={{ CAL_LINK }}>
-  (function (C, A, L) {
-    let p = function (a, ar) {
-      a.q.push(ar);
-    };
-    let d = C.document;
-    C.Cal =
-      C.Cal ||
-      function () {
-        let cal = C.Cal;
-        let ar = arguments;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          d.head.appendChild(d.createElement('script')).src = A;
-          cal.loaded = true;
-        }
-        if (ar[0] === L) {
-          const api = function () {
-            p(api, arguments);
-          };
-          const namespace = ar[1];
-          api.q = api.q || [];
-          if (typeof namespace === 'string') {
-            cal.ns[namespace] = cal.ns[namespace] || api;
-            p(cal.ns[namespace], ar);
-            p(cal, ['initNamespace', namespace]);
-          } else p(cal, ar);
-          return;
-        }
-        p(cal, ar);
-      };
-  })(window, 'https://app.cal.com/embed/embed.js', 'init');
-
-  Cal('init', { origin: 'https://app.cal.com' });
-  Cal('inline', {
-    elementOrSelector: '#my-cal-inline',
-    calLink: CAL_LINK,
-    layout: 'month_view',
-  });
-  Cal('ui', {
-    cssVarsPerTheme: { light: { 'cal-brand': '#163300' } },
-    hideEventTypeDetails: false,
-    layout: 'month_view',
-  });
-</script>

@@ -1,0 +1,41 @@
+---
+import Base from './Base.astro';
+import '../styles/launch.css';
+import type { CountryLaunch } from '../data/launches';
+
+interface Props {
+  launch: CountryLaunch;
+  title: string;
+  description: string;
+}
+
+const { launch, title, description } = Astro.props;
+---
+
+<Base title={title} description={description} lang="en" chrome={false}>
+  <nav class="lp-nav">
+    <div class="wrap lp-nav-inner">
+      <a class="lp-logo" href="/"><span class="lp-mark"></span>Ecom Capital</a>
+      <div class="lp-nav-right">
+        <span class="lp-nav-status"
+          ><span class="lp-live"></span>{launch.countryName.toUpperCase()} — <b>SHOPPING OPENS {launch.launchWindow}</b></span
+        >
+        <a class="lp-nav-cta" href="#book">Free market check</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="lp-foot">
+    <div class="wrap lp-foot-inner">
+      <span class="lp-foot-logo"><span class="lp-mark"></span>Ecom Capital — Google Shopping launch specialist · {launch.countryName}</span>
+      <span class="lp-foot-links">
+        <a href="/">ecomcapital.sk →</a>
+        <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a>
+      </span>
+    </div>
+  </footer>
+</Base>

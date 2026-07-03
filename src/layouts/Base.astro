@@ -6,18 +6,22 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
+  chrome?: boolean;
 }
 
 const {
   title = 'Ecom Capital — Performance & Data Studio',
   description = 'Performance & data štúdio. Spravujeme PPC, staviame spoľahlivé meranie a dátovú infraštruktúru — GA4, server-side tracking, BigQuery a reporting v Looker Studio.',
+  lang = 'sk',
+  chrome = true,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!DOCTYPE html>
-<html lang="sk">
+<html lang={lang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,11 +42,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
   />
 </head>
 <body>
-  <Header />
-  <main>
+  {chrome ? (
+    <>
+      <Header />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </>
+  ) : (
     <slot />
-  </main>
-  <Footer />
+  )}
 
   <script>
     // Reveal-on-scroll
