@@ -18,27 +18,46 @@ const { launch } = Astro.props;
 const { countryName, adjective, googleDomain, launchWindow } = launch;
 
 const title = `${countryName} — Google Shopping Launch | Ecom Capital`;
-const description = `Google Shopping launches in ${countryName} in ${launchWindow}. Be the first ${adjective} shop in the results — before CPCs triple. A specialist running Shopping across 10+ EU markets.`;
+const description = `Google Shopping launches in ${countryName} in ${launchWindow}. Be the first ${adjective} shop in the results — before CPCs rise. A specialist running Shopping across 10+ EU markets.`;
+
+const stack = [
+  { idx: '01', title: `Your products appear on ${googleDomain} — period.`, body: "Without an approved Merchant Center, Google won't show your products.", bold: 'I handle the entire approval.' },
+  { idx: '02', title: 'You reach people ready to buy — not browse.', body: 'Your ads appear for searches with a credit card behind them.', bold: 'More orders from the same budget.' },
+  { idx: '03', title: 'Profitable sooner — no paid trial & error.', body: 'A badly built account burns budget for three months "learning."', bold: 'Mine is built on what works in 10+ markets.' },
+  { idx: '04', title: "You'll know exactly where the open space is.", body: 'I check which competitors are preparing Shopping and which are asleep.', bold: 'In numbers, not feelings.' },
+  { idx: '05', title: 'Not one euro spent blind.', body: 'Before launch I verify your conversion tracking works.', bold: "You'll know what every euro brought back." },
+  { idx: '06', title: 'Someone watches your money every day.', body: 'Waste cut weekly, winners scaled, feed problems fixed before they cost sales.', bold: 'Monthly report in plain language.' },
+];
+
+const process = [
+  { when: 'DAY 0', title: 'Free market check', short: '15 minutes. Rollout status, competitors, fit.' },
+  { when: 'DAYS 1–3', title: 'Foundation', short: 'Merchant Center approved, feed built. Your part: 20 min.' },
+  { when: 'DAYS 4–7', title: 'Build & verify', short: 'Campaigns built, tracking verified.' },
+  { when: 'DAYS 8–10', title: 'Launch', short: 'Live in Shopping results — likely before local competitors.' },
+  { when: 'DAYS 11–40', title: 'Optimization sprint', short: 'Daily monitoring, waste cut, winners scaled.' },
+];
 ---
 
 <Launch launch={launch} title={title} description={description}>
   <!-- HERO -->
   <header class="lp-hero">
-    <div class="lp-hero-noise"></div>
-    <div class="lp-hero-orb a"></div>
-    <div class="lp-hero-orb b"></div>
+    <div class="lp-hero-orb"></div>
     <div class="wrap lp-hero-inner">
-      <span class="lp-chip reveal"><span class="lp-chip-dot"></span>NEW · Google Shopping arrives in {countryName} — <b>{launchWindow}</b></span>
-      <h1 class="reveal">Shopping ads have never existed on {googleDomain}. <span class="hl">That changes in {launchWindow}.</span></h1>
-      <p class="lp-sub reveal">
-        Google is bringing Shopping ads — product photos with prices at the top of search results — to {countryName} for the first
-        time. <strong>No {adjective} shop has them. No local agency has ever set them up.</strong> The shops that launch first acquire
-        customers cheapest. This page exists to make sure that's you.
+      <span class="lp-chip"><span class="lp-chip-dot"></span>NEW · Google Shopping arrives in {countryName} — <b>{launchWindow}</b></span>
+      <h1>Be the first {adjective} shop in <span class="hl">Google Shopping.</span></h1>
+      <p class="lp-sub">
+        Shopping ads open on {googleDomain} in <strong>{launchWindow}</strong> — a channel that has never existed here. First movers buy
+        customers at the cheapest CPCs the market will ever offer. <strong>I set shops up in 10 working days.</strong>
       </p>
-      <div class="lp-cta-row reveal">
-        <a class="btn btn--primary btn--lg" href="#book">Check my market position →</a>
-        <a class="btn btn--ghost btn--lg" href="#calc" style="border-color:rgba(255,255,255,.4); color:#fff">Calculate my upside</a>
-        <span class="lp-cta-note">48H ANSWER · YOU TALK DIRECTLY TO ME</span>
+      <div class="lp-cta-row">
+        <a class="lp-btn" href="#book">Book the free 15-min market check →</a>
+        <span class="lp-cta-note">FREE · NO OBLIGATION · 48H ANSWER<br />YOU TALK DIRECTLY TO ME, NOT AN AGENCY</span>
+      </div>
+      <div class="lp-proof">
+        <div class="lp-proof-item"><b>10+</b><div>EU markets with live Shopping campaigns today</div></div>
+        <div class="lp-proof-item"><b>€5M+</b><div>ad spend managed across Google &amp; Meta</div></div>
+        <div class="lp-proof-item"><b>250K+</b><div>products managed across feeds</div></div>
+        <div class="lp-proof-item"><b>10 days</b><div>from access to live — or setup is free</div></div>
       </div>
     </div>
   </header>
@@ -46,11 +65,11 @@ const description = `Google Shopping launches in ${countryName} in ${launchWindo
   <!-- SERP MOCK -->
   <section class="lp-serp-zone">
     <div class="wrap">
-      <div class="lp-serp reveal">
+      <div class="lp-serp">
         <div class="lp-serp-bar">
           <div class="lp-serp-search">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8A8A96" stroke-width="2.2"
-              ><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5E6B53" stroke-width="2.2"
+              ><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg
             >
             espresso machine — buy online
           </div>
@@ -71,193 +90,170 @@ const description = `Google Shopping launches in ${countryName} in ${launchWindo
     </div>
   </section>
 
-  <!-- NEW CHANNEL -->
-  <section class="sec sec--ink">
-    <div class="wrap">
-      <span class="eyebrow reveal">A new channel — not an upgrade</span>
-      <h2 class="display reveal" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">This is a brand-new sales channel for {countryName}.</h2>
-      <p class="lead reveal" style="margin-top:16px">
-        Your current Google ads are <strong>Search ads — text only.</strong> Shopping ads show your product photo, price and shop name
-        above every text result. Until now, Google didn't offer them in {countryName} — that's why you've never seen them on {googleDomain}.
-      </p>
-      <div class="lp-facts reveal">
-        <div class="lp-fact"><span class="lp-f-num">01 / SALES</span><h3>More orders, same budget</h3><p>The customer sees your <b>photo and price before clicking.</b> Those who click already want the product — <b>same budget, more orders.</b></p></div>
-        <div class="lp-fact"><span class="lp-f-num">02 / TIMING</span><h3>The window is short</h3><p>Day one, the {adjective} auction is <b>nearly empty — clicks cost cents.</b> Every shop that joins later pushes prices up. <b>The cheap period never returns.</b></p></div>
-        <div class="lp-fact"><span class="lp-f-num">03 / EDGE</span><h3>Locals can't help you</h3><p>{adjective} agencies have <b>never set up a Merchant Center or feed</b> — the channel didn't exist here. Their trial and error is <b>paid for with your budget.</b></p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAIT -->
-  <section class="sec" id="wait">
-    <div class="wrap">
-      <span class="eyebrow reveal" style="color:var(--coral)">Loss runs faster than profit</span>
-      <h2 class="display reveal" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">What happens if you wait?</h2>
-      <p class="lead reveal" style="margin-top:16px">
-        This is how every new Google market plays out. The product doesn't change. The customer doesn't change. <strong>Only the price
-        you pay to reach them changes.</strong>
-      </p>
-      <div class="lp-wait-chart reveal">
-        <div class="lp-wait-col">
-          <div class="lp-wait-bar lp-wb-1">×1<span class="lp-bx">CPC</span></div>
-          <div class="lp-wait-info"><span class="lp-when">Launch — you go first</span><h3>The auction is empty</h3><p>Almost nobody is bidding. You acquire customers at the cheapest price this market will ever offer.</p></div>
-        </div>
-        <div class="lp-wait-col">
-          <div class="lp-wait-bar lp-wb-2">×1.5<span class="lp-bx">CPC</span></div>
-          <div class="lp-wait-info"><span class="lp-when">~ Month 3 — the crowd arrives</span><h3>Competitors enter</h3><p>Local shops catch on. More bidders, higher prices — while early movers already have months of data working for them.</p></div>
-        </div>
-        <div class="lp-wait-col">
-          <div class="lp-wait-bar lp-wb-3">×3<span class="lp-bx">CPC</span></div>
-          <div class="lp-wait-info"><span class="lp-when">~ Month 6+ — saturation</span><h3>Triple the price</h3><p>Crowded auctions, established players, optimized feeds. Latecomers pay 3× more for the customer they could have had on day one.</p></div>
-        </div>
-      </div>
-      <p class="lp-wait-punch reveal">Waiting isn't free. <em>It's the difference between ×1 and ×3 — forever.</em></p>
-
-      <div class="lp-data-strip reveal">
-        <div class="lp-data-head">— This isn't a sales pitch. It's measured data. —</div>
-        <div class="lp-data-cards">
-          <div class="lp-dcard"><div class="lp-dv">10–15% lower CPC</div><p>Across Europe, Shopping &amp; Performance Max clicks cost <b>10–15% less than text Search</b> — €0.36–0.41 vs €0.42–0.45 median CPC. In a newly opened market, the gap is initially wider.</p><div class="lp-src">Smarter eCommerce (smec) European retail benchmark, H1 2026 — €650M+ ad spend</div></div>
-          <div class="lp-dcard"><div class="lp-dv">60%+ of retail clicks</div><p>Shopping isn't a minor add-on. In established markets, product formats capture <b>over 60% of all retail search clicks.</b> Text-only advertisers fight over the remaining 40%.</p><div class="lp-src">Search performance &amp; retail inventory share data, 2025/2026</div></div>
-          <div class="lp-dcard"><div class="lp-dv">+12–13% conversions</div><p>Advertisers moving to feed-based Performance Max see <b>12–13% more conversions at equal or better ROAS.</b> Buyers see your photo and price before clicking — no more paying for unqualified traffic.</p><div class="lp-src">Google internal data, retail Performance Max case studies</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- CALCULATOR -->
-  <section class="sec sec--tint lp-calc" id="calc">
+  <section class="sec" id="calc" style="padding:72px 0">
     <div class="wrap">
-      <span class="eyebrow reveal">Your numbers, not ours</span>
-      <h2 class="display reveal" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">What does the window mean for your shop?</h2>
-      <p class="lead reveal" style="margin-top:16px; margin-bottom:12px">
-        Move the sliders. The math shows what launching first vs. waiting six months means <strong>in clicks, orders and revenue — for
-        your budget.</strong>
-      </p>
-      <div class="calc reveal">
-        <div class="calc-controls">
-          <div class="cgroup">
-            <div class="clabel">Your inputs</div>
-            <div class="chint">Rough numbers are fine — this is about the size of the gap, not the decimals.</div>
+      <div class="sec-head">
+        <span class="eyebrow">Your numbers, not ours</span>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">What is entering first worth — for your shop?</h2>
+        <p class="lead" style="margin-top:16px">
+          Three sliders — your budget, your order value, <strong>your own conversion rate.</strong> The only assumption we make is the
+          click price, and we keep it conservative.
+        </p>
+      </div>
+      <div class="lp-calc">
+        <div class="lp-calc-card">
+          <div class="lp-cgroup">
+            <div class="lp-clabel">Your inputs</div>
+            <div class="lp-chint">Use your shop's real numbers — the conversion rate is yours, not ours.</div>
           </div>
-          <div class="cgroup">
-            <div class="slider-row"><span class="clabel">Monthly Shopping budget</span><span class="slider-val" id="budgetVal">€1,500</span></div>
+          <div class="lp-cgroup">
+            <div class="lp-slider-row"><span class="lp-clabel">Monthly Shopping budget</span><span class="lp-slider-val" id="budgetVal">€1,500</span></div>
             <input type="range" id="budget" min="300" max="10000" step="100" value="1500" />
-            <div class="slider-ends"><span>€300</span><span>€10,000</span></div>
+            <div class="lp-slider-ends"><span>€300</span><span>€10,000</span></div>
           </div>
-          <div class="cgroup">
-            <div class="slider-row"><span class="clabel">Average order value</span><span class="slider-val" id="aovVal">€60</span></div>
-            <input type="range" id="aov" min="20" max="500" step="10" value="60" />
-            <div class="slider-ends"><span>€20</span><span>€500</span></div>
+          <div class="lp-cgroup">
+            <div class="lp-slider-row"><span class="lp-clabel">Average order value</span><span class="lp-slider-val" id="aovVal">€60</span></div>
+            <input type="range" id="aov" min="20" max="500" step="5" value="60" />
+            <div class="lp-slider-ends"><span>€20</span><span>€500</span></div>
+          </div>
+          <div class="lp-cgroup">
+            <div class="lp-slider-row"><span class="lp-clabel">Your conversion rate</span><span class="lp-slider-val" id="crVal">1.5%</span></div>
+            <input type="range" id="cr" min="0.5" max="5" step="0.1" value="1.5" />
+            <div class="lp-slider-ends"><span>0.5%</span><span>5%</span></div>
+            <div class="lp-cr-hint">Check it in your GA4 or shop admin — orders ÷ visits. Most e-commerce shops land between 1–3%.</div>
           </div>
         </div>
-        <div class="calc-result">
-          <div class="lp-res"><span class="lp-r-label">Launching now · CPC ≈ €0.12</span><div class="lp-r-val up" id="clicksNow">—</div><div class="lp-r-sub">≈ <span id="ordersNow">—</span> orders / mo · ≈ <span id="revNow">—</span> revenue / mo</div></div>
-          <div class="lp-res"><span class="lp-r-label">Entering at month 6+ · CPC ≈ €0.36</span><div class="lp-r-val down" id="clicksLate">—</div><div class="lp-r-sub">≈ <span id="ordersLate">—</span> orders / mo · ≈ <span id="revLate">—</span> revenue / mo</div></div>
-          <div class="lp-res"><span class="lp-r-label">The cost of waiting — per year</span><div class="lp-r-val down" id="lostRev">—</div><div class="lp-r-sub">Same budget. Same customers. Different timing.</div></div>
+        <div class="lp-result">
+          <div class="lp-res">
+            <span class="lp-r-label">Launching now · CPC €0.25</span>
+            <div class="lp-r-val up" id="revNow">—</div>
+            <div class="lp-r-sub">≈ <span id="ordersNow">—</span> orders / mo · ~<span id="clicksNow">—</span> clicks · ROAS <span class="up" id="roasNow">—</span></div>
+          </div>
+          <div class="lp-res">
+            <span class="lp-r-label">Entering at month 6+ · CPC €0.40</span>
+            <div class="lp-r-val down" id="revLate">—</div>
+            <div class="lp-r-sub">≈ <span id="ordersLate">—</span> orders / mo · ~<span id="clicksLate">—</span> clicks · ROAS <span class="down" id="roasLate">—</span></div>
+          </div>
+          <div class="lp-res">
+            <span class="lp-r-label">Head start banked in the cheap window (~6 mo)</span>
+            <div class="lp-r-val up mid" id="headStart">—</div>
+            <div class="lp-r-sub">≈ <span id="headStartOrders">—</span> orders — while the latecomer runs nothing. After that, everyone pays the same CPC; only these months can't be bought back.</div>
+          </div>
+          <a class="lp-btn" href="#book">Check these numbers for my niche →</a>
         </div>
       </div>
-      <p class="lp-calc-note reveal">
-        Illustrative model — launch CPC €0.12 vs saturated CPC €0.36 (3×), conversion rate 1.5%. Real figures depend on your niche,
-        margin and feed quality; that's precisely what the free market check establishes for you.
+      <p class="lp-calc-note">
+        The only assumption is the click price: a conservative €0.25 at launch vs €0.40 once the auction fills up. Budget, order value
+        and conversion rate are yours. Real CPCs depend on your niche — that's what the free market check establishes.
       </p>
     </div>
   </section>
 
-  <!-- VALUE STACK -->
-  <section class="sec" id="what">
+  <!-- WHY THE WINDOW -->
+  <section class="sec sec--ink" style="padding:84px 0">
     <div class="wrap">
-      <span class="eyebrow reveal">Measured in money, not jargon</span>
-      <h2 class="display reveal" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">What you get</h2>
-      <p class="lead reveal" style="margin-top:16px">You don't need to understand feeds or Merchant Center. That's my job. Here's what each piece means <strong>for your revenue.</strong></p>
-      <div class="lp-stack reveal">
-        <div class="lp-stack-item"><span class="lp-idx">01</span><h3>Your products appear on {googleDomain} — period.</h3><p>Without an approved Merchant Center, Google won't show your products. <b>I handle the entire approval</b> — the step where DIY attempts get stuck for weeks.</p><p class="lp-how"><b>HOW —</b> Merchant Center setup, verification &amp; policy compliance</p></div>
-        <div class="lp-stack-item"><span class="lp-idx">02</span><h3>You reach people ready to buy — not browse.</h3><p>Done right, your ads appear for searches with a credit card behind them. <b>More orders from the same budget.</b></p><p class="lp-how"><b>HOW —</b> product feed built &amp; optimized for buying-intent searches</p></div>
-        <div class="lp-stack-item"><span class="lp-idx">03</span><h3>Profitable sooner — no paid trial &amp; error.</h3><p>A badly built account burns budget for three months "learning." <b>Mine is built on what already works in 10+ markets.</b></p><p class="lp-how"><b>HOW —</b> campaign architecture proven across EU Shopping launches</p></div>
-        <div class="lp-stack-item"><span class="lp-idx">04</span><h3>You'll know exactly where the open space is.</h3><p>I check which competitors are preparing Shopping and which are asleep. <b>Where you can win cheaply — in numbers, not feelings.</b></p><p class="lp-how"><b>HOW —</b> competitor visibility report for your exact niche</p></div>
-        <div class="lp-stack-item"><span class="lp-idx">05</span><h3>Not one euro spent blind.</h3><p>Before launch I verify your conversion tracking works. <b>You'll know exactly how much every euro brought back.</b></p><p class="lp-how"><b>HOW —</b> GA4 &amp; conversion tracking audit before any spend</p></div>
-        <div class="lp-stack-item"><span class="lp-idx">06</span><h3>Someone watches your money every day.</h3><p>Waste cut weekly, winners scaled, feed problems fixed before they cost sales. <b>Plus a monthly report in plain language.</b></p><p class="lp-how"><b>HOW —</b> ongoing optimization, feed monitoring &amp; honest reporting</p></div>
+      <div class="sec-head">
+        <span class="eyebrow">A new channel — not an upgrade</span>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">Why the window exists — and why it closes.</h2>
+        <p class="lead" style="margin-top:16px">
+          Shopping ads — photo, price, shop name above every text result — have never been offered in {countryName}.
+          <strong>No {adjective} shop has them. No local agency has ever set them up.</strong>
+        </p>
+      </div>
+      <div class="lp-facts">
+        <div class="lp-fact"><span class="lp-f-num">01 / SALES</span><h3>More orders, same budget</h3><p>The customer sees your <b>photo and price before clicking.</b> Those who click already want the product.</p></div>
+        <div class="lp-fact"><span class="lp-f-num">02 / TIMING</span><h3>The window is short</h3><p>Day one, the auction is <b>nearly empty — clicks cost cents.</b> Every later entrant pushes prices up. <b>The cheap period never returns.</b></p></div>
+        <div class="lp-fact"><span class="lp-f-num">03 / EDGE</span><h3>Locals can't help you</h3><p>{adjective} agencies have <b>never set up a Merchant Center or feed.</b> Their trial and error is <b>paid with your budget.</b></p></div>
+      </div>
+      <div class="lp-data-cards">
+        <div class="lp-dcard"><div class="lp-dv">10–15% lower CPC</div><p>Shopping clicks cost less than text Search across Europe — and the gap is wider in a newly opened market.</p><div class="lp-src">smec European retail benchmark, H1 2026</div></div>
+        <div class="lp-dcard"><div class="lp-dv">60%+ of retail clicks</div><p>In established markets, product formats capture most retail search clicks. Text-only advertisers fight over the rest.</p><div class="lp-src">Retail inventory share data, 2025/2026</div></div>
+        <div class="lp-dcard"><div class="lp-dv">+12–13% conversions</div><p>Advertisers moving to feed-based Performance Max see more conversions at equal or better ROAS.</p><div class="lp-src">Google retail PMax case studies</div></div>
       </div>
     </div>
   </section>
 
-  <!-- PROCESS -->
-  <section class="sec sec--tint" id="how">
+  <!-- WHAT YOU GET + PROCESS -->
+  <section class="sec" id="get" style="padding:84px 0">
     <div class="wrap">
-      <span class="eyebrow reveal">A fixed, proven sequence</span>
-      <h2 class="display reveal" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">Live in 10 working days.</h2>
-      <p class="lead reveal" style="margin-top:16px">You'll know exactly where we are at every step — <strong>and what it's bringing you.</strong></p>
-      <div class="lp-proc reveal">
-        <div class="lp-proc-row"><div class="lp-proc-when">DAY 0</div><div class="lp-proc-body"><h3>Free market check</h3><p>15 minutes. {countryName}'s rollout status, your competitors' readiness, whether your shop qualifies. If it's not a fit, I'll tell you straight — and you've lost nothing.</p></div></div>
-        <div class="lp-proc-row"><div class="lp-proc-when">DAYS 1–3</div><div class="lp-proc-body"><h3>Foundation</h3><p>Merchant Center approved, product catalogue turned into a compliant, optimized feed. You send access — I do the rest. Your part takes 20 minutes.</p></div></div>
-        <div class="lp-proc-row"><div class="lp-proc-when">DAYS 4–7</div><div class="lp-proc-body"><h3>Build &amp; verify</h3><p>Campaigns built, budgets set, conversion tracking verified — so from the first click, we measure real revenue, not vanity metrics.</p></div></div>
-        <div class="lp-proc-row"><div class="lp-proc-when">DAYS 8–10</div><div class="lp-proc-body"><h3>Launch</h3><p>Your products go live in Shopping results on {googleDomain} — in all likelihood before any of your local competitors.</p></div></div>
-        <div class="lp-proc-row"><div class="lp-proc-when">DAYS 11–40</div><div class="lp-proc-body"><h3>Optimization sprint</h3><p>The first 30 days decide the next 12 months. Daily monitoring, cutting waste, scaling winners — and a clear report on what your money did.</p></div></div>
+      <div class="sec-head">
+        <span class="eyebrow">Measured in money, not jargon</span>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">What you get — and when.</h2>
+      </div>
+      <div class="lp-get">
+        <div class="lp-stack-list">
+          {stack.map((s) => (
+            <div class="lp-stack-row">
+              <span class="lp-idx">{s.idx}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.body} <b>{s.bold}</b></p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="lp-proc-card">
+          <div class="lp-proc-cap">Live in 10 working days</div>
+          {process.map((p) => (
+            <div class="lp-proc-row">
+              <span class="lp-proc-when">{p.when}</span>
+              <div>
+                <div class="lp-proc-title">{p.title}</div>
+                <div class="lp-proc-short">{p.short}</div>
+              </div>
+            </div>
+          ))}
+          <div class="lp-guarantee">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9FE870" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+              ><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"></path><path d="M8.5 12l2.5 2.5 4.5-4.5"></path></svg
+            >
+            <div><b>Guarantee:</b> not live in 10 working days — the setup is free. No long-term contracts, month to month.</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPERT -->
-  <section class="sec sec--ink">
+  <!-- WHY ME -->
+  <section id="why" style="padding:0 0 84px">
     <div class="wrap">
-      <div class="lp-expert">
-        <div class="lp-expert-copy">
-          <span class="eyebrow reveal">Why me</span>
-          <h2 class="display reveal" style="margin-top:16px; margin-bottom:26px; font-size:clamp(1.9rem,4.2vw,2.7rem)">The setup local agencies will spend the next year learning is my daily routine.</h2>
-          <p class="reveal"><b>Today, I manage live Shopping campaigns across 10+ European markets</b> — feeds, Merchant Centers, campaign structures — in markets where this channel has existed for years.</p>
-          <p class="reveal">When Shopping opens in {countryName}, I'm not learning anything new. <b>I'm running a proven playbook on a fresh map where the auction is still empty.</b></p>
-          <p class="reveal">No agency, no juniors, no account managers. <b>You work directly with the person whose hands are in the account.</b></p>
-        </div>
-        <div class="lp-nums reveal">
-          <div class="lp-num"><div class="lp-v">10+</div><div class="lp-l">EU markets with live Shopping campaigns today</div></div>
-          <div class="lp-num"><div class="lp-v">€5M+</div><div class="lp-l">ad spend managed across Google &amp; Meta</div></div>
-          <div class="lp-num"><div class="lp-v">250K+</div><div class="lp-l">products managed across feeds &amp; platforms</div></div>
-          <div class="lp-num"><div class="lp-v">15+</div><div class="lp-l">CEE price-comparison &amp; marketplace platforms</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GUARANTEE -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="lp-guarantee reveal">
-        <div class="lp-shield">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#9FE870" stroke-width="1.8"
-            ><path d="M12 2 4 5.5V11c0 5 3.4 9.3 8 10.5 4.6-1.2 8-5.5 8-10.5V5.5L12 2Z"></path><path d="m8.5 11.5 2.5 2.5 4.5-4.5"></path></svg
-          >
-        </div>
-        <div class="lp-g-body">
-          <h3>Live in 10 working days — or the setup is free.</h3>
+      <div class="lp-why">
+        <div>
+          <span class="eyebrow">Why me</span>
+          <h2>The setup local agencies will spend a year learning is my daily routine.</h2>
           <p>
-            If your campaigns aren't live within 10 working days of getting access (and your shop meets Google's policies), <strong
-              >you don't pay the setup fee.</strong
-            > No long-term contracts — month to month, because results should be the reason you stay, not a signature.
+            <b>I manage live Shopping campaigns across 10+ European markets today.</b> When Shopping opens in {countryName}, I'm not
+            learning anything new — I'm running a proven playbook on a fresh map where the auction is still empty.
           </p>
+          <p>No agency, no juniors, no account managers. <b>You work directly with the person whose hands are in the account.</b></p>
+        </div>
+        <div class="lp-mini-stats">
+          <div class="lp-mini-stat"><div class="lp-v">10+</div><div class="lp-l">EU markets live today</div></div>
+          <div class="lp-mini-stat"><div class="lp-v">€5M+</div><div class="lp-l">ad spend managed</div></div>
+          <div class="lp-mini-stat"><div class="lp-v">250K+</div><div class="lp-l">products in managed feeds</div></div>
+          <div class="lp-mini-stat"><div class="lp-v">15+</div><div class="lp-l">CEE comparison platforms</div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BOOKING -->
-  <section class="sec sec--tint" id="book">
-    <div class="wrap">
-      <div class="lp-form-zone">
-        <div class="reveal">
-          <span class="eyebrow">Free market check</span>
-          <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">Find out where {countryName} stands — and where you stand in it.</h2>
-          <p class="lead" style="margin-top:16px">
-            Book a free 15-minute call. We'll cover {countryName}'s rollout status, whether your shop qualifies, and which competitors
-            are already moving. <strong>Free, no obligation.</strong>
-          </p>
-          <ul class="lp-check-list">
-            <li><span class="lp-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg></span><span><strong>Market status</strong> — when Shopping opens for your niche in {countryName}</span></li>
-            <li><span class="lp-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg></span><span><strong>Competitor check</strong> — who in your space is already preparing, who's asleep</span></li>
-            <li><span class="lp-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M20 6 9 17l-5-5"></path></svg></span><span><strong>Honest verdict</strong> — if Shopping isn't right for your shop yet, I'll tell you straight</span></li>
-          </ul>
-        </div>
-        <div class="reveal">
-          <CalEmbed noscriptText="To book a slot, enable JavaScript, or write directly to" />
-        </div>
+  <!-- BOOK -->
+  <section class="sec sec--ink" id="book" style="padding:84px 0">
+    <div class="wrap lp-book">
+      <div>
+        <span class="eyebrow">Free market check · 15 min</span>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.2vw,2.8rem)">Find out where {countryName} stands — and where you stand in it.</h2>
+        <p class="lead" style="margin-top:16px">You leave the call knowing three things, whether or not we work together:</p>
+        <ul class="lp-check-list">
+          <li><span class="lp-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Market status</strong> — when Shopping opens for your niche in {countryName}</span></li>
+          <li><span class="lp-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Competitor check</strong> — who in your space is already preparing, who's asleep</span></li>
+          <li><span class="lp-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Honest verdict</strong> — if Shopping isn't right for your shop yet, I'll tell you straight</span></li>
+        </ul>
+        <p class="lp-book-mail">Prefer email? Just reply to my message —<br />or write to <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a></p>
+      </div>
+      <div class="lp-book-embed">
+        <CalEmbed height="560px" noscriptText="To book a slot, enable JavaScript, or write directly to" />
       </div>
     </div>
   </section>
@@ -265,36 +261,46 @@ const description = `Google Shopping launches in ${countryName} in ${launchWindo
 
 <script>
   (function () {
-    const CPC_NOW = 0.12,
-      CPC_LATE = 0.36,
-      CVR = 0.015;
+    const CPC_NOW = 0.25,
+      CPC_LATE = 0.4;
     const budget = document.getElementById('budget') as HTMLInputElement | null;
     const aov = document.getElementById('aov') as HTMLInputElement | null;
-    const fmtN = (n: number) => n.toLocaleString('en-US');
+    const cr = document.getElementById('cr') as HTMLInputElement | null;
+    const fmtN = (n: number) => Math.round(n).toLocaleString('en-US');
     const fmtE = (n: number) => '€' + Math.round(n).toLocaleString('en-US');
+    const set = (id: string, v: string) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = v;
+    };
 
     function update() {
-      if (!budget || !aov) return;
+      if (!budget || !aov || !cr) return;
       const b = +budget.value,
-        a = +aov.value;
-      document.getElementById('budgetVal')!.textContent = fmtE(b);
-      document.getElementById('aovVal')!.textContent = fmtE(a);
-      const cNow = Math.round(b / CPC_NOW),
-        cLate = Math.round(b / CPC_LATE);
-      const oNow = cNow * CVR,
-        oLate = cLate * CVR,
-        rNow = oNow * a,
-        rLate = oLate * a;
-      document.getElementById('clicksNow')!.textContent = fmtN(cNow);
-      document.getElementById('clicksLate')!.textContent = fmtN(cLate);
-      document.getElementById('ordersNow')!.textContent = fmtN(Math.round(oNow));
-      document.getElementById('ordersLate')!.textContent = fmtN(Math.round(oLate));
-      document.getElementById('revNow')!.textContent = fmtE(rNow);
-      document.getElementById('revLate')!.textContent = fmtE(rLate);
-      document.getElementById('lostRev')!.textContent = fmtE((rNow - rLate) * 12);
+        a = +aov.value,
+        c = +cr.value / 100;
+      set('budgetVal', fmtE(b));
+      set('aovVal', fmtE(a));
+      set('crVal', (+cr.value).toFixed(1) + '%');
+      const clicksNow = b / CPC_NOW,
+        clicksLate = b / CPC_LATE;
+      const ordersNow = clicksNow * c,
+        ordersLate = clicksLate * c;
+      const revNow = ordersNow * a,
+        revLate = ordersLate * a;
+      set('revNow', fmtE(revNow) + ' / mo');
+      set('revLate', fmtE(revLate) + ' / mo');
+      set('ordersNow', fmtN(ordersNow));
+      set('ordersLate', fmtN(ordersLate));
+      set('clicksNow', fmtN(clicksNow));
+      set('clicksLate', fmtN(clicksLate));
+      set('roasNow', (revNow / b).toFixed(1) + '×');
+      set('roasLate', (revLate / b).toFixed(1) + '×');
+      set('headStart', '+' + fmtE(revNow * 6));
+      set('headStartOrders', fmtN(ordersNow * 6));
     }
     budget?.addEventListener('input', update);
     aov?.addEventListener('input', update);
+    cr?.addEventListener('input', update);
     update();
   })();
 </script>
