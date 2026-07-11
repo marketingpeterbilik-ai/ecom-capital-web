@@ -22,17 +22,17 @@ import Base from '../layouts/Base.astro';
             <div class="clabel">Ktoré platformy riešiť?</div>
             <div class="chint">Jedna alebo viac. Každá platforma znamená ďalšiu správu navyše.</div>
             <div class="toggles" id="platforms">
-              <button class="tg pf on" data-h="8"><span class="mk">✓</span> Google Ads</button>
-              <button class="tg pf on" data-h="7"><span class="mk">✓</span> Meta Ads</button>
-              <button class="tg pf" data-h="6"><span class="mk"></span> TikTok Ads</button>
-              <button class="tg pf" data-h="4"><span class="mk"></span> Microsoft Ads</button>
+              <button type="button" class="tg pf on" data-h="8" aria-pressed="true"><span class="mk" aria-hidden="true">✓</span> Google Ads</button>
+              <button type="button" class="tg pf on" data-h="7" aria-pressed="true"><span class="mk" aria-hidden="true">✓</span> Meta Ads</button>
+              <button type="button" class="tg pf" data-h="6" aria-pressed="false"><span class="mk" aria-hidden="true"></span> TikTok Ads</button>
+              <button type="button" class="tg pf" data-h="4" aria-pressed="false"><span class="mk" aria-hidden="true"></span> Microsoft Ads</button>
             </div>
           </div>
 
           <div class="cgroup">
             <div class="slider-row">
-              <div class="clabel">Mesačný rozpočet na reklamu</div>
-              <div class="slider-val" id="budgetVal">3 000 €</div>
+              <label class="clabel" for="budget">Mesačný rozpočet na reklamu</label>
+              <div class="slider-val" id="budgetVal" aria-hidden="true">3 000 €</div>
             </div>
             <div class="chint">Plánovaný mesačný výdaj na samotné reklamy (bez odmeny za správu).</div>
             <input type="range" id="budget" min="200" max="50000" step="100" value="3000" />
@@ -43,9 +43,9 @@ import Base from '../layouts/Base.astro';
             <div class="clabel">Počet trhov / jazykov</div>
             <div class="chint">Viac trhov znamená viac kampaní, prekladov a optimalizácie.</div>
             <div class="seg" id="markets">
-              <button class="mk-btn on" data-f="1">1 trh</button>
-              <button class="mk-btn" data-f="1.3">2–3 trhy</button>
-              <button class="mk-btn" data-f="1.6">4+ trhov</button>
+              <button type="button" class="mk-btn on" data-f="1" aria-pressed="true">1 trh</button>
+              <button type="button" class="mk-btn" data-f="1.3" aria-pressed="false">2–3 trhy</button>
+              <button type="button" class="mk-btn" data-f="1.6" aria-pressed="false">4+ trhov</button>
             </div>
           </div>
 
@@ -53,19 +53,21 @@ import Base from '../layouts/Base.astro';
             <div class="clabel">Doplnkové služby</div>
             <div class="chint">Voliteľné. Tracking, dáta a feedy majú jednorazové nastavenie + menšiu mesačnú údržbu.</div>
             <div class="ad-grid" id="addons">
-              <button class="tg ad" data-m="1" data-s="12"><span class="ad-t">Tracking &amp; meranie <span class="mk"></span></span><span class="ad-d">setup ~12h · +1h/mes</span></button>
-              <button class="tg ad" data-m="4" data-s="20"><span class="ad-t">Dáta &amp; BigQuery <span class="mk"></span></span><span class="ad-d">setup ~20h · +4h/mes</span></button>
-              <button class="tg ad" data-m="2" data-s="8"><span class="ad-t">Produktové feedy <span class="mk"></span></span><span class="ad-d">setup ~8h · +2h/mes</span></button>
-              <button class="tg ad" data-m="3" data-s="0"><span class="ad-t">Pravidelný reporting <span class="mk"></span></span><span class="ad-d">+3h/mes</span></button>
-              <button class="tg ad" data-m="1" data-s="8"><span class="ad-t">Cookie lišta &amp; consent <span class="mk"></span></span><span class="ad-d">setup ~8h · +1h/mes</span></button>
+              <button type="button" class="tg ad" data-m="1" data-s="12" aria-pressed="false"><span class="ad-t">Tracking &amp; meranie <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~12h · +1h/mes</span></button>
+              <button type="button" class="tg ad" data-m="4" data-s="20" aria-pressed="false"><span class="ad-t">Dáta &amp; BigQuery <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~20h · +4h/mes</span></button>
+              <button type="button" class="tg ad" data-m="2" data-s="8" aria-pressed="false"><span class="ad-t">Produktové feedy <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~8h · +2h/mes</span></button>
+              <button type="button" class="tg ad" data-m="3" data-s="0" aria-pressed="false"><span class="ad-t">Pravidelný reporting <span class="mk" aria-hidden="true"></span></span><span class="ad-d">+3h/mes</span></button>
+              <button type="button" class="tg ad" data-m="1" data-s="8" aria-pressed="false"><span class="ad-t">Cookie lišta &amp; consent <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~8h · +1h/mes</span></button>
             </div>
           </div>
         </div>
 
         <div class="calc-result reveal" id="result">
           <div class="cr-lbl">Odhad mesačnej správy</div>
-          <div class="cr-big" id="rMonthly">≈ 0 €</div>
-          <div class="cr-range" id="rRange">vyber aspoň jednu platformu</div>
+          <div aria-live="polite">
+            <div class="cr-big" id="rMonthly">≈ 0 €</div>
+            <div class="cr-range" id="rRange">vyber aspoň jednu platformu</div>
+          </div>
 
           <div class="cr-setup" id="rSetupWrap" hidden>
             <div class="s-lbl">Jednorazové nastavenie</div>
@@ -158,17 +160,22 @@ import Base from '../layouts/Base.astro';
   // platform & addon toggles
   document.querySelectorAll<HTMLElement>('#platforms .pf, #addons .ad').forEach((b) => {
     b.addEventListener('click', () => {
-      b.classList.toggle('on');
+      const on = b.classList.toggle('on');
+      b.setAttribute('aria-pressed', String(on));
       const mk = b.querySelector('.mk');
-      if (mk) mk.textContent = b.classList.contains('on') ? '✓' : '';
+      if (mk) mk.textContent = on ? '✓' : '';
       recompute();
     });
   });
   // markets segmented
   document.querySelectorAll<HTMLElement>('#markets .mk-btn').forEach((b) => {
     b.addEventListener('click', () => {
-      document.querySelectorAll('#markets .mk-btn').forEach((x) => x.classList.remove('on'));
+      document.querySelectorAll('#markets .mk-btn').forEach((x) => {
+        x.classList.remove('on');
+        x.setAttribute('aria-pressed', 'false');
+      });
       b.classList.add('on');
+      b.setAttribute('aria-pressed', 'true');
       recompute();
     });
   });

@@ -15,23 +15,16 @@ const links = [
 ];
 ---
 
-<div class="topbar" aria-hidden="true">
-  <div class="ticker">
-    <span>Google Ads<i>/</i>Meta Ads<i>/</i>GA4<i>/</i>Server-side tracking (sGTM)<i>/</i>Meta CAPI<i>/</i>Cookie lišty &amp; Consent Mode v2<i>/</i>BigQuery<i>/</i>Looker Studio<i>/</i>Merchant Center &amp; feedy<i>/</i>Google Ads scripts<i>/</i></span>
-    <span>Google Ads<i>/</i>Meta Ads<i>/</i>GA4<i>/</i>Server-side tracking (sGTM)<i>/</i>Meta CAPI<i>/</i>Cookie lišty &amp; Consent Mode v2<i>/</i>BigQuery<i>/</i>Looker Studio<i>/</i>Merchant Center &amp; feedy<i>/</i>Google Ads scripts<i>/</i></span>
-  </div>
-</div>
-
 <header class="site">
   <div class="wrap nav">
-    <a href="/" class="mark"><b>Ecom<span>.</span>Capital</b><small>Performance · Analytics · Data</small></a>
+    <a href="/" class="mark"><b>ecom capital<i class="dot"></i></b><small>Performance · Analytics · Data</small></a>
     <nav class="nav-links" id="navlinks">
       {links.map((l) => (
-        <a href={l.href} class={isActive(l.href) ? 'active' : ''} set:html={l.label} />
+        <a href={l.href} class={isActive(l.href) ? 'active' : ''} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
       ))}
     </nav>
     <div class="nav-cta"><a href="/kalkulacka" class="btn btn--primary">Spočítať cenu</a></div>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Menu" aria-controls="navlinks" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -39,8 +32,21 @@ const links = [
   // Mobile menu toggle
   const burger = document.getElementById('burger');
   const nl = document.getElementById('navlinks');
+
+  function setMenu(open: boolean) {
+    nl?.classList.toggle('open', open);
+    burger?.classList.toggle('open', open);
+    burger?.setAttribute('aria-expanded', String(open));
+  }
+
   burger?.addEventListener('click', () => {
-    const open = nl?.classList.toggle('open');
-    burger.classList.toggle('open', !!open);
+    setMenu(!nl?.classList.contains('open'));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nl?.classList.contains('open')) {
+      setMenu(false);
+      burger?.focus();
+    }
   });
 </script>
