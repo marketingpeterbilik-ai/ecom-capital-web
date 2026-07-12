@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ŠABLÓNA — pred ostrým spustením doplň všetky [DOPLNIŤ: …] polia
+// a nechaj dokument skontrolovať právnikovi / DPO. Nie je to právne poradenstvo.
+const updated = '[DOPLNIŤ: dátum účinnosti, napr. 1. 8. 2026]';
+---
+
+<Base
+  title="Ochrana osobných údajov — Ecom Capital"
+  description="Zásady spracúvania a ochrany osobných údajov Ecom Capital s.r.o. podľa GDPR — aké údaje spracúvame, na aký účel, ako dlho a aké máte práva."
+>
+  <section class="phero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Právne informácie</span>
+      <h1 class="display reveal">Ochrana osobných údajov.</h1>
+      <p class="lead reveal">Ako spracúvame osobné údaje návštevníkov a klientov v súlade s Nariadením (EÚ) 2016/679 (GDPR) a zákonom č. 18/2018 Z. z. o ochrane osobných údajov.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:16px">
+    <div class="wrap">
+      <div class="article">
+        <div class="prose">
+          <p class="meta">Posledná aktualizácia: {updated}</p>
+
+          <h2>1. Prevádzkovateľ</h2>
+          <p>Prevádzkovateľom osobných údajov je:</p>
+          <p>
+            <strong>Ecom Capital s.r.o.</strong><br />
+            Sídlo: <code>[DOPLNIŤ: ulica, PSČ, mesto]</code><br />
+            IČO: <code>[DOPLNIŤ]</code> · DIČ: <code>[DOPLNIŤ]</code> · IČ DPH: <code>[DOPLNIŤ alebo „neplatca DPH"]</code><br />
+            Zapísaná v Obchodnom registri Okresného súdu <code>[DOPLNIŤ]</code>, oddiel: Sro, vložka č.: <code>[DOPLNIŤ]</code><br />
+            E-mail: <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a>
+          </p>
+          <p>Nemáme ustanovenú zodpovednú osobu (DPO); vo veciach ochrany údajov nás kontaktujte na uvedenom e-maile.</p>
+
+          <h2>2. Aké údaje spracúvame</h2>
+          <ul>
+            <li><strong>Údaje z kontaktu a rezervácie hovoru</strong> — meno, e-mail, prípadne telefón, adresa webu, orientačný rozpočet a obsah vašej správy, ktoré nám dobrovoľne poskytnete cez formulár, rezervačný nástroj alebo e-mail.</li>
+            <li><strong>Technické údaje a cookies</strong> — IP adresa, typ zariadenia a prehliadača, čas a spôsob interakcie s webom, údaje z analytických a marketingových nástrojov. Podrobnosti nájdete v <a href="/cookies">Zásadách používania cookies</a>.</li>
+            <li><strong>Fakturačné a zmluvné údaje</strong> — pri spolupráci údaje potrebné na uzavretie a plnenie zmluvy a vystavenie dokladov.</li>
+          </ul>
+
+          <h2>3. Účely a právne základy spracúvania</h2>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr><th>Účel</th><th>Právny základ (čl. 6 GDPR)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Vybavenie dopytu a komunikácia pred uzavretím zmluvy</td><td>Predzmluvné vzťahy / oprávnený záujem — čl. 6 ods. 1 písm. b) a f)</td></tr>
+                <tr><td>Poskytovanie služieb a plnenie zmluvy</td><td>Plnenie zmluvy — čl. 6 ods. 1 písm. b)</td></tr>
+                <tr><td>Meranie návštevnosti, analytika a marketing (cookies)</td><td>Súhlas — čl. 6 ods. 1 písm. a)</td></tr>
+                <tr><td>Účtovníctvo a zákonné povinnosti</td><td>Zákonná povinnosť — čl. 6 ods. 1 písm. c)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>4. Príjemcovia a sprostredkovatelia</h2>
+          <p>Osobné údaje môžeme sprístupniť dôveryhodným poskytovateľom, ktorí ich spracúvajú v našom mene:</p>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr><th>Príjemca</th><th>Účel</th><th>Krajina</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Cloudflare, Inc.</td><td>Hosting a doručovanie webu (CDN)</td><td>USA / EÚ</td></tr>
+                <tr><td>Cal.com, Inc.</td><td>Rezervácia konzultačných hovorov</td><td>USA</td></tr>
+                <tr><td>Google Ireland Ltd. / Google LLC</td><td>Meranie návštevnosti (GA4) a reklama</td><td>Írsko / USA</td></tr>
+                <tr><td>Meta Platforms Ireland Ltd.</td><td>Reklama a remarketing (ak je aktívny)</td><td>Írsko / USA</td></tr>
+                <tr><td><code>[DOPLNIŤ: poskytovateľ e-mailu]</code></td><td>E-mailová komunikácia</td><td><code>[DOPLNIŤ]</code></td></tr>
+                <tr><td><code>[DOPLNIŤ: účtovník / účtovný softvér]</code></td><td>Spracovanie účtovníctva</td><td>SR</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>5. Prenos do tretích krajín</h2>
+          <p>Niektorí poskytovatelia (napr. Google, Meta, Cal.com, Cloudflare) môžu spracúvať údaje aj mimo EÚ, najmä v USA. Prenos je zabezpečený primeranými zárukami podľa GDPR — štandardnými zmluvnými doložkami (SCC) a/alebo rámcom EU–US Data Privacy Framework.</p>
+
+          <h2>6. Doba uchovávania</h2>
+          <ul>
+            <li>Údaje z dopytov, ktoré neviedli k spolupráci: najviac <code>[DOPLNIŤ: napr. 12 mesiacov]</code>.</li>
+            <li>Zmluvné a fakturačné údaje: po dobu trvania zmluvy a následne po zákonom stanovenú dobu (účtovné doklady spravidla 10 rokov).</li>
+            <li>Údaje spracúvané na základe súhlasu: do odvolania súhlasu, resp. do uplynutia platnosti cookies.</li>
+          </ul>
+
+          <h2>7. Vaše práva</h2>
+          <p>Ako dotknutá osoba máte právo na: prístup k údajom, ich opravu, vymazanie („právo na zabudnutie"), obmedzenie spracúvania, prenosnosť údajov, namietať proti spracúvaniu a kedykoľvek odvolať udelený súhlas (odvolanie nemá vplyv na zákonnosť spracúvania pred odvolaním). Práva si uplatníte na e-maile <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a>.</p>
+
+          <h2>8. Právo podať sťažnosť</h2>
+          <p>Ak sa domnievate, že spracúvame vaše údaje v rozpore s predpismi, máte právo podať sťažnosť dozornému orgánu:</p>
+          <p>
+            <strong>Úrad na ochranu osobných údajov Slovenskej republiky</strong><br />
+            Hraničná 12, 820 07 Bratislava 27<br />
+            <a href="https://dataprotection.gov.sk" target="_blank" rel="noopener">dataprotection.gov.sk</a>
+          </p>
+
+          <h2>9. Cookies</h2>
+          <p>Podrobnosti o cookies a nástrojoch merania nájdete v samostatných <a href="/cookies">Zásadách používania cookies</a>.</p>
+
+          <h2>10. Zmeny týchto zásad</h2>
+          <p>Tieto zásady môžeme priebežne aktualizovať. Aktuálne znenie je vždy dostupné na tejto stránke s uvedeným dátumom poslednej aktualizácie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ŠABLÓNA — pred ostrým spustením over reálne nasadené cookies (napr. cez
+// prehliadač / consent nástroj) a doplň tabuľku. Nie je to právne poradenstvo.
+const updated = '[DOPLNIŤ: dátum účinnosti, napr. 1. 8. 2026]';
+---
+
+<Base
+  title="Zásady používania cookies — Ecom Capital"
+  description="Aké cookies a nástroje merania používame na webe Ecom Capital s.r.o., na čo slúžia a ako spravovať svoj súhlas."
+>
+  <section class="phero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Právne informácie</span>
+      <h1 class="display reveal">Zásady používania cookies.</h1>
+      <p class="lead reveal">Čo sú cookies, na čo ich používame a ako môžete kedykoľvek spravovať alebo odvolať svoj súhlas.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:16px">
+    <div class="wrap">
+      <div class="article">
+        <div class="prose">
+          <p class="meta">Posledná aktualizácia: {updated}</p>
+
+          <h2>1. Čo sú cookies</h2>
+          <p>Cookies sú malé textové súbory, ktoré sa ukladajú do vášho prehliadača pri návšteve webu. Umožňujú webu zapamätať si vaše nastavenia a poskytujú nám anonymné štatistiky o používaní. Podobné technológie zahŕňajú aj pixely a lokálne úložisko (local storage).</p>
+
+          <h2>2. Kategórie cookies, ktoré používame</h2>
+          <ul>
+            <li><strong>Nevyhnutné</strong> — potrebné na základné fungovanie webu (napr. zapamätanie voľby súhlasu). Nedajú sa vypnúť a nevyžadujú súhlas.</li>
+            <li><strong>Analytické</strong> — merajú návštevnosť a správanie na webe (Google Analytics 4). Nasadzujú sa len s vaším súhlasom.</li>
+            <li><strong>Marketingové</strong> — slúžia na meranie reklamy a remarketing (Google Ads, Meta). Nasadzujú sa len s vaším súhlasom.</li>
+            <li><strong>Preferenčné</strong> — zapamätajú si vaše voľby pre pohodlnejšie používanie. Voliteľné.</li>
+          </ul>
+
+          <h2>3. Súhlas a Consent Mode v2</h2>
+          <p>Pri prvej návšteve sa zobrazí cookie lišta, kde si vyberiete, ktoré kategórie povolíte. Analytické a marketingové cookies sa aktivujú až po udelení súhlasu. Nastavenie využíva <strong>Google Consent Mode v2</strong>, takže bez súhlasu sa neukladajú identifikátory a odosielajú sa len anonymizované, agregované signály.</p>
+
+          <h2>4. Prehľad cookies</h2>
+          <p>Nasledujúci prehľad je orientačný — konkrétne cookies závisia od udeleného súhlasu a nasadených nástrojov.</p>
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr><th>Názov</th><th>Poskytovateľ</th><th>Účel</th><th>Doba</th><th>Kategória</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>[DOPLNIŤ: napr. cookie_consent]</code></td><td>ecomcapital.sk</td><td>Uloženie voľby súhlasu</td><td>6–12 mes.</td><td>Nevyhnutné</td></tr>
+                <tr><td>_ga</td><td>Google</td><td>Rozlíšenie používateľov (GA4)</td><td>2 roky</td><td>Analytické</td></tr>
+                <tr><td>_ga_*</td><td>Google</td><td>Stav relácie (GA4)</td><td>2 roky</td><td>Analytické</td></tr>
+                <tr><td>_gcl_au</td><td>Google</td><td>Meranie konverzií (Google Ads)</td><td>90 dní</td><td>Marketingové</td></tr>
+                <tr><td>_fbp</td><td>Meta</td><td>Remarketing (Meta Pixel)</td><td>90 dní</td><td>Marketingové</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>5. Ako spravovať súhlas</h2>
+          <ul>
+            <li>Voľbu môžete kedykoľvek zmeniť alebo odvolať cez <code>[DOPLNIŤ: odkaz/tlačidlo „Nastavenia cookies"]</code> na webe.</li>
+            <li>Cookies viete spravovať aj v nastaveniach svojho prehliadača (vymazanie alebo blokovanie). Zablokovanie nevyhnutných cookies môže ovplyvniť funkčnosť webu.</li>
+          </ul>
+
+          <h2>6. Tretie strany</h2>
+          <p>Analytické a marketingové cookies nasadzujú tretie strany (Google, Meta), ktoré ich spracúvajú podľa vlastných zásad. Viac o spracúvaní údajov nájdete v <a href="/ochrana-osobnych-udajov">Zásadách ochrany osobných údajov</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -256,6 +256,10 @@ input[type=range]{width:100%; accent-color:var(--lime-bright); height:6px; curso
 .prose pre{background:var(--forest); color:var(--canvas); padding:20px; border-radius:12px; overflow:auto; margin:0 0 18px}
 .prose pre code{background:none; padding:0; color:inherit}
 .prose img{border-radius:12px; margin:8px 0 18px}
+.prose table{border-collapse:collapse; width:100%; margin:0 0 18px; font-size:.94rem; min-width:440px}
+.prose th,.prose td{text-align:left; padding:10px 14px; border:1px solid var(--line); vertical-align:top}
+.prose thead th{background:var(--lime-tint); font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--forest)}
+.prose td code{font-size:.82em}
 .back-link{display:inline-flex; align-items:center; gap:.5em; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.92rem; color:var(--forest); text-decoration:none}
 .back-link:hover{color:var(--forest-2)}
 
