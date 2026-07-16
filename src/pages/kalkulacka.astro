@@ -4,17 +4,18 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="Kalkulačka ceny — Ecom Capital"
-  description="Spočítaj si orientačnú cenu správy PPC. Vyber platformy, rozpočet a doplnkové služby a hneď uvidíš odhad mesačnej ceny pri sadzbe 30 €/h."
+  description="Orientačná cena správy PPC. Vyber platformy, rozpočet a doplnkové služby a uvidíš odhad mesačnej ceny. Presná ponuka po konzultácii."
 >
-  <section class="phero">
-    <div class="wrap">
+  <header class="hero--ink hero--page">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
       <span class="eyebrow reveal">Kalkulačka ceny</span>
-      <h1 class="display reveal">Orientačná cena správy.</h1>
-      <p class="lead reveal">Výber platforiem, rozpočtu a doplnkových služieb poskytne odhad mesačnej ceny. Hodinová sadzba je <b>30 €/h</b>; finálna cena sa stanoví po konzultácii podľa reálneho rozsahu.</p>
+      <h1 class="reveal" style="margin-top:18px">Orientačná cena správy.</h1>
+      <p class="hero-sub reveal">Výber platforiem, rozpočtu a doplnkových služieb ukáže cenové rozpätie. Presná ponuka vzíde z konzultácie podľa stavu účtu a reálneho rozsahu.</p>
     </div>
-  </section>
+  </header>
 
-  <section class="sec" style="padding-top:16px">
+  <section class="sec" style="padding-top:56px">
     <div class="wrap">
       <div class="calc">
         <div class="calc-controls reveal">
@@ -51,36 +52,30 @@ import Base from '../layouts/Base.astro';
 
           <div class="cgroup">
             <div class="clabel">Doplnkové služby</div>
-            <div class="chint">Voliteľné. Tracking, dáta a feedy majú jednorazové nastavenie + menšiu mesačnú údržbu.</div>
+            <div class="chint">Voliteľné. Tracking, dáta a feedy majú jednorazové nastavenie a menšiu mesačnú údržbu.</div>
             <div class="ad-grid" id="addons">
-              <button type="button" class="tg ad" data-m="1" data-s="12" aria-pressed="false"><span class="ad-t">Tracking &amp; meranie <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~12h · +1h/mes</span></button>
-              <button type="button" class="tg ad" data-m="4" data-s="20" aria-pressed="false"><span class="ad-t">Dáta &amp; BigQuery <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~20h · +4h/mes</span></button>
-              <button type="button" class="tg ad" data-m="2" data-s="8" aria-pressed="false"><span class="ad-t">Produktové feedy <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~8h · +2h/mes</span></button>
-              <button type="button" class="tg ad" data-m="3" data-s="0" aria-pressed="false"><span class="ad-t">Pravidelný reporting <span class="mk" aria-hidden="true"></span></span><span class="ad-d">+3h/mes</span></button>
-              <button type="button" class="tg ad" data-m="1" data-s="8" aria-pressed="false"><span class="ad-t">Cookie lišta &amp; consent <span class="mk" aria-hidden="true"></span></span><span class="ad-d">setup ~8h · +1h/mes</span></button>
+              <button type="button" class="tg ad" data-m="1" data-s="12" aria-pressed="false"><span class="ad-t">Tracking &amp; meranie <span class="mk" aria-hidden="true"></span></span><span class="ad-d">GA4 · sGTM · CAPI</span></button>
+              <button type="button" class="tg ad" data-m="4" data-s="20" aria-pressed="false"><span class="ad-t">Dáta &amp; BigQuery <span class="mk" aria-hidden="true"></span></span><span class="ad-d">dátový sklad · dashboardy</span></button>
+              <button type="button" class="tg ad" data-m="2" data-s="8" aria-pressed="false"><span class="ad-t">Produktové feedy <span class="mk" aria-hidden="true"></span></span><span class="ad-d">Merchant Center · Mergado</span></button>
+              <button type="button" class="tg ad" data-m="3" data-s="0" aria-pressed="false"><span class="ad-t">Pravidelný reporting <span class="mk" aria-hidden="true"></span></span><span class="ad-d">mesačný report + hovor</span></button>
+              <button type="button" class="tg ad" data-m="1" data-s="3.3" aria-pressed="false"><span class="ad-t">Cookie lišta &amp; consent <span class="mk" aria-hidden="true"></span></span><span class="ad-d">CMP · Consent Mode v2</span></button>
             </div>
           </div>
         </div>
 
         <div class="calc-result reveal" id="result">
-          <div class="cr-lbl">Odhad mesačnej správy</div>
+          <div class="cr-lbl">Orientačná cena správy</div>
           <div aria-live="polite">
-            <div class="cr-big" id="rMonthly">≈ 0 €</div>
+            <div class="cr-big" id="rMonthly">—</div>
             <div class="cr-range" id="rRange">vyber aspoň jednu platformu</div>
           </div>
 
           <div class="cr-setup" id="rSetupWrap" hidden>
-            <div class="s-lbl">Jednorazové nastavenie</div>
+            <div class="s-lbl">Jednorazové nastavenie doplnkov</div>
             <div class="s-val" id="rSetup">≈ 0 €</div>
           </div>
 
-          <div class="cr-break">
-            <div class="row"><span>Správa platforiem</span><b id="rPlatH">0 h/mes</b></div>
-            <div class="row"><span>Doplnková údržba</span><b id="rAddH">0 h/mes</b></div>
-            <div class="row"><span>Hodinová sadzba</span><b>30 €/h</b></div>
-          </div>
-
-          <p class="cr-note">Orientačný odhad, nie záväzná ponuka. Finálna cena sa stanoví na nezáväznej konzultácii podľa stavu účtu a reálneho rozsahu práce.</p>
+          <p class="cr-note">Orientačný odhad, nie záväzná ponuka. Presná cena závisí od stavu účtu a rozsahu práce — dohodne sa na konzultácii.</p>
           <div class="cr-cta"><a href="/kontakt" class="btn btn--lg">Vyžiadať presnú ponuku →</a></div>
         </div>
       </div>
@@ -131,20 +126,17 @@ import Base from '../layouts/Base.astro';
     const totalH = mgmtPlat + addMonth;
 
     const monthly = totalH > 0 ? Math.max(roundTo(totalH * RATE, 10), FLOOR) : 0;
-    const setup = setupH > 0 ? roundTo(setupH * RATE, 10) : 0;
-
-    document.getElementById('rPlatH')!.textContent = Math.round(mgmtPlat * 10) / 10 + ' h/mes';
-    document.getElementById('rAddH')!.textContent = addMonth + ' h/mes';
+    const setup = setupH > 0 ? roundTo(setupH * RATE, 50) : 0;
 
     const rMonthly = document.getElementById('rMonthly')!;
     const rRange = document.getElementById('rRange')!;
     if (monthly > 0) {
-      rMonthly.textContent = '≈ ' + fmtEur(monthly) + ' / mes';
-      const lo = roundTo(monthly * 0.9, 10),
-        hi = roundTo(monthly * 1.15, 10);
-      rRange.textContent = 'rozpätie ' + fmtEur(lo) + ' – ' + fmtEur(hi) + ' / mes';
+      const lo = roundTo(monthly * 0.85, 50),
+        hi = roundTo(monthly * 1.15, 50);
+      rMonthly.textContent = fmtEur(lo) + ' – ' + fmtEur(hi);
+      rRange.textContent = 'mesačne, podľa zvoleného rozsahu';
     } else {
-      rMonthly.textContent = '≈ 0 €';
+      rMonthly.textContent = '—';
       rRange.textContent = 'vyber aspoň jednu platformu alebo službu';
     }
 

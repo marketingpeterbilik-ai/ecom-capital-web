@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import Booking from '../../components/Booking.astro';
+---
+
+<Base
+  title="Meranie & tracking — Ecom Capital"
+  description="GA4, server-side tracking (sGTM), Meta CAPI a Consent Mode v2. Meranie, ktoré obstojí voči iOS, blokovačom aj cookieless prostrediu."
+>
+  <header class="hero--ink hero--page">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
+      <span class="eyebrow reveal">Služby / Meranie</span>
+      <h1 class="reveal" style="margin-top:18px">Meranie &amp; tracking.</h1>
+      <p class="hero-sub reveal">Meranie, ktoré obstojí voči iOS, blokovačom aj cookieless prostrediu — a posiela čisté konverzie do Google aj Meta.</p>
+    </div>
+  </header>
+
+  <section class="sec" style="padding-top:56px">
+    <div class="wrap split split--wide">
+      <div class="reveal">
+        <span class="eyebrow">Čo zahŕňa</span>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.7rem,3.8vw,2.4rem)">Od implementácie po dokumentáciu.</h2>
+        <p class="lead" style="margin-top:18px">Reklamné algoritmy sa učia na dátach, ktoré dostanú. Skreslené alebo neúplné vstupy znamenajú horšie výsledky kampaní — nezávisle od rozpočtu.</p>
+      </div>
+      <div class="reveal">
+        <div class="feat"><div class="k">·</div><div><h3>GA4</h3><p>Implementácia, audit existujúceho nastavenia a čistenie eventov.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Server-side tracking (sGTM)</h3><p>Presnejšie a odolnejšie meranie cez vlastný server-side kontajner.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Meta CAPI &amp; enhanced conversions</h3><p>Čisté konverzné dáta pre Google aj Meta algoritmy.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Consent Mode v2</h3><p>Prepojenie merania na súhlas návštevníka — v súlade s GDPR aj podmienkami Googlu.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Test a dokumentácia</h3><p>Overenie scenárov a odovzdanie so stručnou dokumentáciou.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--tint">
+    <div class="wrap">
+      <p class="lead reveal">Meranie je súčasťou <a href="/sluzby/ppc" style="color:var(--forest); border-bottom:2px solid var(--lime)">správy PPC kampaní</a> — a dá sa objednať aj samostatne, napríklad ako projekt pred spustením kampaní. Na meranie nadväzuje <a href="/data" style="color:var(--forest); border-bottom:2px solid var(--lime)">dátový sklad v BigQuery</a>.</p>
+    </div>
+  </section>
+
+  <Booking />
+</Base>

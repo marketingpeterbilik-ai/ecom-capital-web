@@ -1,0 +1,36 @@
+---
+// Sticky spodná CTA lišta pre hlavný web — zobrazí sa po odscrollovaní hero.
+interface Props {
+  note?: string;
+  label?: string;
+  href?: string;
+}
+
+const {
+  note = 'NEZÁVÄZNÁ KONZULTÁCIA · ODPOVEĎ DO 48 H',
+  label = 'Rezervovať termín →',
+  href = '#book',
+} = Astro.props;
+---
+
+<div class="sticky-cta" id="stickyCta">
+  <span class="sticky-note">{note}</span>
+  <a class="sticky-btn" href={href}>{label}</a>
+</div>
+
+{/* rezerva pod footerom, aby lišta neprekrývala jeho obsah */}
+<style is:global>
+  footer.site{padding-bottom:110px}
+</style>
+
+<script>
+  const bar = document.getElementById('stickyCta');
+  const book = document.getElementById('book');
+  const onScroll = () => {
+    // schovať, keď je booking sekcia vo viewporte (CTA by bolo redundantné)
+    const bookVisible = book ? book.getBoundingClientRect().top < innerHeight * 0.7 : false;
+    bar?.classList.toggle('show', window.scrollY > 560 && !bookVisible);
+  };
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

@@ -6,15 +6,16 @@ import Base from '../layouts/Base.astro';
   title="Dáta & BigQuery — Ecom Capital"
   description="Marketingové dáta z Google Ads, Meta, GA4 a CRM spojené do jedného zdroja pravdy v BigQuery, s reportingom v Looker Studio. Blended ROAS, CAC, LTV a marža naprieč kanálmi."
 >
-  <section class="phero">
-    <div class="wrap">
+  <header class="hero--ink hero--page">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
       <span class="eyebrow reveal">Dáta &amp; BigQuery</span>
-      <h1 class="display reveal">Marketingové dáta na jednom mieste, pripravené na rozhodovanie.</h1>
-      <p class="lead reveal">Dáta rozdelené medzi Google Ads, Meta, GA4 a CRM neposkytujú celý obraz. Riešením je ich spojenie do jedného zdroja pravdy v BigQuery a reporting, ktorý odpovedá na biznisové otázky — nielen na počet klikov.</p>
+      <h1 class="reveal" style="margin-top:18px">Marketingové dáta na jednom mieste, <span class="hl">pripravené na rozhodovanie</span>.</h1>
+      <p class="hero-sub reveal">Dáta rozdelené medzi Google Ads, Meta, GA4 a CRM neposkytujú celý obraz. Riešením je ich spojenie do <strong>jedného zdroja pravdy v BigQuery</strong> a reporting, ktorý odpovedá na biznisové otázky — nielen na počet klikov.</p>
     </div>
-  </section>
+  </header>
 
-  <section class="sec" style="padding-top:24px">
+  <section class="sec" style="padding-top:56px">
     <div class="wrap">
       <div class="pipe-shell reveal" style="margin-top:0">
         <div class="pipe-cap">Architektúra dátového toku</div>
@@ -64,18 +65,17 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <section class="sec sec--tint">
-    <div class="wrap split">
-      <div class="reveal">
+  <section class="sec sec--ink">
+    <div class="wrap">
+      <div class="sec-head reveal">
         <span class="eyebrow">Prečo BigQuery</span>
         <h2 class="display" style="margin-top:16px; font-size:clamp(1.8rem,4.2vw,2.5rem)">Prečo nie len Excel alebo Looker priamo?</h2>
-        <p class="lead" style="margin-top:18px">Pretože v určitej fáze prestanú stačiť — zvyčajne práve vtedy, keď firma začne výraznejšie rásť.</p>
+        <p class="lead" style="margin-top:16px">Pretože v určitej fáze prestanú stačiť — zvyčajne práve vtedy, keď firma začne výraznejšie rásť.</p>
       </div>
-      <div class="reveal">
-        <div class="feat"><div class="k">·</div><div><h3>Objem a história</h3><p>Spracuje roky dát bez spomalenia. Excel sa pri státisícoch riadkov zadrhne, BigQuery nie.</p></div></div>
-        <div class="feat"><div class="k">·</div><div><h3>Spájanie zdrojov</h3><p>Reklamy, objednávky aj CRM prepojené cez jeden kľúč. Samostatný Looker konektor to neumožňuje.</p></div></div>
-        <div class="feat"><div class="k">·</div><div><h3>Automatizácia</h3><p>Dáta sa naťahujú a transformujú podľa rozvrhu. Bez ručných refreshov a zabudnutých exportov.</p></div></div>
-        <div class="feat"><div class="k">·</div><div><h3>Jeden zdroj pre všetko</h3><p>Looker, reporty aj prípadné automatizácie čerpajú z tých istých dát. Žiadne nezrovnalosti medzi číslami.</p></div></div>
+      <div class="facts reveal">
+        <div class="fact"><span class="f-num">01 / OBJEM</span><h3>Objem a história</h3><p>Spracuje roky dát bez spomalenia. <b>Excel sa pri státisícoch riadkov zadrhne,</b> BigQuery nie.</p></div>
+        <div class="fact"><span class="f-num">02 / SPÁJANIE</span><h3>Spájanie zdrojov</h3><p>Reklamy, objednávky aj CRM prepojené cez jeden kľúč. <b>Samostatný Looker konektor to neumožňuje.</b></p></div>
+        <div class="fact"><span class="f-num">03 / AUTOMAT</span><h3>Jeden zdroj, automaticky</h3><p>Dáta sa naťahujú a transformujú podľa rozvrhu a všetko čerpá z tých istých čísel. <b>Bez ručných refreshov a nezrovnalostí.</b></p></div>
       </div>
     </div>
   </section>

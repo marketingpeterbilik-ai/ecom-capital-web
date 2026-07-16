@@ -40,24 +40,24 @@ const process = [
 
 <Launch launch={launch} title={title} description={description}>
   <!-- HERO -->
-  <header class="lp-hero">
-    <div class="lp-hero-orb"></div>
-    <div class="wrap lp-hero-inner">
-      <span class="lp-chip"><span class="lp-chip-dot"></span>NEW · Google Shopping arrives in {countryName} — <b>{launchWindow}</b></span>
+  <header class="hero--ink lp-hero">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
+      <span class="chip--live"><span class="chip-dot"></span>NEW · Google Shopping arrives in {countryName} — <b>{launchWindow}</b></span>
       <h1>Be the first {adjective} shop in <span class="hl">Google Shopping.</span></h1>
-      <p class="lp-sub">
+      <p class="hero-sub">
         Shopping ads open on {googleDomain} in <strong>{launchWindow}</strong> — a channel that has never existed here. First movers buy
         customers at the cheapest CPCs the market will ever offer. <strong>I set shops up in 10 working days.</strong>
       </p>
-      <div class="lp-cta-row">
+      <div class="cta-row">
         <a class="lp-btn" href="#book">Book the free 15-min market check →</a>
-        <span class="lp-cta-note">FREE · NO OBLIGATION · 48H ANSWER<br />YOU TALK DIRECTLY TO ME, NOT AN AGENCY</span>
+        <span class="cta-note">FREE · NO OBLIGATION · 48H ANSWER<br />YOU TALK DIRECTLY TO ME, NOT AN AGENCY</span>
       </div>
-      <div class="lp-proof">
-        <div class="lp-proof-item"><b>10+</b><div>EU markets with live Shopping campaigns today</div></div>
-        <div class="lp-proof-item"><b>€5M+</b><div>ad spend managed across Google &amp; Meta</div></div>
-        <div class="lp-proof-item"><b>250K+</b><div>products managed across feeds</div></div>
-        <div class="lp-proof-item"><b>10 days</b><div>from access to live — or setup is free</div></div>
+      <div class="proof">
+        <div class="proof-item"><b>10+</b><div>EU markets with live Shopping campaigns today</div></div>
+        <div class="proof-item"><b>€5M+</b><div>ad spend managed across Google &amp; Meta</div></div>
+        <div class="proof-item"><b>250K+</b><div>products managed across feeds</div></div>
+        <div class="proof-item"><b>10 days</b><div>from access to live — or setup is free</div></div>
       </div>
     </div>
   </header>
@@ -161,10 +161,10 @@ const process = [
           <strong>No {adjective} shop has them. No local agency has ever set them up.</strong>
         </p>
       </div>
-      <div class="lp-facts">
-        <div class="lp-fact"><span class="lp-f-num">01 / SALES</span><h3>More orders, same budget</h3><p>The customer sees your <b>photo and price before clicking.</b> Those who click already want the product.</p></div>
-        <div class="lp-fact"><span class="lp-f-num">02 / TIMING</span><h3>The window is short</h3><p>Day one, the auction is <b>nearly empty — clicks cost cents.</b> Every later entrant pushes prices up. <b>The cheap period never returns.</b></p></div>
-        <div class="lp-fact"><span class="lp-f-num">03 / EDGE</span><h3>Locals can't help you</h3><p>{adjective} agencies have <b>never set up a Merchant Center or feed.</b> Their trial and error is <b>paid with your budget.</b></p></div>
+      <div class="facts">
+        <div class="fact"><span class="f-num">01 / SALES</span><h3>More orders, same budget</h3><p>The customer sees your <b>photo and price before clicking.</b> Those who click already want the product.</p></div>
+        <div class="fact"><span class="f-num">02 / TIMING</span><h3>The window is short</h3><p>Day one, the auction is <b>nearly empty — clicks cost cents.</b> Every later entrant pushes prices up. <b>The cheap period never returns.</b></p></div>
+        <div class="fact"><span class="f-num">03 / EDGE</span><h3>Locals can't help you</h3><p>{adjective} agencies have <b>never set up a Merchant Center or feed.</b> Their trial and error is <b>paid with your budget.</b></p></div>
       </div>
       <div class="lp-data-cards">
         <div class="lp-dcard"><div class="lp-dv">10–15% lower CPC</div><p>Shopping clicks cost less than text Search across Europe — and the gap is wider in a newly opened market.</p><div class="lp-src">smec European retail benchmark, H1 2026</div></div>
@@ -181,11 +181,11 @@ const process = [
         <span class="eyebrow">Measured in money, not jargon</span>
         <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.6vw,3rem)">What you get — and when.</h2>
       </div>
-      <div class="lp-get">
-        <div class="lp-stack-list">
+      <div class="get-grid">
+        <div class="stack-list">
           {stack.map((s) => (
-            <div class="lp-stack-row">
-              <span class="lp-idx">{s.idx}</span>
+            <div class="stack-row">
+              <span class="idx">{s.idx}</span>
               <div>
                 <h3>{s.title}</h3>
                 <p>{s.body} <b>{s.bold}</b></p>
@@ -193,18 +193,18 @@ const process = [
             </div>
           ))}
         </div>
-        <div class="lp-proc-card">
-          <div class="lp-proc-cap">Live in 10 working days</div>
+        <div class="proc-card">
+          <div class="proc-cap">Live in 10 working days</div>
           {process.map((p) => (
-            <div class="lp-proc-row">
-              <span class="lp-proc-when">{p.when}</span>
+            <div class="proc-row">
+              <span class="proc-when">{p.when}</span>
               <div>
-                <div class="lp-proc-title">{p.title}</div>
-                <div class="lp-proc-short">{p.short}</div>
+                <div class="proc-title">{p.title}</div>
+                <div class="proc-short">{p.short}</div>
               </div>
             </div>
           ))}
-          <div class="lp-guarantee">
+          <div class="guarantee">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9FE870" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
               ><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"></path><path d="M8.5 12l2.5 2.5 4.5-4.5"></path></svg
             >
@@ -218,7 +218,7 @@ const process = [
   <!-- WHY ME -->
   <section id="why" style="padding:0 0 84px">
     <div class="wrap">
-      <div class="lp-why">
+      <div class="why">
         <div>
           <span class="eyebrow">Why me</span>
           <h2>The setup local agencies will spend a year learning is my daily routine.</h2>
@@ -228,11 +228,11 @@ const process = [
           </p>
           <p>No agency, no juniors, no account managers. <b>You work directly with the person whose hands are in the account.</b></p>
         </div>
-        <div class="lp-mini-stats">
-          <div class="lp-mini-stat"><div class="lp-v">10+</div><div class="lp-l">EU markets live today</div></div>
-          <div class="lp-mini-stat"><div class="lp-v">€5M+</div><div class="lp-l">ad spend managed</div></div>
-          <div class="lp-mini-stat"><div class="lp-v">250K+</div><div class="lp-l">products in managed feeds</div></div>
-          <div class="lp-mini-stat"><div class="lp-v">15+</div><div class="lp-l">CEE comparison platforms</div></div>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="v">10+</div><div class="l">EU markets live today</div></div>
+          <div class="mini-stat"><div class="v">€5M+</div><div class="l">ad spend managed</div></div>
+          <div class="mini-stat"><div class="v">250K+</div><div class="l">products in managed feeds</div></div>
+          <div class="mini-stat"><div class="v">15+</div><div class="l">CEE comparison platforms</div></div>
         </div>
       </div>
     </div>
@@ -240,19 +240,19 @@ const process = [
 
   <!-- BOOK -->
   <section class="sec sec--ink" id="book" style="padding:84px 0">
-    <div class="wrap lp-book">
+    <div class="wrap book-grid">
       <div>
         <span class="eyebrow">Free market check · 15 min</span>
         <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.2vw,2.8rem)">Find out where {countryName} stands — and where you stand in it.</h2>
         <p class="lead" style="margin-top:16px">You leave the call knowing three things, whether or not we work together:</p>
-        <ul class="lp-check-list">
-          <li><span class="lp-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Market status</strong> — when Shopping opens for your niche in {countryName}</span></li>
-          <li><span class="lp-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Competitor check</strong> — who in your space is already preparing, who's asleep</span></li>
-          <li><span class="lp-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Honest verdict</strong> — if Shopping isn't right for your shop yet, I'll tell you straight</span></li>
+        <ul class="check-list">
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Market status</strong> — when Shopping opens for your niche in {countryName}</span></li>
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Competitor check</strong> — who in your space is already preparing, who's asleep</span></li>
+          <li><span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span><span><strong>Honest verdict</strong> — if Shopping isn't right for your shop yet, I'll tell you straight</span></li>
         </ul>
-        <p class="lp-book-mail">Prefer email? Just reply to my message —<br />or write to <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a></p>
+        <p class="book-mail">Prefer email? Just reply to my message —<br />or write to <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a></p>
       </div>
-      <div class="lp-book-embed">
+      <div class="book-embed">
         <CalEmbed height="560px" noscriptText="To book a slot, enable JavaScript, or write directly to" />
       </div>
     </div>

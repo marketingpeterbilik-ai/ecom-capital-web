@@ -3,27 +3,44 @@ const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
 
-const links = [
-  { href: '/', label: 'Domov' },
-  { href: '/sluzby', label: 'Služby' },
+const services = [
+  { href: '/sluzby', label: 'Prehľad služieb' },
+  { href: '/sluzby/ppc', label: 'Správa PPC kampaní' },
+  { href: '/sluzby/meranie', label: 'Meranie & tracking' },
   { href: '/data', label: 'Dáta & BigQuery' },
-  { href: '/kalkulacka', label: 'Kalkulačka' },
-  { href: '/proces', label: 'Proces' },
-  { href: '/o-mne', label: 'O mne' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/kontakt', label: 'Kontakt' },
+  { href: '/sluzby/automatizacia', label: 'Automatizácia' },
+  { href: '/sluzby/audit', label: 'Audit & konzultácie' },
+  { href: '/cookie-consent', label: 'Cookie lišta & Consent Mode v2' },
 ];
+
+const links = [
+  { href: '/kalkulacka', label: 'Kalkulačka' },
+  { href: '/blog', label: 'Blog' },
+];
+
+const servicesActive = isActive('/sluzby') || isActive('/data') || isActive('/cookie-consent');
 ---
 
 <header class="site">
   <div class="wrap nav">
     <a href="/" class="mark"><b>ecom capital<i class="dot"></i></b><small>Performance · Analytics · Data</small></a>
     <nav class="nav-links" id="navlinks">
+      <div class="nav-sub-wrap">
+        <a href="/sluzby" class={servicesActive ? 'active nav-sub-parent' : 'nav-sub-parent'} aria-current={servicesActive ? 'page' : undefined}>
+          Služby
+          <svg class="nav-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-sub">
+          {services.map((s) => (
+            <a href={s.href} class={isActive(s.href) && s.href !== '/sluzby' ? 'active' : ''}>{s.label}</a>
+          ))}
+        </div>
+      </div>
       {links.map((l) => (
         <a href={l.href} class={isActive(l.href) ? 'active' : ''} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
       ))}
     </nav>
-    <div class="nav-cta"><a href="/kalkulacka" class="btn btn--primary">Spočítať cenu</a></div>
+    <div class="nav-cta"><a href="/kontakt" class="btn btn--primary">Konzultácia</a></div>
     <button class="burger" id="burger" aria-label="Menu" aria-controls="navlinks" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>

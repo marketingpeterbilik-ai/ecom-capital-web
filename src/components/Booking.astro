@@ -1,0 +1,45 @@
+---
+// Tmavá booking sekcia s checklistom + Cal.com embedom
+// (vzor: BOOK sekcia launch stránok — „HR Launch v2 Focused").
+import CalEmbed from './CalEmbed.astro';
+
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  items?: { b: string; t: string }[];
+}
+
+const {
+  eyebrow = 'Konzultácia · 30 min · online',
+  title = 'Krátky hovor o vašom účte a meraní.',
+  lead = 'Nezáväzne. Čo na hovore preberieme:',
+  items = [
+    { b: 'Stav účtu a merania', t: ' — čo funguje a čo nie.' },
+    { b: 'Priority', t: ' — čo má zmysel riešiť ako prvé.' },
+    { b: 'Ďalší postup', t: ' — či a ako dáva zmysel pokračovať.' },
+  ],
+} = Astro.props;
+---
+
+<section class="sec sec--ink" id="book" style="padding:84px 0">
+  <div class="wrap book-grid">
+    <div class="reveal">
+      <span class="eyebrow">{eyebrow}</span>
+      <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.2vw,2.8rem)">{title}</h2>
+      <p class="lead" style="margin-top:16px">{lead}</p>
+      <ul class="check-list">
+        {items.map((i) => (
+          <li>
+            <span class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#163300" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l5 5 9-11"></path></svg></span>
+            <span><strong>{i.b}</strong>{i.t}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="book-mail">Radšej e-mail? Napíšte na <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a></p>
+    </div>
+    <div class="book-embed reveal">
+      <CalEmbed height="560px" noscriptText="Pre rezerváciu termínu zapni JavaScript, alebo napíš priamo na" />
+    </div>
+  </div>
+</section>

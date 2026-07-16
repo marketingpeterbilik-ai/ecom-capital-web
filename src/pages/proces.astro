@@ -6,15 +6,16 @@ import Base from '../layouts/Base.astro';
   title="Proces — Ecom Capital"
   description="Jasný päťkrokový postup od auditu cez architektúru a implementáciu po optimalizáciu a reporting. Vopred definovaný priebeh spolupráce."
 >
-  <section class="phero">
-    <div class="wrap">
+  <header class="hero--ink hero--page">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
       <span class="eyebrow reveal">Proces</span>
-      <h1 class="display reveal">Jasne definovaný postup.</h1>
-      <p class="lead reveal">Päť krokov od prvého hovoru po pravidelný rast. Priebeh spolupráce je známy vopred.</p>
+      <h1 class="reveal" style="margin-top:18px">Jasne definovaný postup.</h1>
+      <p class="hero-sub reveal">Päť krokov od prvého hovoru po pravidelný rast. Priebeh spolupráce je známy vopred.</p>
     </div>
-  </section>
+  </header>
 
-  <section class="sec" style="padding-top:16px">
+  <section class="sec" style="padding-top:56px">
     <div class="wrap">
       <div class="steps">
         <div class="step reveal"><div class="num">01</div><div><h3>Audit &amp; analýza</h3><p>Zoznámenie s biznisom, cieľmi a maržami, posúdenie reklamných účtov aj stavu merania. Identifikácia toho, kde sa míňa neefektívne a kde chýbajú dáta.</p></div></div>
@@ -28,6 +29,21 @@ import Base from '../layouts/Base.astro';
   </section>
 
   <section class="sec sec--tint">
-    <div class="wrap"><div class="ctaband reveal"><h2>Prvým krokom je audit.</h2><a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a></div></div>
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Prístup</span>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.8rem,4.2vw,2.6rem)">Systematicky, merateľne, bez príkras.</h2>
+        <p class="lead" style="margin-top:18px">Práca stojí na štandardizovanom systéme pre optimalizáciu a reporting. Vďaka tomu prebieha konzistentne a efektívne — s dôrazom na výsledok.</p>
+      </div>
+      <div class="reveal">
+        <div class="feat"><div class="k">·</div><div><h3>Opakovateľné procesy</h3><p>Štandardizované postupy a automatizácia namiesto ad-hoc práce pri každom účte.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Celý stack pod jednou strechou</h3><p>Merchant Center, feedy, CAPI, GA4 aj BigQuery — bez skladania z viacerých dodávateľov.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Zrozumiteľný reporting</h3><p>Čo sa stalo, prečo a čo ďalej — v slovenčine, stručne, bez desiatok zbytočných grafov.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap"><div class="ctaband reveal"><h2>Bez viazanosti — spolupráca sa dá ukončiť kedykoľvek.</h2><a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a></div></div>
   </section>
 </Base>

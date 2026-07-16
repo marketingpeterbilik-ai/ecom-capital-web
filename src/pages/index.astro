@@ -1,28 +1,45 @@
 ---
 import Base from '../layouts/Base.astro';
+import Booking from '../components/Booking.astro';
+import StickyCta from '../components/StickyCta.astro';
 ---
 
 <Base
-  title="Ecom Capital — Výkonnostný marketing & dáta | PPC, analytika, BigQuery"
-  description="Výkonnostné a dátové štúdio. Správa PPC, spoľahlivé meranie a dátová infraštruktúra — GA4, server-side tracking, BigQuery a reporting v Looker Studio."
+  title="Ecom Capital — Správa PPC postavená na spoľahlivom meraní | Google & Meta Ads"
+  description="Kampane v Google a Meta Ads a meranie, na ktorom stoja — GA4, server-side tracking, BigQuery. Reklama aj dáta pod jednou strechou."
 >
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-in">
-        <span class="eyebrow reveal">Výkonnostný marketing &amp; dáta · Bratislava</span>
-        <h1 class="display reveal">Výkonnostný marketing postavený na <span class="u">spoľahlivých dátach</span>.</h1>
-        <p class="lead reveal">Správa PPC kampaní, spoľahlivé meranie a dátová infraštruktúra na jednom mieste — od GA4 a server-side trackingu po BigQuery a reporting pre rozhodovanie.</p>
-        <div class="hero-cta reveal">
-          <a href="/kalkulacka" class="btn btn--primary btn--lg">Spočítať orientačnú cenu <span class="arrow-i">→</span></a>
-          <a href="/sluzby" class="btn btn--ghost btn--lg">Pozrieť služby</a>
-        </div>
-        <div class="hero-meta reveal">
-          <div><b>Google &amp; Meta</b> Ads</div>
-          <div><b>GA4 · server-side ·</b> BigQuery</div>
-          <div><b>E-commerce</b> a B2B</div>
-        </div>
+  <header class="hero--ink">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
+      <span class="chip--live reveal"><span class="chip-dot"></span><b>Meranie v cene správy</b> · bez viazanosti</span>
+      <h1 class="reveal">Správa PPC postavená na <span class="hl">spoľahlivom meraní</span>.</h1>
+      <p class="hero-sub reveal">
+        Kampane v Google a Meta Ads a meranie, na ktorom stoja — GA4, server-side tracking, BigQuery.
+        Reklama aj dáta <strong>pod jednou strechou.</strong>
+      </p>
+      <div class="cta-row reveal">
+        <a class="btn btn--primary btn--lg" href="#book">Rezervovať konzultáciu <span class="arrow-i">→</span></a>
+        <span class="cta-note">NEZÁVÄZNE · ODPOVEĎ DO 48 HODÍN</span>
       </div>
+      <div class="cta-row reveal" style="margin-top:18px">
+        <a href="/kalkulacka" class="hero-textlink">Alebo si najprv spočítajte orientačnú cenu →</a>
+      </div>
+      <div class="proof reveal">
+        <div class="proof-item"><b>10+</b><div>EU trhov so živými kampaňami</div></div>
+        <div class="proof-item"><b>€5M+</b><div>spravovaného spendu v Google &amp; Meta</div></div>
+        <div class="proof-item"><b>50+</b><div>úspešných spoluprác</div></div>
+        <div class="proof-item"><b>10 dní</b><div>od prístupov po spustenie kampaní</div></div>
+      </div>
+    </div>
+  </header>
 
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Ako to funguje</span>
+        <h2 class="display">Od reklamy po rozhodnutie — jeden systém.</h2>
+        <p class="lead">Reklama, meranie aj dáta sedia v jednom systéme a navzájom spolupracujú — namiesto skladania z viacerých dodávateľov.</p>
+      </div>
       <div class="pipe-shell reveal">
         <div class="pipe-cap">Dátový tok — od reklamy po rozhodnutie</div>
         <div class="pipeline">
@@ -38,83 +55,77 @@ import Base from '../layouts/Base.astro';
     </div>
   </section>
 
-  <section class="sec" style="padding:30px 0 40px">
-    <div class="wrap">
-      <div class="stats" style="margin-top:0">
-        <div class="stat reveal"><div class="n">30 €/h</div><div class="c">jednotná hodinová sadzba, bez skrytých položiek</div></div>
-        <div class="stat reveal"><div class="n">1 kontakt</div><div class="c">stratégia, implementácia aj optimalizácia</div></div>
-        <div class="stat reveal"><div class="n">E-com + B2B</div><div class="c">skúsenosť naprieč segmentmi</div></div>
-        <div class="stat reveal"><div class="n">GA4 → BQ</div><div class="c">celý dátový tok pod jednou strechou</div></div>
-      </div>
-    </div>
-  </section>
-
   <section class="sec sec--tint">
     <div class="wrap">
       <div class="sec-head reveal">
-        <span class="eyebrow">Čo robím</span>
-        <h2 class="display">Celý výkonnostný a dátový stack pod jednou strechou.</h2>
-        <p class="lead">Reklama, meranie aj dáta sedia v jednom systéme a navzájom spolupracujú — namiesto skladania tímu z viacerých dodávateľov.</p>
+        <span class="eyebrow">Služby</span>
+        <h2 class="display">Od kampaní po dátový sklad.</h2>
+        <p class="lead">Každá služba má vlastnú stránku s detailom. Fungujú samostatne aj ako celok.</p>
       </div>
       <div class="grid grid-3">
         <div class="card reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <h3>PPC — Google &amp; Meta</h3>
-          <p>Štruktúra, správa a škálovanie kampaní orientované na návratnosť, nie na počet klikov.</p>
-          <a href="/sluzby" class="more">Viac o službách →</a>
+          <h3>Správa PPC kampaní</h3>
+          <p>Google a Meta Ads vrátane produktových feedov. Optimalizácia podľa zisku a marže, nie podľa klikov.</p>
+          <a href="/sluzby/ppc" class="more">Detail služby →</a>
         </div>
         <div class="card reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 0 1 9-9M6 12a6 6 0 0 1 6-6M9 12a3 3 0 0 1 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></div>
           <h3>Meranie &amp; tracking</h3>
-          <p>GA4, server-side (sGTM), Meta CAPI a consent mode — meranie, ktoré obstojí aj v cookieless prostredí.</p>
-          <a href="/data" class="more">Dáta &amp; meranie →</a>
+          <p>GA4, server-side tracking, Meta CAPI. Meranie, ktoré obstojí aj v cookieless prostredí.</p>
+          <a href="/sluzby/meranie" class="more">Detail služby →</a>
         </div>
         <div class="card reveal">
           <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="7" ry="2.8" stroke="currentColor" stroke-width="1.6"/><path d="M5 5.5v13c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-13M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8" stroke="currentColor" stroke-width="1.6"/></svg></div>
           <h3>Dáta &amp; BigQuery</h3>
-          <p>Centrálny dátový sklad, vlastné metriky (blended ROAS, CAC, LTV) a automatizované reporty.</p>
-          <a href="/data" class="more">Dátová infraštruktúra →</a>
+          <p>Marketingové dáta v jednom sklade — blended ROAS, CAC, LTV a automatizovaný reporting.</p>
+          <a href="/data" class="more">Detail služby →</a>
         </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <h3>Audit &amp; konzultácie</h3>
+          <p>Nezávislé posúdenie účtov, merania a stratégie s akčným plánom podľa priorít.</p>
+          <a href="/sluzby/audit" class="more">Detail služby →</a>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <h3>Automatizácia</h3>
+          <p>Skripty a alerty priebežne kontrolujú účty aj feedy a upozornia na problém včas.</p>
+          <a href="/sluzby/automatizacia" class="more">Detail služby →</a>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Cookie lišta &amp; Consent Mode v2</h3>
+          <p>Súlad s GDPR a podmienkami Googlu vrátane testov a dokumentácie.</p>
+          <a href="/cookie-consent" class="more">Detail služby →</a>
+        </div>
+      </div>
+      <div class="reveal" style="margin-top:34px">
+        <a href="/sluzby" class="btn btn--ghost">Prehľad všetkých služieb →</a>
       </div>
     </div>
   </section>
 
   <section class="sec">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">Spolupráca</span>
-        <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.4vw,2.8rem)">Jeden zodpovedný človek za celý systém.</h2>
-        <p class="lead" style="margin-top:18px">Za Ecom Capital stojí Peter — performance marketér s dôrazom na dáta. Medzi klientom a účtom nie sú vrstvy ľudí: stratégiu, implementáciu aj priebežnú optimalizáciu drží jedna osoba, ktorá zodpovedá za výsledok.</p>
-        <div class="hero-cta" style="margin-top:24px">
-          <a href="/kalkulacka" class="btn btn--ghost">Spočítať orientačnú cenu →</a>
-          <a href="/o-mne" class="more" style="align-self:center">Viac o mne →</a>
+    <div class="wrap">
+      <div class="why reveal">
+        <div>
+          <span class="eyebrow">Prístup</span>
+          <h2>Najprv meranie, potom rozpočty.</h2>
+          <p>Spoľahlivé dáta sú podmienkou efektívneho míňania. Rozhodnutia vychádzajú <b>z čísel naprieč kanálmi,</b> nie z pohľadu jednej platformy.</p>
+          <p>K spolupráci patrí transparentný prehľad o tom, čo sa na účtoch deje a aký to má dopad na tržby.</p>
+          <a href="/proces" class="more">Ako prebieha spolupráca →</a>
+        </div>
+        <div class="mini-stats">
+          <div class="mini-stat"><div class="v">10+</div><div class="l">EU trhov so živými kampaňami</div></div>
+          <div class="mini-stat"><div class="v">€5M+</div><div class="l">spravovaného spendu</div></div>
+          <div class="mini-stat"><div class="v">50+</div><div class="l">úspešných spoluprác</div></div>
+          <div class="mini-stat"><div class="v">1</div><div class="l">kontakt na reklamy, tracking aj dáta</div></div>
         </div>
       </div>
-      <div class="reveal">
-        <div class="feat"><div class="k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Najprv meranie, potom rozpočty</h3><p>Spoľahlivé dáta sú podmienkou efektívneho vynakladania rozpočtov. Bez nich sa optimalizuje bez kontroly.</p></div></div>
-        <div class="feat"><div class="k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Rozhodovanie podľa dát</h3><p>Rozhodnutia vychádzajú z čísel naprieč kanálmi, nie z izolovaného pohľadu jednej platformy.</p></div></div>
-        <div class="feat"><div class="k"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Transparentný prístup</h3><p>K dispozícii je presný prehľad o dianí na účte a o jeho dopade na tržby.</p></div></div>
-      </div>
     </div>
   </section>
 
-  <section class="sec sec--ink">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">Consent &amp; GDPR</span>
-        <h2 class="display" style="margin-top:16px; font-size:clamp(1.8rem,4.2vw,2.6rem)">Meria váš web bez súhlasu?</h2>
-        <p class="lead" style="margin-top:18px">Od marca 2024 Google vyžaduje Consent Mode v2. Web s GA4 či reklamnými pixelmi bez funkčnej cookie lišty riskuje pokuty aj obmedzenie výkonu kampaní — a náprava je otázkou dní.</p>
-        <a href="/cookie-consent" class="btn btn--primary" style="margin-top:24px">Bezplatná kontrola webu →</a>
-      </div>
-      <div class="reveal">
-        <div class="feat"><div class="k">01</div><div><h3>Pokuty a podnety</h3><p>GDPR umožňuje pokuty do 4 % celosvetového obratu. Podnet môže podať ktorýkoľvek návštevník.</p></div></div>
-        <div class="feat"><div class="k">02</div><div><h3>Obmedzenie kampaní</h3><p>Bez Consent Mode v2 Google obmedzuje remarketing a personalizované publiká v EÚ.</p></div></div>
-        <div class="feat"><div class="k">03</div><div><h3>Nepoužiteľné dáta</h3><p>Dáta zozbierané bez súhlasu sa spätne legalizovať nedajú. Odklad znamená ďalšie stratené obdobie.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--tint">
-    <div class="wrap"><div class="ctaband reveal"><h2>Začnime nezáväznou konzultáciou.</h2><a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a></div></div>
-  </section>
+  <Booking />
+  <StickyCta />
 </Base>

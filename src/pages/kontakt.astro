@@ -1,36 +1,35 @@
 ---
 import Base from '../layouts/Base.astro';
-import CalEmbed from '../components/CalEmbed.astro';
-
-// 👉 ZMEŇ na svoj Cal.com link (formát: "uzivatel/typ-eventu").
-// Vytvoríš si ho zadarmo na https://cal.com — napr. "ecom-capital/konzultacia".
-const CAL_LINK = 'ecom-capital/konzultacia';
+import Booking from '../components/Booking.astro';
 ---
 
 <Base
   title="Kontakt — Ecom Capital"
-  description="Rezervuj si nezáväzný hovor. Pozriem sa na tvoj účet a setup a dostaneš konkrétne odporúčania. Najhoršie, čo sa stane, je že sa dozvieš, kde ti tečú peniaze."
+  description="Nezáväzná konzultácia — krátky hovor o stave účtu a merania. Termín priamo v kalendári, alebo e-mailom na peter@ecomcapital.sk."
 >
-  <section class="phero">
-    <div class="wrap">
+  <header class="hero--ink hero--page">
+    <div class="hero-orb"></div>
+    <div class="wrap hero-inner">
       <span class="eyebrow reveal">Kontakt</span>
-      <h1 class="display reveal">Nezáväzná konzultácia.</h1>
-      <p class="lead reveal">Hovor, počas ktorého prejdeme stav účtu a meranie a výstupom sú konkrétne odporúčania. Bez záväzku a bez viazanosti.</p>
+      <h1 class="reveal" style="margin-top:18px">Nezáväzná konzultácia.</h1>
+      <p class="hero-sub reveal">Krátky hovor o stave účtu a merania. Termín sa dá rezervovať priamo v kalendári nižšie.</p>
     </div>
-  </section>
+  </header>
 
-  <section class="sec" style="padding-top:20px">
-    <div class="wrap contact-grid">
+  <section class="sec" style="padding:56px 0">
+    <div class="wrap contact-grid" style="margin-top:0">
       <div class="reveal">
         <div class="ctitem"><div class="l">E-mail</div><div class="v"><a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a></div></div>
         <div class="ctitem"><div class="l">Lokalita</div><div class="v">Bratislava, Slovensko</div></div>
-        <div class="ctitem"><div class="l">Záber</div><div class="v">PPC · Analytika · Dáta &amp; BigQuery</div></div>
+        <div class="ctitem"><div class="l">Záber</div><div class="v">PPC · Meranie · Dáta &amp; BigQuery</div></div>
         <div class="ctitem"><div class="l">Spolupráca</div><div class="v">Jednorazové projekty aj dlhodobá správa</div></div>
-        <p style="margin-top:24px; color:var(--ink-soft)">Termín konzultácie je možné rezervovať priamo v kalendári na tejto stránke. Pre orientačnú predstavu o cene ešte pred hovorom slúži <a href="/kalkulacka" style="color:var(--forest); border-bottom:2px solid var(--lime)">kalkulačka</a>.</p>
       </div>
       <div class="reveal">
-        <CalEmbed calLink={CAL_LINK} noscriptText="Pre rezerváciu termínu zapni JavaScript, alebo napíš priamo na" />
+        <p style="color:var(--ink-soft)">Pre orientačnú predstavu o cene ešte pred hovorom slúži <a href="/kalkulacka" style="color:var(--forest); border-bottom:2px solid var(--lime)">kalkulačka</a>.</p>
+        <p style="color:var(--ink-soft); margin-top:14px">Odpoveď na e-mail príde do 48 hodín.</p>
       </div>
     </div>
   </section>
+
+  <Booking eyebrow="Rezervácia termínu" title="Vyberte si čas, ktorý vám sedí." />
 </Base>

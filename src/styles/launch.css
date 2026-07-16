@@ -1,10 +1,9 @@
 /* Google Shopping launch pages (src/pages/[slug].astro + Launch.astro).
    Design: "HR Launch — v2 Focused" (Claude Design project, July 2026).
-   Reuses global.css tokens/utilities (.wrap, .eyebrow, .lead, .display, .sec,
-   .sec--ink, .reveal) — everything below is prefixed lp- to avoid collisions. */
-:root{
-  --coral:#FF7759;
-}
+   Zdieľané komponenty (hero--ink, chip--live, proof, facts, get-grid,
+   stack-list, proc-card, guarantee, why, mini-stats, book-grid,
+   check-list) žijú v global.css — tu sú len launch-špecifické časti:
+   nav, SERP mock, kalkulačka, data cards, footer a sticky lišta. */
 
 /* NAV — wordmark, anchor links, one CTA */
 .lp-nav{position:sticky; top:0; z-index:200; background:rgba(246,248,242,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
@@ -20,28 +19,12 @@
 .lp-nav-cta:hover{background:var(--lime-bright); transform:translateY(-1px)}
 @media(max-width:860px){.lp-nav-link{display:none}}
 
-/* HERO — one message, one CTA, proof strip */
-.lp-hero{background:var(--forest); color:#fff; position:relative; overflow:hidden; padding:64px 0 120px}
-.lp-hero-orb{position:absolute; border-radius:50%; pointer-events:none; width:560px; height:560px; background:radial-gradient(circle,rgba(159,232,112,.28),transparent 62%); top:-180px; right:-120px}
-.lp-hero-inner{position:relative; z-index:2}
-.lp-chip{display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(159,232,112,.35); background:rgba(159,232,112,.1); border-radius:100px; padding:8px 16px 8px 13px; font-family:'JetBrains Mono',monospace; font-size:.75rem; letter-spacing:.03em; margin-bottom:26px; color:#D8F5BE}
-.lp-chip b{color:var(--lime); font-weight:500}
-.lp-chip-dot{width:8px; height:8px; border-radius:50%; background:var(--lime); display:inline-block; animation:lp-pulse 2s infinite}
-@keyframes lp-pulse{0%,100%{opacity:1} 50%{opacity:.3}}
-.lp-hero h1{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:clamp(2.4rem,6vw,4.6rem); line-height:1; letter-spacing:-.035em; max-width:17ch; margin:0}
-.lp-hero h1 .hl{color:var(--lime)}
-.lp-hero .lp-sub{font-size:clamp(17px,1.9vw,21px); color:#C8D9BD; max-width:56ch; margin:24px 0 32px; line-height:1.6}
-.lp-hero .lp-sub strong{color:#fff; font-weight:600}
-.lp-cta-row{display:flex; gap:16px; flex-wrap:wrap; align-items:center}
+/* HERO override — hlbší spodný padding kvôli prekryvu SERP mockom */
+.hero--ink.lp-hero{padding:64px 0 120px}
+
+/* launch CTA button (o niečo väčší než .btn--lg) */
 .lp-btn{display:inline-flex; align-items:center; justify-content:center; gap:.55em; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.06rem; text-decoration:none; padding:18px 32px; border-radius:10px; background:var(--lime); color:var(--forest); box-shadow:0 8px 22px -12px rgba(22,51,0,.5); transition:transform .25s var(--d), background .25s}
 .lp-btn:hover{background:var(--lime-bright); transform:translateY(-2px)}
-.lp-cta-note{font-family:'JetBrains Mono',monospace; font-size:.74rem; color:#8FA882; letter-spacing:.02em; line-height:1.6}
-.lp-proof{display:flex; gap:0; flex-wrap:wrap; margin-top:44px; border:1px solid rgba(159,232,112,.2); border-radius:14px; overflow:hidden}
-.lp-proof-item{flex:1; min-width:160px; padding:16px 22px; border-right:1px solid rgba(159,232,112,.2)}
-.lp-proof-item:last-child{border-right:none}
-.lp-proof-item b{font-family:'Space Grotesk',sans-serif; font-size:1.3rem; color:var(--lime)}
-.lp-proof-item div{font-size:.76rem; color:#B0C4A4; line-height:1.4}
-@media(max-width:700px){.lp-proof-item{border-right:none; border-bottom:1px solid rgba(159,232,112,.2); flex-basis:100%} .lp-proof-item:last-child{border-bottom:none}}
 
 /* SERP MOCK (overlaps hero) */
 .lp-serp-zone{margin-top:-80px; position:relative; z-index:5}
@@ -94,68 +77,13 @@
 .lp-result .lp-btn{font-size:.98rem; padding:15px 24px; box-shadow:none}
 .lp-calc-note{font-family:'JetBrains Mono',monospace; font-size:.68rem; color:var(--muted); margin:22px 0 0; max-width:80ch; line-height:1.6}
 
-/* WHY THE WINDOW — dark facts + data cards */
-.lp-facts{display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:52px; border:1px solid rgba(159,232,112,.18); border-radius:16px; overflow:hidden}
-@media(max-width:780px){.lp-facts{grid-template-columns:1fr}}
-.lp-fact{padding:32px 28px; border-right:1px solid rgba(159,232,112,.18)}
-.lp-fact:last-child{border-right:none}
-@media(max-width:780px){.lp-fact{border-right:none; border-bottom:1px solid rgba(159,232,112,.18)} .lp-fact:last-child{border-bottom:none}}
-.lp-fact .lp-f-num{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--lime); letter-spacing:.1em; display:block; margin-bottom:16px}
-.lp-fact h3{font-family:'Space Grotesk',sans-serif; font-size:1.28rem; font-weight:600; letter-spacing:-.01em; margin:0 0 10px}
-.lp-fact p{font-size:.92rem; color:#B0C4A4; line-height:1.6; margin:0}
-.lp-fact p b{color:#fff; font-weight:500}
+/* WHY THE WINDOW — data cards pod facts mriežkou */
 .lp-data-cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px}
 @media(max-width:780px){.lp-data-cards{grid-template-columns:1fr}}
 .lp-dcard{background:rgba(255,255,255,.04); border:1px solid rgba(159,232,112,.18); border-radius:16px; padding:24px}
 .lp-dcard .lp-dv{font-family:'Space Grotesk',sans-serif; font-size:1.5rem; font-weight:700; letter-spacing:-.02em; color:var(--lime)}
 .lp-dcard p{font-size:.84rem; color:#B0C4A4; line-height:1.6; margin:8px 0 0}
 .lp-dcard .lp-src{margin-top:12px; font-family:'JetBrains Mono',monospace; font-size:.62rem; color:#8FA882; line-height:1.6}
-
-/* WHAT YOU GET + PROCESS side-by-side */
-.lp-get{display:grid; grid-template-columns:1.1fr .9fr; gap:34px; margin-top:44px; align-items:start}
-@media(max-width:880px){.lp-get{grid-template-columns:1fr}}
-.lp-stack-list{border:1px solid var(--line); border-radius:18px; overflow:hidden; background:#fff}
-.lp-stack-row{padding:24px 28px; border-bottom:1px solid var(--line); display:flex; gap:18px; align-items:flex-start; transition:background .22s var(--d)}
-.lp-stack-row:last-child{border-bottom:none}
-.lp-stack-row:hover{background:var(--canvas)}
-.lp-stack-row .lp-idx{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--forest); letter-spacing:.1em; font-weight:500; margin-top:4px}
-.lp-stack-row h3{font-family:'Space Grotesk',sans-serif; font-size:1.08rem; font-weight:600; letter-spacing:-.015em; line-height:1.25; margin:0 0 6px}
-.lp-stack-row p{font-size:.88rem; color:var(--forest-3); line-height:1.55; margin:0}
-.lp-stack-row p b{color:var(--forest); font-weight:600; background:var(--lime-soft); padding:.02em .14em; border-radius:2px}
-.lp-proc-card{position:sticky; top:84px; background:var(--forest); color:var(--canvas); border-radius:18px; padding:28px}
-@media(max-width:880px){.lp-proc-card{position:static}}
-.lp-proc-cap{font-family:'JetBrains Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--lime); margin-bottom:18px}
-.lp-proc-row{display:grid; grid-template-columns:92px 1fr; gap:16px; padding:13px 0; border-bottom:1px solid rgba(159,232,112,.16); align-items:baseline}
-.lp-proc-when{font-family:'JetBrains Mono',monospace; font-size:.66rem; font-weight:500; color:var(--forest); background:var(--lime); padding:4px 8px; border-radius:5px; justify-self:start; white-space:nowrap}
-.lp-proc-title{font-family:'Space Grotesk',sans-serif; font-size:.98rem; font-weight:600; letter-spacing:-.01em}
-.lp-proc-short{font-size:.8rem; color:#B0C4A4; line-height:1.5}
-.lp-guarantee{margin-top:18px; padding:16px; border:1px solid rgba(159,232,112,.3); border-radius:12px; display:flex; gap:12px; align-items:flex-start}
-.lp-guarantee svg{flex:none; margin-top:2px}
-.lp-guarantee div{font-size:.82rem; color:rgba(246,248,242,.85); line-height:1.55}
-.lp-guarantee b{color:var(--lime)}
-
-/* WHY ME — compressed card */
-.lp-why{background:#fff; border:1px solid var(--line); border-radius:20px; padding:40px; display:grid; grid-template-columns:1.2fr .8fr; gap:44px; align-items:center}
-@media(max-width:880px){.lp-why{grid-template-columns:1fr; padding:28px}}
-.lp-why h2{font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-.02em; line-height:1.1; font-size:clamp(1.5rem,3vw,2.1rem); margin:14px 0 16px}
-.lp-why p{font-size:.98rem; color:var(--forest-3); line-height:1.65; margin:0 0 12px}
-.lp-why p:last-child{margin-bottom:0}
-.lp-why p b{color:var(--forest)}
-.lp-mini-stats{display:grid; grid-template-columns:1fr 1fr; gap:14px}
-.lp-mini-stat{background:var(--canvas); border:1px solid var(--line); border-radius:14px; padding:18px}
-.lp-mini-stat .lp-v{font-family:'Space Grotesk',sans-serif; font-size:1.6rem; font-weight:700; color:var(--forest)}
-.lp-mini-stat .lp-l{font-size:.74rem; color:var(--muted); line-height:1.4}
-
-/* BOOK — dark section with checklist + embed */
-.lp-book{display:grid; grid-template-columns:.95fr 1.05fr; gap:56px; align-items:start}
-@media(max-width:880px){.lp-book{grid-template-columns:1fr; gap:40px}}
-.lp-check-list{list-style:none; display:flex; flex-direction:column; gap:16px; margin:26px 0 0; padding:0}
-.lp-check-list li{display:flex; gap:14px; font-size:.92rem; color:rgba(246,248,242,.85); align-items:flex-start; line-height:1.55}
-.lp-check-list li .lp-ic{flex-shrink:0; width:22px; height:22px; border-radius:7px; background:var(--lime); display:flex; align-items:center; justify-content:center; margin-top:1px}
-.lp-check-list li strong{color:#fff; font-weight:600}
-.lp-book-mail{font-family:'JetBrains Mono',monospace; font-size:.72rem; color:#8FA882; margin:28px 0 0; line-height:1.7; text-transform:uppercase}
-.lp-book-mail a{color:var(--lime)}
-.lp-book-embed{min-height:560px; border:1px solid rgba(159,232,112,.25); border-radius:16px; overflow:hidden; background:#fff; color:var(--forest); padding:10px}
 
 /* FOOTER — slim */
 .lp-foot{background:var(--forest); color:#fff; padding:0 0 96px}
@@ -166,7 +94,7 @@
 .lp-foot-logo .lp-wordmark{font-size:.95rem}
 .lp-foot-links{display:flex; gap:18px; flex-wrap:wrap}
 
-/* STICKY BOTTOM CTA */
+/* STICKY BOTTOM CTA (launch verzia — viditeľná stále) */
 .lp-sticky{position:fixed; left:0; right:0; bottom:0; z-index:300; background:rgba(22,51,0,.96); backdrop-filter:blur(10px); border-top:1px solid rgba(159,232,112,.25); padding:10px 16px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap}
 .lp-sticky-note{font-family:'JetBrains Mono',monospace; font-size:.7rem; color:#C8D9BD; letter-spacing:.03em}
 .lp-sticky-cta{font-family:'Space Grotesk',sans-serif; font-size:.9rem; font-weight:600; color:var(--forest); background:var(--lime); text-decoration:none; padding:11px 22px; border-radius:8px; transition:background .2s}
