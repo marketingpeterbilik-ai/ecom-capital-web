@@ -19,7 +19,7 @@ import Base from '../layouts/Base.astro';
     <div class="wrap">
       <div class="pipe-shell reveal" style="margin-top:0">
         <div class="pipe-cap">Architektúra dátového toku</div>
-        <div class="pipeline">
+        <div class="pipeline reveal stagger">
           <div class="node"><div class="idx">ZDROJE</div><div class="nm">Zber dát</div><div class="sb">Google Ads &amp; Meta API, GA4, feedy, CRM, e-shop</div></div>
           <div class="arrow"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h19M14 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></div>
           <div class="node hot"><div class="idx">SKLAD <span class="dot"></span></div><div class="nm">BigQuery</div><div class="sb">Centralizácia, čistenie a transformácia dát</div></div>
@@ -72,7 +72,7 @@ import Base from '../layouts/Base.astro';
         <h2 class="display" style="margin-top:16px; font-size:clamp(1.8rem,4.2vw,2.5rem)">Prečo nie len Excel alebo Looker priamo?</h2>
         <p class="lead" style="margin-top:16px">Pretože v určitej fáze prestanú stačiť — zvyčajne práve vtedy, keď firma začne výraznejšie rásť.</p>
       </div>
-      <div class="facts reveal">
+      <div class="facts reveal stagger">
         <div class="fact"><span class="f-num">01 / OBJEM</span><h3>Objem a história</h3><p>Spracuje roky dát bez spomalenia. <b>Excel sa pri státisícoch riadkov zadrhne,</b> BigQuery nie.</p></div>
         <div class="fact"><span class="f-num">02 / SPÁJANIE</span><h3>Spájanie zdrojov</h3><p>Reklamy, objednávky aj CRM prepojené cez jeden kľúč. <b>Samostatný Looker konektor to neumožňuje.</b></p></div>
         <div class="fact"><span class="f-num">03 / AUTOMAT</span><h3>Jeden zdroj, automaticky</h3><p>Dáta sa naťahujú a transformujú podľa rozvrhu a všetko čerpá z tých istých čísel. <b>Bez ručných refreshov a nezrovnalostí.</b></p></div>
