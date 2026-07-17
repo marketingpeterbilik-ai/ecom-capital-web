@@ -4,15 +4,15 @@ import Booking from '../../components/Booking.astro';
 ---
 
 <Base
-  title="Automatizácia — Ecom Capital"
-  description="Automatické kontroly účtov, upozornenia na anomálie a automatizovaný reporting. Problémy sa odhalia skôr, než ovplyvnia rozpočet."
+  title="AI automatizácia — Ecom Capital"
+  description="Automatizácia firemných procesov pomocou AI — od zákazníckej podpory cez back-office až po reporting. Navrhneme, postavíme a spravujeme automatizácie na mieru."
 >
   <header class="hero--ink hero--page">
     <div class="hero-orb"></div>
     <div class="wrap hero-inner">
-      <span class="eyebrow reveal">Služby / Automatizácia</span>
-      <h1 class="reveal" style="margin-top:18px">Automatizácia.</h1>
-      <p class="hero-sub reveal">Rutinné úlohy preberajú automatické kontroly a upozornenia. Problémy sa odhalia skôr, než ovplyvnia rozpočet.</p>
+      <span class="eyebrow reveal">Služby / AI automatizácia</span>
+      <h1 class="reveal" style="margin-top:18px">AI automatizácia.</h1>
+      <p class="hero-sub reveal">Rutinné procesy vo firme preberá AI a automatizácie. Nájdeme miesta, kde tím stráca najviac času, a postavíme riešenie na mieru — od návrhu po správu.</p>
     </div>
   </header>
 
@@ -20,17 +20,24 @@ import Booking from '../../components/Booking.astro';
     <div class="wrap split split--wide">
       <div class="reveal">
         <span class="eyebrow">Čo zahŕňa</span>
-        <h2 class="display" style="margin-top:16px; font-size:clamp(1.7rem,3.8vw,2.4rem)">Menej manuálnej práce, viac kontroly.</h2>
-        <p class="lead" style="margin-top:18px">Účty a feedy sa kontrolujú priebežne a automaticky. Ušetrený čas ide do práce, ktorá sa automatizovať nedá — stratégie a optimalizácie.</p>
+        <h2 class="display" style="margin-top:16px; font-size:clamp(1.7rem,3.8vw,2.4rem)">Menej manuálnej práce, viac kapacity.</h2>
+        <p class="lead" style="margin-top:18px">Nie je to o jednom nástroji. Zmapujeme procesy, vyberieme, čo sa oplatí automatizovať, a nasadíme riešenie, ktoré tímu reálne šetrí hodiny — každý týždeň.</p>
       </div>
       <div class="reveal">
-        <div class="feat"><div class="k">·</div><div><h3>Automatické kontroly účtov</h3><p>Nastavenia, rozpočty a výkon sa kontrolujú pravidelne, nie náhodne.</p></div></div>
-        <div class="feat"><div class="k">·</div><div><h3>Upozornenia na anomálie</h3><p>Výkyvy vo výdajoch, konverziách alebo výpadky merania sa hlásia hneď.</p></div></div>
-        <div class="feat"><div class="k">·</div><div><h3>Automatizovaný reporting</h3><p>Pravidelné reporty sa skladajú a doručujú automaticky, bez ručného kopírovania dát.</p></div></div>
-        <div class="feat"><div class="k">·</div><div><h3>Riešenia na mieru</h3><p>Automatizácia rutín špecifických pre konkrétny e-shop alebo účet.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Audit procesov</h3><p>Zmapujeme, kde tím trávi najviac času rutinou, a vyčíslime, čo sa oplatí automatizovať ako prvé.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>AI agenti a asistenti</h3><p>Zákaznícka podpora, spracovanie e-mailov a objednávok, tvorba obsahu — AI, ktorá pracuje s vašimi dátami a pravidlami.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Prepojenie systémov</h3><p>E-shop, CRM, sklad, fakturácia a tabuľky si posielajú dáta samé — bez ručného prepisovania.</p></div></div>
+        <div class="feat"><div class="k">·</div><div><h3>Riešenia na mieru + správa</h3><p>Automatizácie postavíme, nasadíme a dlhodobo spravujeme. Keď sa proces zmení, riešenie sa prispôsobí.</p></div></div>
       </div>
     </div>
   </section>
 
-  <Booking />
+  <Booking
+    title="Krátky hovor o tom, čo sa u vás dá automatizovať."
+    items={[
+      { b: 'Vaše procesy', t: ' — kde tím stráca najviac času rutinou.' },
+      { b: 'Príležitosti', t: ' — čo sa oplatí automatizovať ako prvé.' },
+      { b: 'Ďalší postup', t: ' — či a ako dáva zmysel pokračovať.' },
+    ]}
+  />
 </Base>
