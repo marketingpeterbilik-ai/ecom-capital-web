@@ -73,7 +73,7 @@ A tu je páka, ktorú väčšina majiteľov podceňuje: keď si u dodávateľa v
 Tu sa kruh uzatvára a preto tieto čísla nie sú len pre účtovníka:
 
 - **Neškálujte reklamu podľa ROAS, ale podľa marže.** Rovnaké ROAS na produkte so 40 % a s 10 % maržou sú dva úplne odlišné výsledky. Ideálne sa preto do platformy neposiela ako hodnota konverzie tržba, ale **marža** — algoritmus potom tlačí tam, kde sa reálne zarába, nie tam, kde sa najviac točí obrat. (Súvisí s tým, prečo [platformové čísla klamú](/blog/blended-roas-vs-platformovy).)
-- **Nesypte rozpočet do skoro vypredaného tovaru.** Feed a stav skladu musia komunikovať s kampaňami, inak platíte za kliky na niečo, čo nie je dostupné.
+- **Strážte stav skladu voči obrátke, nie až samotné vypredanie.** Vypredaný produkt sa z reklám vyradí sám — feed ho označí ako nedostupný. Rizikový je skôr produkt s nízkym stavom, ktorý sa podľa obrátky čoskoro minie: nemá zmysel doň práve vtedy tlačiť rozpočet a škálovať, lebo sa vypredá, kampaň stratí ťah a algoritmus sa vráti do učenia. Buď včas doskladníte, alebo tam spend nenavyšujete.
 - **Reklama býva lacnejšia cesta z ležiakov ako zľava.** Namiesto plošného zlacnenia sa oplatí cielene podporiť produkty s nízkym sell-through — marža ostane vyššia.
 
 Presne preto [meranie predchádza rozpočtu](/blog/preco-merat-pred-rozpoctom) — a v tomto prípade sa meranie nekončí pri konverziách, ale pokračuje do marže a skladu. Keď sú náklady na reklamu, tržby aj marža na jednom mieste, dá sa riadiť podľa toho, čo naozaj zarába. To je celá myšlienka [prepojenia dát do BigQuery](/data).
