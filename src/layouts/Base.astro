@@ -8,6 +8,10 @@ interface Props {
   description?: string;
   lang?: string;
   chrome?: boolean;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -15,10 +19,36 @@ const {
   description = 'Performance & data štúdio. Spravujeme PPC, staviame spoľahlivé meranie a dátovú infraštruktúru — GA4, server-side tracking, BigQuery a reporting v Looker Studio.',
   lang = 'sk',
   chrome = true,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  jsonLd,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og.png', Astro.site).href;
+const siteUrl = new URL('/', Astro.site).href;
+
+// Základná entita webu — pomáha AI vyhľadávačom aj klasickému SEO rozpoznať značku.
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Ecom Capital',
+  legalName: 'Ecom Capital s.r.o.',
+  url: siteUrl,
+  logo: new URL('/og.png', Astro.site).href,
+  description:
+    'Performance & data štúdio — správa PPC kampaní, meranie a dátová infraštruktúra pre e-shopy.',
+  areaServed: 'SK',
+};
+const siteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Ecom Capital',
+  url: siteUrl,
+  inLanguage: 'sk-SK',
+};
+const graph = [orgLd, siteLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 ---
 
 <!DOCTYPE html>
@@ -29,14 +59,18 @@ const ogImage = new URL('/og.png', Astro.site).href;
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={ogType} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:locale" content="sk_SK" />
+  <meta property="og:site_name" content="Ecom Capital" />
+  {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+  {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content={ogImage} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <script is:inline>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />

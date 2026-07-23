@@ -15,9 +15,56 @@ const { Content } = await render(post);
 
 const fmt = (d: Date) =>
   d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const url = new URL(`/blog/${post.id}`, Astro.site).href;
+const published = post.data.pubDate.toISOString();
+const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
+
+// Article schema — čistá, strojovo čitateľná fakticita pre AI vyhľadávače aj Google.
+const articleLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  inLanguage: 'sk-SK',
+  datePublished: published,
+  dateModified: modified,
+  keywords: post.data.tags.join(', '),
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  author: { '@type': 'Organization', name: 'Ecom Capital', url: new URL('/', Astro.site).href },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Ecom Capital',
+    logo: { '@type': 'ImageObject', url: new URL('/og.png', Astro.site).href },
+  },
+  image: new URL('/og.png', Astro.site).href,
+};
+
+// FAQ schema — priamo citovateľné otázky a odpovede, ktoré AI odpovede radi preberajú.
+const faqLd = post.data.faq?.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: post.data.faq.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
+
+const jsonLd = faqLd ? [articleLd, faqLd] : [articleLd];
 ---
 
-<Base title={`${post.data.title} — Ecom Capital`} description={post.data.description}>
+<Base
+  title={`${post.data.title} — Ecom Capital`}
+  description={post.data.description}
+  ogType="article"
+  publishedTime={published}
+  modifiedTime={modified}
+  jsonLd={jsonLd}
+>
   <section class="phero">
     <div class="wrap article">
       <a href="/blog" class="back-link reveal">← Späť na blog</a>
@@ -37,13 +84,25 @@ const fmt = (d: Date) =>
       <div class="prose reveal">
         <Content />
       </div>
+
+      {post.data.faq?.length ? (
+        <div class="prose reveal" style="margin-top:8px">
+          <h2>Časté otázky</h2>
+          {post.data.faq.map((f) => (
+            <>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </>
+          ))}
+        </div>
+      ) : null}
     </div>
   </section>
 
   <section class="sec sec--tint">
     <div class="wrap">
       <div class="ctaband reveal">
-        <h2>Riešiš niečo z článku na vlastnom účte?</h2>
+        <h2>Riešite niečo z článku na vlastnom účte?</h2>
         <a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a>
       </div>
     </div>
