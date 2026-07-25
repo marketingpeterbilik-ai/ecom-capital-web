@@ -514,7 +514,7 @@ input[type=range]{width:100%; accent-color:var(--indigo); height:6px; cursor:poi
 .sec--indigo .check-list li,.sec--ink .check-list li{color:rgba(255,255,255,.8)}
 .sec--indigo .check-list li strong,.sec--ink .check-list li strong{color:var(--paper)}
 .book-embed{background:var(--paper); border:1px solid var(--hairline); border-radius:22px; overflow:hidden; box-shadow:var(--shadow-card); padding:10px}
-.cal-embed{min-height:620px; border-radius:var(--r-card); overflow:hidden; background:var(--paper)}
+.cal-embed{border-radius:var(--r-card); overflow:hidden; background:var(--paper)}
 
 /* ---------- sticky CTA lišta ---------- */
 .sticky-cta{
