@@ -1,7 +1,8 @@
 ---
+import Logo from './Logo.astro';
+
 const path = Astro.url.pathname;
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href);
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
 
 const services = [
   { href: '/sluzby', label: 'Prehľad služieb' },
@@ -16,6 +17,7 @@ const services = [
 const links = [
   { href: '/kalkulacka', label: 'Kalkulačka' },
   { href: '/blog', label: 'Blog' },
+  { href: '/kontakt', label: 'Kontakt' },
 ];
 
 const servicesActive = isActive('/sluzby') || isActive('/data') || isActive('/cookie-consent');
@@ -23,30 +25,60 @@ const servicesActive = isActive('/sluzby') || isActive('/data') || isActive('/co
 
 <header class="site">
   <div class="wrap nav">
-    <a href="/" class="mark"><b>ecom capital<i class="dot"></i></b><small>Performance · Analytics · Data</small></a>
+    <Logo href="/" size={30} />
+
     <nav class="nav-links" id="navlinks">
       <div class="nav-sub-wrap">
-        <a href="/sluzby" class={servicesActive ? 'active nav-sub-parent' : 'nav-sub-parent'} aria-current={servicesActive ? 'page' : undefined}>
+        <a
+          href="/sluzby"
+          class={servicesActive ? 'active nav-sub-parent' : 'nav-sub-parent'}
+          aria-current={servicesActive ? 'page' : undefined}
+        >
           Služby
-          <svg class="nav-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="nav-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+            ><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg
+          >
         </a>
         <div class="nav-sub">
-          {services.map((s) => (
-            <a href={s.href} class={isActive(s.href) && s.href !== '/sluzby' ? 'active' : ''}>{s.label}</a>
-          ))}
+          {
+            services.map((s) => (
+              <a href={s.href} class={isActive(s.href) && s.href !== '/sluzby' ? 'active' : ''}>
+                {s.label}
+              </a>
+            ))
+          }
         </div>
       </div>
-      {links.map((l) => (
-        <a href={l.href} class={isActive(l.href) ? 'active' : ''} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
-      ))}
+      {
+        links.map((l) => (
+          <a href={l.href} class={isActive(l.href) ? 'active' : ''} aria-current={isActive(l.href) ? 'page' : undefined}>
+            {l.label}
+          </a>
+        ))
+      }
+      <a href="/kontakt" class="btn btn--lime btn--sm nav-cta-inline">Konzultácia →</a>
     </nav>
-    <div class="nav-cta"><a href="/kontakt" class="btn btn--primary">Konzultácia</a></div>
-    <button class="burger" id="burger" aria-label="Menu" aria-controls="navlinks" aria-expanded="false"><span></span><span></span><span></span></button>
+
+    <button class="burger" id="burger" aria-label="Menu" aria-controls="navlinks" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
+<style>
+  /* CTA je súčasťou nav-links (podľa dizajnu), na mobile sa skryje spolu s menu */
+  .nav-cta-inline {
+    margin-left: 4px;
+  }
+  @media (max-width: 980px) {
+    .nav-cta-inline {
+      margin: 12px 0 0;
+      width: 100%;
+    }
+  }
+</style>
+
 <script>
-  // Mobile menu toggle
   const burger = document.getElementById('burger');
   const nl = document.getElementById('navlinks');
 

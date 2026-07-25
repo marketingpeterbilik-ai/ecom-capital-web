@@ -1,47 +1,53 @@
 ---
+import Logo from './Logo.astro';
 const year = new Date().getFullYear();
 ---
 
 <footer class="site">
   <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-mark">
-        <b>ecom capital<i class="dot"></i></b>
+    <div class="foot-grid">
+      <div class="foot-about">
+        <Logo variant="inverse" size={32} href="/" />
         <p>Výkonnostné a dátové štúdio. Správa PPC, meranie a dátová infraštruktúra.</p>
       </div>
-      <div class="foot-nav">
-        <div class="foot-col">
-          <h5>Služby</h5>
-          <a href="/sluzby/ppc">Správa PPC kampaní</a>
-          <a href="/sluzby/meranie">Meranie &amp; tracking</a>
-          <a href="/data">Dáta &amp; BigQuery</a>
-          <a href="/sluzby/automatizacia">AI automatizácia</a>
-          <a href="/sluzby/audit">Audit &amp; konzultácie</a>
-          <a href="/cookie-consent">Cookie lišta &amp; Consent Mode v2</a>
-        </div>
-        <div class="foot-col">
-          <h5>Štúdio</h5>
-          <a href="/sluzby">Prehľad služieb</a>
-          <a href="/kalkulacka">Kalkulačka</a>
-          <a href="/proces">Proces</a>
-          <a href="/blog">Blog</a>
-        </div>
-        <div class="foot-col">
-          <h5>Kontakt</h5>
-          <a href="/kontakt">Konzultácia</a>
-          <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a>
-        </div>
-        <div class="foot-col">
-          <h5>Právne</h5>
-          <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>
-          <a href="/cookies">Cookies</a>
-        </div>
+
+      <div class="foot-col">
+        <h5>Služby</h5>
+        <a href="/sluzby/ppc">Správa PPC kampaní</a>
+        <a href="/sluzby/meranie">Meranie &amp; tracking</a>
+        <a href="/data">Dáta &amp; BigQuery</a>
+        <a href="/sluzby/automatizacia">AI automatizácia</a>
+        <a href="/sluzby/audit">Audit &amp; konzultácie</a>
+        <a href="/cookie-consent">Cookie lišta &amp; Consent Mode v2</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Štúdio</h5>
+        <a href="/sluzby">Prehľad služieb</a>
+        <a href="/kalkulacka">Kalkulačka</a>
+        <a href="/proces">Proces</a>
+        <a href="/blog">Blog</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <a href="/kontakt">Konzultácia</a>
+        <a href="mailto:peter@ecomcapital.sk">peter@ecomcapital.sk</a>
+      </div>
+
+      <div class="foot-col">
+        <h5>Právne</h5>
+        <a href="/ochrana-osobnych-udajov">Ochrana osobných údajov</a>
+        <a href="/cookies">Cookies</a>
       </div>
     </div>
+
+    <div class="foot-rule"></div>
+
     <div class="foot-bottom">
       {/* Pred spustením doplniť IČO (a prípadne DIČ) — Ecom Capital s.r.o. */}
-      <div>© {year} Ecom Capital s.r.o. · Bratislava, SK · IČO: [DOPLNIŤ]</div>
-      <div>Všetky práva vyhradené</div>
+      <span>© {year} Ecom Capital s.r.o. · Bratislava, SK · IČO: [DOPLNIŤ]</span>
+      <span>Všetky práva vyhradené</span>
     </div>
   </div>
 </footer>

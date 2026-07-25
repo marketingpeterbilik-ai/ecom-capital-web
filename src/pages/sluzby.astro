@@ -2,96 +2,144 @@
 import Base from '../layouts/Base.astro';
 import Booking from '../components/Booking.astro';
 import StickyCta from '../components/StickyCta.astro';
+
+const services = [
+  {
+    href: '/sluzby/ppc',
+    title: 'Správa PPC kampaní',
+    lead: 'Dlhodobá správa Google a Meta Ads vrátane merania a produktových feedov. Optimalizácia podľa zisku a marže, rozhodnutia overiteľné v dátach.',
+    items: [
+      'Search, Shopping, Performance Max',
+      'Meta: Advantage+, retargeting, kreatívy',
+      'Produktové feedy a Merchant Center',
+      'Týždenná optimalizácia, mesačný report',
+    ],
+    cta: 'Detail služby →',
+  },
+  {
+    href: '/sluzby/meranie',
+    title: 'Meranie & tracking',
+    lead: 'Meranie, ktoré obstojí voči iOS, blokovačom aj cookieless prostrediu — a posiela čisté konverzie do Google aj Meta.',
+    items: ['GA4 implementácia a audit', 'Server-side tracking (sGTM)', 'Meta CAPI & enhanced conversions'],
+    cta: 'Detail služby →',
+  },
+  {
+    href: '/data',
+    title: 'Dáta & BigQuery',
+    lead: 'Marketingové dáta z viacerých zdrojov v jednom sklade. Blended ROAS, CAC, LTV a marža — nezávisle od atribúcie platforiem.',
+    items: ['Centralizovaný dátový sklad', 'Looker Studio dashboardy', 'Automatizované reporty'],
+    cta: 'Detail služby →',
+  },
+  {
+    href: '/sluzby/automatizacia',
+    title: 'AI automatizácia',
+    lead: 'Rutinné firemné procesy preberá AI a automatizácie na mieru — od zákazníckej podpory po back-office.',
+    items: ['AI agenti a asistenti', 'Prepojenie systémov (CRM, e-shop, sklad)', 'Návrh, nasadenie aj správa'],
+    cta: 'Detail služby →',
+  },
+  {
+    href: '/sluzby/audit',
+    title: 'Audit & konzultácie',
+    lead: 'Nezávislé posúdenie účtov, merania a stratégie. Výstupom je zoznam krokov zoradený podľa dopadu na tržby.',
+    items: ['Hĺbkový audit Google + Meta', 'Audit trackingu a dátového toku', 'Akčný plán a priority'],
+    cta: 'Detail služby →',
+  },
+  {
+    href: '/cookie-consent',
+    title: 'Cookie lišta & Consent Mode v2',
+    lead: 'Súlad s GDPR a podmienkami Googlu, ktoré platia od marca 2024. Nasadenie je otázka dní.',
+    items: [
+      'Nasadenie CMP certifikovanej Googlom',
+      'Consent Mode v2 cez GTM aj server-side',
+      'Test oboch scenárov + dokumentácia',
+    ],
+    cta: 'Detail služby a bezplatná kontrola webu →',
+  },
+];
 ---
 
 <Base
   title="Služby | Ecom Capital"
-  description="Správa PPC kampaní, meranie a tracking, dáta a BigQuery, produktové feedy, automatizácia, audit a cookie lišta s Consent Mode v2. Každá služba s vlastnou stránkou."
+  description="Správa PPC kampaní, meranie a tracking, dáta a BigQuery, AI automatizácia, audit a cookie lišta s Consent Mode v2. Každá služba s vlastnou stránkou."
 >
-  <header class="hero--ink hero--page">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
+  <section class="phero">
+    <div class="wrap">
       <span class="eyebrow reveal">Služby</span>
-      <h1 class="reveal" style="margin-top:18px">Reklama a meranie <span class="hl">z jednej ruky</span>.</h1>
-      <p class="hero-sub reveal">
-        Jadrom je dlhodobá správa kampaní postavená na spoľahlivom meraní. K nej služby, ktoré ju robia presnejšou,
+      <h1 class="h1 reveal">Reklama a meranie z jednej ruky.</h1>
+      <p class="lead lead--lg reveal">
+        Jadrom je dlhodobá správa kampaní postavená na spoľahlivom meraní. K nej služby, ktoré ju robia presnejšou —
         a jednorazové projekty, ktorými spolupráca zvykne začínať.
       </p>
     </div>
-  </header>
+  </section>
 
-  <section class="sec" style="padding-top:56px">
+  <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <div class="grid grid-2">
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <h3>Správa PPC kampaní</h3>
-          <p>Dlhodobá správa Google a Meta Ads vrátane merania a produktových feedov. Optimalizácia podľa zisku a marže, rozhodnutia overiteľné v dátach.</p>
-          <ul class="deliv"><li>Search, Shopping, Performance Max</li><li>Meta: Advantage+, retargeting, kreatívy</li><li>Produktové feedy a Merchant Center</li><li>Týždenná optimalizácia, mesačný report</li></ul>
-          <a href="/sluzby/ppc" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 0 1 9-9M6 12a6 6 0 0 1 6-6M9 12a3 3 0 0 1 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></div>
-          <h3>Meranie &amp; tracking</h3>
-          <p>Meranie, ktoré obstojí voči iOS, blokovačom aj cookieless prostrediu a posiela čisté konverzie do Google aj Meta.</p>
-          <ul class="deliv"><li>GA4 implementácia a audit</li><li>Server-side tracking (sGTM)</li><li>Meta CAPI &amp; enhanced conversions</li></ul>
-          <a href="/sluzby/meranie" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="7" ry="2.8" stroke="currentColor" stroke-width="1.6"/><path d="M5 5.5v13c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-13M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <h3>Dáta &amp; BigQuery</h3>
-          <p>Marketingové dáta z viacerých zdrojov v jednom sklade. Blended ROAS, CAC, LTV a marža nezávisle od atribúcie platforiem.</p>
-          <ul class="deliv"><li>Centralizovaný dátový sklad</li><li>Looker Studio dashboardy</li><li>Automatizované reporty</li></ul>
-          <a href="/data" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-          <h3>AI automatizácia</h3>
-          <p>Rutinné firemné procesy preberá AI a automatizácie na mieru, od zákazníckej podpory po back-office.</p>
-          <ul class="deliv"><li>AI agenti a asistenti</li><li>Prepojenie systémov (CRM, e-shop, sklad)</li><li>Návrh, nasadenie aj správa</li></ul>
-          <a href="/sluzby/automatizacia" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-          <h3>Audit &amp; konzultácie</h3>
-          <p>Nezávislé posúdenie účtov, merania a stratégie. Výstupom je zoznam krokov zoradený podľa dopadu na tržby.</p>
-          <ul class="deliv"><li>Hĺbkový audit Google + Meta</li><li>Audit trackingu a dátového toku</li><li>Akčný plán a priority</li></ul>
-          <a href="/sluzby/audit" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Cookie lišta &amp; Consent Mode v2</h3>
-          <p>Súlad s GDPR a podmienkami Googlu, ktoré platia od marca 2024. Nasadenie je otázka dní.</p>
-          <ul class="deliv"><li>Nasadenie CMP certifikovanej Googlom</li><li>Consent Mode v2 cez GTM aj server-side</li><li>Test oboch scenárov + dokumentácia</li></ul>
-          <a href="/cookie-consent" class="more">Detail služby a bezplatná kontrola webu →</a>
-        </div>
+      <div class="grid grid-2 reveal stagger">
+        {
+          services.map((s) => (
+            <div class="card card--shadow card--flex card--hover svc-card">
+              <div class="h3">{s.title}</div>
+              <p>{s.lead}</p>
+              <ul class="card-list">
+                {s.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+              <a href={s.href} class="link-arrow">
+                {s.cta}
+              </a>
+            </div>
+          ))
+        }
       </div>
 
-      <p class="lead reveal" style="margin-top:36px">Spolupráca je bez viazanosti, dá sa ukončiť kedykoľvek a beží z mesiaca na mesiac. Účty, prístupy aj dáta zostávajú vaše. Priebeh spolupráce je popísaný na stránke <a href="/proces" style="color:var(--forest); border-bottom:2px solid var(--lime)">Proces</a>.</p>
+      <div class="callout reveal" style="margin-top:28px">
+        Spolupráca je bez viazanosti — dá sa ukončiť kedykoľvek, beží z mesiaca na mesiac. Účty, prístupy aj dáta
+        zostávajú vaše. Priebeh spolupráce je popísaný na stránke <a href="/proces">Proces</a>.
+      </div>
     </div>
   </section>
 
-  <section class="sec sec--tint">
+  <section class="sec sec--mist">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="eyebrow">Vhodnosť spolupráce</span><h2 class="display" style="font-size:clamp(1.6rem,3.6vw,2.3rem)">Pre koho je to vhodné a pre koho menej.</h2></div>
-      <div class="who">
-        <div class="who-card yes reveal">
-          <h3>Vhodné, ak…</h3>
-          <ul>
-            <li>firma má e-shop alebo B2B a reklama je dôležitý kanál</li>
-            <li>cieľom je rozumieť dátam a rozhodovať sa podľa nich</li>
-            <li>hľadá sa dlhodobý partner, nie najlacnejší dodávateľ</li>
-            <li>preferuje sa priama komunikácia a jeden kontakt</li>
-          </ul>
+      <div class="reveal" style="margin-bottom:44px">
+        <span class="eyebrow">Vhodnosť spolupráce</span>
+        <h2 class="h2" style="margin-top:16px">Pre koho je to vhodné — a pre koho menej.</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card card--shadow reveal">
+          <div class="h3" style="margin-bottom:20px">Vhodné, ak…</div>
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div class="muted">firma má e-shop alebo B2B a reklama je dôležitý kanál</div>
+            <div class="muted">cieľom je rozumieť dátam a rozhodovať sa podľa nich</div>
+            <div class="muted">hľadá sa dlhodobý partner, nie najlacnejší dodávateľ</div>
+            <div class="muted">preferuje sa priama komunikácia a jeden kontakt</div>
+          </div>
         </div>
-        <div class="who-card no reveal">
-          <h3>Menej vhodné, ak…</h3>
-          <ul>
-            <li>očakávaním je rýchly výsledok bez investície do merania</li>
-            <li>záujmom sú len „najlacnejšie kliky" bez ohľadu na výsledok</li>
-            <li>nie je priestor meniť tracking ani dáta</li>
-            <li>potrebný je veľký brandový tím namiesto výkonu</li>
-          </ul>
+        <div class="card card--shadow reveal">
+          <div class="h3" style="margin-bottom:20px">Menej vhodné, ak…</div>
+          <div style="display:flex;flex-direction:column;gap:13px">
+            <div class="muted">očakávaním je rýchly výsledok bez investície do merania</div>
+            <div class="muted">záujmom sú len „najlacnejšie kliky“ bez ohľadu na výsledok</div>
+            <div class="muted">nie je priestor meniť tracking ani dáta</div>
+            <div class="muted">potrebný je veľký brandový tím namiesto výkonu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--indigo sec--tight">
+    <div class="wrap on-top">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap">
+        <div class="reveal">
+          <span class="eyebrow">Konzultácia · 30 min · online</span>
+          <h2 class="h2" style="margin-top:16px;max-width:18ch">Krátky hovor o vašom účte a meraní.</h2>
+        </div>
+        <div class="btn-row reveal" style="flex-direction:column">
+          <a href="#book" class="btn btn--lime btn--lg">Rezervovať termín →</a>
+          <a href="/kalkulacka" class="btn btn--onindigo">Alebo spočítať cenu →</a>
         </div>
       </div>
     </div>

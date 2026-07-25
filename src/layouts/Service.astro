@@ -1,0 +1,119 @@
+---
+// Spoločná šablóna detailu služby podľa dizajnu:
+// hero s drobčekmi → mist sekcia „Čo zahŕňa" s mriežkou kariet →
+// voliteľný obsah (slot) → súvisiace služby → konzultácia.
+import Base from './Base.astro';
+import Booking from '../components/Booking.astro';
+
+interface Item {
+  t: string;
+  d: string;
+}
+interface Related {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  crumb: string;
+  heading: string;
+  lead: string;
+  cta?: { href: string; label: string; style?: 'indigo' | 'lime' }[];
+  whatEyebrow?: string;
+  whatTitle: string;
+  whatLead?: string;
+  items: Item[];
+  cols?: 2 | 3;
+  callout?: string;
+  related?: Related[];
+  bookingTitle?: string;
+  bookingItems?: { b: string; t: string }[];
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  crumb,
+  heading,
+  lead,
+  cta = [{ href: '#book', label: 'Rezervovať konzultáciu →', style: 'indigo' }],
+  whatEyebrow = 'Čo zahŕňa',
+  whatTitle,
+  whatLead,
+  items,
+  cols = 3,
+  callout,
+  related = [],
+  bookingTitle,
+  bookingItems,
+  jsonLd,
+} = Astro.props;
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumb reveal"><a href="/sluzby">Služby</a> / {crumb}</div>
+      <h1 class="h1 reveal">{heading}</h1>
+      <p class="lead lead--lg reveal">{lead}</p>
+      <div class="btn-row reveal">
+        {
+          cta.map((c) => (
+            <a href={c.href} class={`btn ${c.style === 'lime' ? 'btn--lime' : 'btn--indigo'}`}>
+              {c.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--mist">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">{whatEyebrow}</span>
+        <h2 class="h2" style="margin:16px 0">{whatTitle}</h2>
+        {whatLead && <p class="lead" style="margin-bottom:44px">{whatLead}</p>}
+      </div>
+
+      <div class={`grid grid-${cols} reveal stagger`}>
+        {
+          items.map((i) => (
+            <div class="card card--hover">
+              <div class="h3">{i.t}</div>
+              <p set:html={i.d} />
+            </div>
+          ))
+        }
+      </div>
+
+      {callout && <div class="callout reveal" style="margin-top:26px" set:html={callout} />}
+    </div>
+  </section>
+
+  <slot />
+
+  {
+    related.length > 0 && (
+      <section class="sec sec--tight">
+        <div class="wrap reveal">
+          <span class="eyebrow" style="margin-bottom:22px">
+            Súvisiace služby
+          </span>
+          <div class="btn-row">
+            {related.map((r) => (
+              <a href={r.href} class="pill-link">
+                {r.label} →
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <Booking title={bookingTitle} items={bookingItems} />
+</Base>

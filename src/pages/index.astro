@@ -2,124 +2,327 @@
 import Base from '../layouts/Base.astro';
 import Booking from '../components/Booking.astro';
 import StickyCta from '../components/StickyCta.astro';
+import Visual from '../components/Visual.astro';
+import { getCollection } from 'astro:content';
+
+const services = [
+  { href: '/sluzby/ppc', label: 'Správa PPC kampaní' },
+  { href: '/sluzby/meranie', label: 'Meranie & tracking' },
+  { href: '/data', label: 'Dáta & BigQuery' },
+  { href: '/sluzby/automatizacia', label: 'AI automatizácia' },
+  { href: '/sluzby/audit', label: 'Audit & konzultácie' },
+  { href: '/cookie-consent', label: 'Cookie lišta & Consent Mode v2' },
+];
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const fmt = (d: Date) => d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'numeric', day: 'numeric' });
 ---
 
 <Base
   title="Ecom Capital: Správa PPC postavená na spoľahlivom meraní | Google & Meta Ads"
   description="Kampane v Google a Meta Ads a meranie, na ktorom stoja: GA4, server-side tracking, BigQuery. Reklama aj dáta pod jednou strechou."
 >
-  <header class="hero--ink">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
-      <h1 class="reveal">Správa PPC postavená na <span class="hl">spoľahlivom meraní</span>.</h1>
-      <p class="hero-sub reveal">
-        Kampane v Google a Meta Ads a meranie, na ktorom stoja: GA4, server-side tracking, BigQuery.
-        Reklama aj dáta <strong>pod jednou strechou.</strong>
-      </p>
-      <div class="cta-row reveal">
-        <a class="btn btn--primary btn--lg" href="#book">Rezervovať konzultáciu <span class="arrow-i">→</span></a>
-        <span class="cta-note">NEZÁVÄZNE · ODPOVEĎ DO 48 HODÍN</span>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <h1 class="h1">Správa PPC postavená na spoľahlivom meraní.</h1>
+        <p class="lead lead--lg">
+          Kampane v Google a Meta Ads a meranie, na ktorom stoja — GA4, server-side tracking, BigQuery.
+          Reklama aj dáta <strong>pod jednou strechou.</strong>
+        </p>
+        <div class="btn-row">
+          <a href="#book" class="btn btn--lime">Rezervovať konzultáciu →</a>
+          <a href="/sluzby" class="btn btn--outline">Všetky služby</a>
+        </div>
+        <div class="hero-stats stagger reveal">
+          <div class="hero-stat">
+            <div class="v"><span class="count">10</span><em>+</em></div>
+            <div class="l">EU trhov so živými kampaňami</div>
+          </div>
+          <div class="hero-stat">
+            <div class="v"><span class="count">€5M</span><em>+</em></div>
+            <div class="l">spravovaného spendu</div>
+          </div>
+          <div class="hero-stat">
+            <div class="v"><span class="count">50</span><em>+</em></div>
+            <div class="l">úspešných spoluprác</div>
+          </div>
+        </div>
       </div>
-      <div class="cta-row reveal" style="margin-top:18px">
-        <a href="/kalkulacka" class="hero-textlink">Alebo si najprv spočítajte orientačnú cenu →</a>
-      </div>
-      <div class="proof reveal stagger">
-        <div class="proof-item"><b>10+</b><div>EU trhov so živými kampaňami</div></div>
-        <div class="proof-item"><b>€5M+</b><div>spravovaného spendu v Google &amp; Meta</div></div>
-        <div class="proof-item"><b>50+</b><div>úspešných spoluprác</div></div>
-        <div class="proof-item"><b>10 dní</b><div>od prístupov po spustenie kampaní</div></div>
-      </div>
-    </div>
-  </header>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Ako to funguje</span>
-        <h2 class="display">Od reklamy po rozhodnutie v jednom systéme.</h2>
-        <p class="lead">Reklama, meranie aj dáta sedia v jednom systéme a navzájom spolupracujú, namiesto skladania z viacerých dodávateľov.</p>
-      </div>
-      <div class="pipe-shell reveal">
-        <div class="pipe-cap">Dátový tok od reklamy po rozhodnutie</div>
-        <div class="pipeline reveal stagger">
-          <div class="node"><div class="idx">01 ZBER</div><div class="nm">Reklamy &amp; kanály</div><div class="sb">Google, Meta, GA4, feedy, CRM</div></div>
-          <div class="arrow"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h19M14 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <div class="node"><div class="idx">02 MERANIE</div><div class="nm">Tracking</div><div class="sb">GA4 + server-side, CAPI, consent</div></div>
-          <div class="arrow"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h19M14 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <div class="node hot"><div class="idx">03 SKLAD <span class="dot"></span></div><div class="nm">BigQuery</div><div class="sb">Jeden zdroj pravdy pre všetky dáta</div></div>
-          <div class="arrow"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h19M14 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <div class="node"><div class="idx">04 ROZHODNUTIE</div><div class="nm">Reporting</div><div class="sb">Looker Studio dashboardy</div></div>
+      <div class="hero-visual reveal">
+        <div class="shape shape--lime shape-a"></div>
+        <div class="shape shape--lime shape-b"></div>
+        <div class="hero-plane">
+          <Visual tone="indigo" />
+        </div>
+        <div class="hero-card">
+          <div class="tick"><i>✓</i><span>Meranie v cene správy</span></div>
+          <div class="tick"><i>✓</i><span>Bez viazanosti</span></div>
+          <div class="tick"><i>✓</i><span>Odpoveď do 48 hodín</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--tint">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Služby</span>
-        <h2 class="display">Od kampaní po dátový sklad.</h2>
-        <p class="lead">Každá služba má vlastnú stránku s detailom. Fungujú samostatne aj ako celok.</p>
+  <!-- SLUŽBY (indigo) -->
+  <section class="sec sec--indigo">
+    <div class="shape shape--indigo-deep" style="right:-40px;top:-30px;width:110px;height:88px"></div>
+    <div class="shape shape--indigo-deep" style="right:40px;top:60px;width:110px;height:88px"></div>
+    <div class="shape shape--lime" style="left:-46px;bottom:96px;width:94px;height:76px"></div>
+    <div class="shape shape--lime" style="left:14px;bottom:14px;width:94px;height:76px"></div>
+
+    <div class="wrap on-top">
+      <div class="sec-head--center reveal">
+        <h2 class="h2">Od kampaní po dátový sklad.</h2>
+        <p class="lead">
+          Každá služba má vlastnú stránku s detailom. Fungujú samostatne aj ako celok — reklama, meranie aj dáta
+          v jednom systéme.
+        </p>
       </div>
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <h3>Správa PPC kampaní</h3>
-          <p>Google a Meta Ads vrátane produktových feedov. Optimalizácia podľa zisku a marže, nie podľa klikov.</p>
-          <a href="/sluzby/ppc" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 0 1 9-9M6 12a6 6 0 0 1 6-6M9 12a3 3 0 0 1 3-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></div>
-          <h3>Meranie &amp; tracking</h3>
-          <p>GA4, server-side tracking, Meta CAPI. Meranie, ktoré obstojí aj v cookieless prostredí.</p>
-          <a href="/sluzby/meranie" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="7" ry="2.8" stroke="currentColor" stroke-width="1.6"/><path d="M5 5.5v13c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-13M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <h3>Dáta &amp; BigQuery</h3>
-          <p>Marketingové dáta v jednom sklade: blended ROAS, CAC, LTV a automatizovaný reporting.</p>
-          <a href="/data" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-          <h3>Audit &amp; konzultácie</h3>
-          <p>Nezávislé posúdenie účtov, merania a stratégie s akčným plánom podľa priorít.</p>
-          <a href="/sluzby/audit" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-          <h3>AI automatizácia</h3>
-          <p>Rutinné firemné procesy preberá AI: agenti, prepojené systémy a automatizácie na mieru.</p>
-          <a href="/sluzby/automatizacia" class="more">Detail služby →</a>
-        </div>
-        <div class="card reveal">
-          <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <h3>Cookie lišta &amp; Consent Mode v2</h3>
-          <p>Súlad s GDPR a podmienkami Googlu vrátane testov a dokumentácie.</p>
-          <a href="/cookie-consent" class="more">Detail služby →</a>
-        </div>
-      </div>
-      <div class="reveal" style="margin-top:34px">
-        <a href="/sluzby" class="btn btn--ghost">Prehľad všetkých služieb →</a>
+
+      <div class="svc-list reveal stagger">
+        {
+          services.map((s, i) => (
+            <a href={s.href} class="svc-row">
+              <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+              <span class="nm">{s.label}</span>
+              <span class="go" aria-hidden="true">
+                →
+              </span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
 
+  <!-- PIPELINE -->
   <section class="sec">
     <div class="wrap">
-      <div class="why reveal">
+      <div class="sec-head--split reveal">
         <div>
-          <span class="eyebrow">Prístup</span>
-          <h2>Najprv meranie, potom rozpočty.</h2>
-          <p>Spoľahlivé dáta sú podmienkou efektívneho míňania. Rozhodnutia vychádzajú <b>z čísel naprieč kanálmi,</b> nie z pohľadu jednej platformy.</p>
-          <p>K spolupráci patrí transparentný prehľad o tom, čo sa na účtoch deje a aký to má dopad na tržby.</p>
-          <a href="/proces" class="more">Ako prebieha spolupráca →</a>
+          <h2 class="h2">Od reklamy po rozhodnutie — jeden systém.</h2>
+          <p class="lead">
+            Reklama, meranie aj dáta sedia v jednom systéme a navzájom spolupracujú — namiesto skladania z viacerých
+            dodávateľov.
+          </p>
         </div>
-        <div class="mini-stats">
-          <div class="mini-stat"><div class="v">10+</div><div class="l">EU trhov so živými kampaňami</div></div>
-          <div class="mini-stat"><div class="v">€5M+</div><div class="l">spravovaného spendu</div></div>
-          <div class="mini-stat"><div class="v">50+</div><div class="l">úspešných spoluprác</div></div>
-          <div class="mini-stat"><div class="v">1</div><div class="l">kontakt na reklamy, tracking aj dáta</div></div>
+        <div class="btn-row">
+          <a href="#book" class="btn btn--lime">Rezervovať konzultáciu →</a>
+          <a href="/kalkulacka" class="btn btn--outline">Spočítať cenu</a>
+        </div>
+      </div>
+
+      <div class="grid grid-4 reveal stagger">
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar" style="width:72%"></div>
+            <div class="bar" style="width:92%"></div>
+            <div class="bar" style="width:58%"></div>
+            <div class="bar" style="width:80%"></div>
+            <div class="bar" style="width:44%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">01 Zber</div>
+            <div class="nm">Reklamy &amp; kanály</div>
+            <div class="sb">Google, Meta, GA4, feedy, CRM</div>
+          </div>
+        </div>
+
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar bar--lime" style="width:66%"></div>
+            <div class="bar" style="width:92%"></div>
+            <div class="bar" style="width:58%"></div>
+            <div class="bar" style="width:80%"></div>
+            <div class="bar" style="width:44%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">02 Meranie</div>
+            <div class="nm">Tracking</div>
+            <div class="sb">GA4 + server-side, CAPI, consent</div>
+          </div>
+        </div>
+
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar" style="width:60%"></div>
+            <div class="bar" style="width:92%"></div>
+            <div class="bar bar--indigo" style="width:58%"></div>
+            <div class="bar" style="width:80%"></div>
+            <div class="bar" style="width:44%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">03 Sklad</div>
+            <div class="nm">BigQuery</div>
+            <div class="sb">Jeden zdroj pravdy pre všetky dáta</div>
+          </div>
+        </div>
+
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar" style="width:54%"></div>
+            <div class="bar" style="width:92%"></div>
+            <div class="bar" style="width:58%"></div>
+            <div class="bar" style="width:80%"></div>
+            <div class="bar bar--lime" style="width:44%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">04 Rozhodnutie</div>
+            <div class="nm">Reporting</div>
+            <div class="sb">Looker Studio dashboardy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="sec sec--mist">
+    <div class="wrap">
+      <div class="sec-head--center reveal">
+        <h2 class="h2">Najprv meranie, potom rozpočty.</h2>
+        <p class="lead">
+          Spoľahlivé dáta sú podmienkou efektívneho míňania. Rozhodnutia vychádzajú z čísel naprieč kanálmi, nie
+          z pohľadu jednej platformy.
+        </p>
+      </div>
+
+      <div class="mission-wrap reveal">
+        <div class="mission-visual">
+          <Visual tone="indigo" />
+        </div>
+        <div class="mission-badge">
+          <div class="stats">
+            <div>
+              <div class="v"><span class="count">10</span><em>+</em></div>
+              <div class="l">EU trhov</div>
+            </div>
+            <div>
+              <div class="v"><span class="count">€5M</span><em>+</em></div>
+              <div class="l">spravovaný spend</div>
+            </div>
+            <div>
+              <div class="v"><span class="count">50</span><em>+</em></div>
+              <div class="l">spoluprác</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row btn-row--center reveal" style="margin-top:66px">
+        <a href="/sluzby" class="btn btn--lime">Pozrieť služby →</a>
+        <a href="/proces" class="btn btn--outline">Ako prebieha spolupráca</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE KOHO -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head--split reveal">
+        <div>
+          <h2 class="h2">Pre koho je to vhodné — a pre koho menej.</h2>
+          <p class="lead">
+            Spolupráca funguje najlepšie tam, kde je reklama dôležitý kanál a je ochota investovať do merania.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a href="/sluzby" class="btn btn--outline">Prehľad služieb</a>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="fit-card reveal">
+          <div class="fit-head fit-head--ink"><span>Vhodné, ak…</span></div>
+          <div class="fit-body">
+            <div>firma má e-shop alebo B2B a reklama je dôležitý kanál</div>
+            <div>cieľom je rozumieť dátam a rozhodovať sa podľa nich</div>
+            <div>hľadá sa dlhodobý partner, nie najlacnejší dodávateľ</div>
+            <div>preferuje sa priama komunikácia a jeden kontakt</div>
+          </div>
+        </div>
+        <div class="fit-card reveal">
+          <div class="fit-head fit-head--lime"><span>Menej vhodné, ak…</span></div>
+          <div class="fit-body">
+            <div>očakávaním je rýchly výsledok bez investície do merania</div>
+            <div>záujmom sú len „najlacnejšie kliky“ bez ohľadu na výsledok</div>
+            <div>nie je priestor meniť tracking ani dáta</div>
+            <div>potrebný je veľký brandový tím namiesto výkonu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  {
+    posts.length > 0 && (
+      <section class="sec">
+        <div class="wrap">
+          <div class="sec-head--split reveal">
+            <div>
+              <h2 class="h2">Z praxe — PPC, meranie a dáta.</h2>
+              <p class="lead">Praktické postrehy o reklame, trackingu a dátach. Po slovensky, z reálnych účtov.</p>
+            </div>
+            <div class="btn-row">
+              <a href="#book" class="btn btn--lime">
+                Rezervovať konzultáciu →
+              </a>
+              <a href="/blog" class="btn btn--outline">
+                Všetky články
+              </a>
+            </div>
+          </div>
+
+          <div class="grid grid-3 reveal stagger">
+            {posts.map((post) => (
+              <a href={`/blog/${post.id}`} class="post-card">
+                <Visual tone="mist" />
+                <div class="body">
+                  <div class="post-meta">
+                    {post.data.tags.length ? `${post.data.tags[0]} · ` : ''}
+                    {fmt(post.data.pubDate)}
+                  </div>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                  <span class="link-arrow">Čítať →</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- CTA BAND -->
+  <section class="sec sec--tight" style="padding-top:16px">
+    <div class="wrap">
+      <div class="ctaband reveal">
+        <div class="shape shape--lime" style="right:-40px;top:-24px;width:104px;height:84px"></div>
+        <div class="shape shape--lime" style="right:36px;top:64px;width:104px;height:84px"></div>
+        <div class="ctaband-inner">
+          <div style="max-width:600px">
+            <h2 class="h2">Reklama aj dáta pod jednou strechou.</h2>
+            <p>
+              Jeden kontakt na kampane, tracking aj dátový sklad. Bez viazanosti — spolupráca beží z mesiaca na mesiac
+              a účty aj dáta zostávajú vaše.
+            </p>
+          </div>
+          <div class="btn-row">
+            <a href="#book" class="btn btn--lime">Rezervovať konzultáciu →</a>
+            <a href="/kalkulacka" class="btn btn--onindigo">Spočítať cenu</a>
+          </div>
         </div>
       </div>
     </div>
@@ -128,3 +331,9 @@ import StickyCta from '../components/StickyCta.astro';
   <Booking />
   <StickyCta />
 </Base>
+
+<style>
+  .mission-wrap {
+    position: relative;
+  }
+</style>

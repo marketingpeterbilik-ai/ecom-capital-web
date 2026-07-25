@@ -1,44 +1,48 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Visual from '../../components/Visual.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
-const fmt = (d: Date) =>
-  d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'long', day: 'numeric' });
+const fmt = (d: Date) => d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
 <Base
   title="Blog | Ecom Capital"
   description="Praktické články o PPC, meraní, trackingu a dátach v BigQuery. Z reálnej praxe, po slovensky, bez omáčky."
 >
-  <header class="hero--ink hero--page">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
+  <section class="phero">
+    <div class="wrap">
       <span class="eyebrow reveal">Blog</span>
-      <h1 class="reveal" style="margin-top:18px">Z praxe: PPC, meranie a dáta.</h1>
-      <p class="hero-sub reveal">Praktické postrehy o reklame, trackingu a dátach. Po slovensky, z reálnych účtov.</p>
+      <h1 class="h1 reveal">Z praxe — PPC, meranie a dáta.</h1>
+      <p class="lead lead--lg reveal">
+        Praktické postrehy o reklame, trackingu a dátach. Po slovensky, z reálnych účtov.
+      </p>
     </div>
-  </header>
+  </section>
 
-  <section class="sec" style="padding-top:56px">
+  <section class="sec" style="padding-top:0">
     <div class="wrap">
       {
         posts.length === 0 ? (
           <p class="lead reveal">Čoskoro tu pribudnú prvé články.</p>
         ) : (
-          <div class="post-grid">
+          <div class="post-list">
             {posts.map((post) => (
-              <a href={`/blog/${post.id}`} class="post-card reveal">
-                <div class="meta">
-                  {fmt(post.data.pubDate)}
-                  {post.data.tags.length ? ` · ${post.data.tags.join(' · ')}` : ''}
+              <a href={`/blog/${post.id}`} class="post-row reveal">
+                <Visual tone="tint" />
+                <div class="body">
+                  <div class="post-meta">
+                    {fmt(post.data.pubDate)}
+                    {post.data.tags.length ? ` · ${post.data.tags.join(' · ')}` : ''}
+                  </div>
+                  <h2>{post.data.title}</h2>
+                  <p>{post.data.description}</p>
+                  <span class="link-arrow">Čítať →</span>
                 </div>
-                <h3>{post.data.title}</h3>
-                <p>{post.data.description}</p>
-                <span class="more">Čítať →</span>
               </a>
             ))}
           </div>

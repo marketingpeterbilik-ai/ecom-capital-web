@@ -67,15 +67,13 @@ const jsonLd = faqLd ? [articleLd, faqLd] : [articleLd];
 >
   <section class="phero">
     <div class="wrap article">
-      <a href="/blog" class="back-link reveal">← Späť na blog</a>
-      <div class="meta reveal" style="margin-top:18px">
+      <a href="/blog" class="link-arrow reveal">← Späť na blog</a>
+      <div class="post-meta reveal" style="margin-top:18px">
         {fmt(post.data.pubDate)}
         {post.data.tags.length ? ` · ${post.data.tags.join(' · ')}` : ''}
       </div>
-      <h1 class="display reveal" style="margin-top:10px; font-size:clamp(2rem,5vw,3.2rem)">
-        {post.data.title}
-      </h1>
-      <p class="lead reveal" style="margin-top:16px">{post.data.description}</p>
+      <h1 class="reveal" style="margin-top:10px">{post.data.title}</h1>
+      <p class="lead lead--lg reveal" style="margin-top:16px">{post.data.description}</p>
     </div>
   </section>
 
@@ -99,11 +97,21 @@ const jsonLd = faqLd ? [articleLd, faqLd] : [articleLd];
     </div>
   </section>
 
-  <section class="sec sec--tint">
+  <section class="sec sec--tight">
     <div class="wrap">
       <div class="ctaband reveal">
-        <h2>Riešite niečo z článku na vlastnom účte?</h2>
-        <a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a>
+        <div class="shape shape--lime" style="right:-40px;top:-24px;width:104px;height:84px"></div>
+        <div class="shape shape--lime" style="right:36px;top:64px;width:104px;height:84px"></div>
+        <div class="ctaband-inner">
+          <div style="max-width:600px">
+            <h2 class="h2">Riešite niečo z článku na vlastnom účte?</h2>
+            <p>Krátky hovor o stave účtu a merania — nezáväzne, 30 minút online.</p>
+          </div>
+          <div class="btn-row">
+            <a href="/kontakt" class="btn btn--lime">Rezervovať konzultáciu →</a>
+            <a href="/blog" class="btn btn--onindigo">Ďalšie články</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

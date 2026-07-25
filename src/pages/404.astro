@@ -3,16 +3,18 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base title="404 · Stránka sa nenašla | Ecom Capital" description="Táto stránka neexistuje.">
-  <header class="hero--ink hero--page" style="padding-bottom:96px">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
+  <section class="phero" style="padding-bottom:120px">
+    <div class="wrap">
       <span class="eyebrow reveal">Chyba 404</span>
-      <h1 class="reveal" style="margin-top:18px">Stránka sa nenašla.</h1>
-      <p class="hero-sub reveal">Adresa neexistuje alebo sa presunula. K dispozícii je návrat na úvod alebo kontakt.</p>
-      <div class="cta-row reveal">
-        <a href="/" class="btn btn--primary btn--lg">Späť na domov</a>
-        <a href="/kontakt" class="hero-textlink">Kontakt →</a>
+      <h1 class="h1 reveal">Stránka sa nenašla.</h1>
+      <p class="lead lead--lg reveal">
+        Adresa neexistuje alebo sa presunula. K dispozícii je návrat na úvod, prehľad služieb alebo kontakt.
+      </p>
+      <div class="btn-row reveal">
+        <a href="/" class="btn btn--lime">Späť na domov</a>
+        <a href="/sluzby" class="btn btn--outline">Prehľad služieb</a>
+        <a href="/kontakt" class="btn btn--outline">Kontakt</a>
       </div>
     </div>
-  </header>
+  </section>
 </Base>

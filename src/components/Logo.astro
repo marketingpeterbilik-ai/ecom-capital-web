@@ -1,0 +1,36 @@
+---
+// Logo = ikona (indigová kocka s limetkovým prvkom) + wordmark „ecom capital."
+// Wordmark je HTML text v Sore, nie text v SVG — SVG <text> by sa bez lokálne
+// nainštalovanej Sory vykreslil náhradným fontom.
+interface Props {
+  variant?: 'primary' | 'inverse';
+  size?: number;
+  href?: string | null;
+  class?: string;
+}
+
+const { variant = 'primary', size = 30, href = '/', class: cls = '' } = Astro.props;
+const inverse = variant === 'inverse';
+const tile = inverse ? '#C7F541' : '#3826F3';
+const inset = inverse ? '#3826F3' : '#C7F541';
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  {...href ? { href } : {}}
+  class={`logo ${inverse ? 'logo--inverse' : ''} ${cls}`}
+  aria-label="ecom capital"
+>
+  <svg
+    class="logo-mark"
+    style={`width:${size}px;height:${size}px`}
+    viewBox="0 0 64 64"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <rect width="64" height="64" rx="18" fill={tile}></rect>
+    <rect x="20" y="20" width="24" height="24" rx="7" transform="rotate(-8 32 32)" fill={inset}></rect>
+  </svg>
+  <span class="logo-word" style={`font-size:${size * 0.72}px`}>ecom capital<span class="dot">.</span></span>
+</Tag>

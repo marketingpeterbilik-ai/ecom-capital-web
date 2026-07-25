@@ -1,86 +1,149 @@
 ---
-import Base from '../layouts/Base.astro';
+import Service from '../layouts/Service.astro';
 ---
 
-<Base
+<Service
   title="Cookie lišta & Consent Mode v2 | Ecom Capital"
   description="Meranie cez GA4 a reklamné pixely bez platného súhlasu porušuje GDPR a od marca 2024 nespĺňa podmienky Googlu. Nasadenie CMP s Consent Mode v2 vrátane auditu a testov. Bezplatná kontrola webu do 48 hodín."
+  crumb="Consent"
+  heading="Cookie lišta & Consent Mode v2."
+  lead="Súlad s GDPR a podmienkami Googlu, ktoré platia od marca 2024. Nasadenie je otázka dní — a náprava sa oplatí neodkladať."
+  cta={[
+    { href: '#book', label: 'Bezplatná kontrola webu →', style: 'lime' },
+    { href: '/kontakt', label: 'Rezervovať konzultáciu →', style: 'indigo' },
+  ]}
+  whatTitle="Súhlas, ktorý nezničí meranie."
+  whatLead="Bez platného súhlasu hrozí prerušenie personalizovanej reklamy aj strata dát v GA4. Správne nasadený Consent Mode v2 zachová čo najviac merania v rámci pravidiel."
+  cols={2}
+  items={[
+    { t: 'Audit skriptov a cookies', d: 'Čo presne sa načítava pred súhlasom, ktoré cookies sa ukladajú a kam odchádzajú dáta.' },
+    { t: 'CMP certifikovaná Googlom', d: 'Výber a nasadenie lišty, ktorá spĺňa požiadavky Googlu aj slovenskú legislatívu.' },
+    { t: 'Consent Mode v2 cez GTM aj server-side', d: 'Signály súhlasu prechádzajú celým dátovým tokom, nielen do GA4.' },
+    { t: 'Test oboch scenárov', d: 'Overenie správania pri prijatí aj odmietnutí súhlasu — vrátane reklamných pixelov.' },
+    { t: 'Dokumentácia pre kontrolu', d: 'Písomný záznam nastavenia, ktorý sa dá predložiť pri kontrole alebo audite.' },
+    { t: 'Modelované konverzie', d: 'Aj pri odmietnutom súhlase Google dopočíta časť konverzií — ak je consent nasadený správne.' },
+  ]}
+  related={[
+    { href: '/sluzby/meranie', label: 'Meranie & tracking' },
+    { href: '/sluzby/audit', label: 'Audit & konzultácie' },
+  ]}
+  bookingTitle="Bezplatná kontrola webu, výstup do 48 hodín."
+  bookingItems={[
+    { b: 'Stav súhlasu', t: ' — čo sa na webe načítava pred prijatím cookies.' },
+    { b: 'Consent Mode v2', t: ' — či signály reálne dochádzajú do Google a Meta.' },
+    { b: 'Náprava', t: ' — rozsah, cena a termín nasadenia.' },
+  ]}
 >
-  <header class="hero--ink hero--page">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
-      <span class="chip--live reveal"><span class="chip-dot"></span>Požiadavka Googlu od <b>marca 2024</b> · GDPR</span>
-      <h1 class="reveal">Meranie bez súhlasu je <span class="hl">právne aj výkonnostné</span> riziko.</h1>
-      <p class="hero-sub reveal">Ak web spúšťa GA4 alebo reklamné pixely bez funkčnej cookie lišty, porušuje GDPR a nespĺňa podmienky, ktoré Google vyžaduje od marca 2024. <strong>Náprava je pritom otázkou dní, nie mesiacov.</strong></p>
-      <div class="cta-row reveal">
-        <a href="/kontakt" class="btn btn--primary btn--lg">Vyžiadať bezplatnú kontrolu webu <span class="arrow-i">→</span></a>
-        <span class="cta-note">VÝSTUP DO 48 HODÍN · NEZÁVÄZNE<br />CONSENT MODE V2 · GTM AJ SERVER-SIDE</span>
-      </div>
-    </div>
-  </header>
-
-  <section class="sec sec--ink" style="padding-top:0">
-    <div class="wrap">
-      <div class="sec-head reveal">
+  <!-- Čo je v hre -->
+  <section class="sec sec--indigo">
+    <div class="shape shape--lime" style="left:-46px;top:60px;width:94px;height:76px"></div>
+    <div class="shape shape--lime" style="left:14px;top:150px;width:94px;height:76px"></div>
+    <div class="wrap on-top">
+      <div class="sec-head reveal" style="margin-bottom:44px">
         <span class="eyebrow">Čo je v hre</span>
-        <h2 class="display">Tri dôvody, prečo to neodkladať.</h2>
+        <h2 class="h2" style="margin:16px 0 0">Tri dôvody, prečo to neodkladať.</h2>
       </div>
       <div class="facts reveal stagger">
-        <div class="fact"><span class="f-num">01 / POKUTY</span><h3>Pokuty a podnety</h3><p>GDPR umožňuje pokuty do 20 mil. € alebo <b>4 % celosvetového obratu.</b> Podnet môže podať ktorýkoľvek návštevník webu a úrady ich riešia.</p></div>
-        <div class="fact"><span class="f-num">02 / VÝKON</span><h3>Požiadavka Googlu od 03/2024</h3><p>Bez Consent Mode v2 Google v EÚ <b>obmedzuje remarketing a personalizované publiká.</b> Kampane strácajú výkon bez ohľadu na rozpočet.</p></div>
-        <div class="fact"><span class="f-num">03 / DÁTA</span><h3>Dáta, o ktoré sa nedá oprieť</h3><p>Dáta zozbierané bez súhlasu sa <b>spätne legalizovať nedajú.</b> Každý mesiac odkladu znamená ďalšie stratené obdobie.</p></div>
+        <div class="fact">
+          <span class="f-num">01 / Pokuty</span>
+          <h3>Pokuty a podnety</h3>
+          <p>
+            GDPR umožňuje pokuty do 20 mil. € alebo <b>4 % celosvetového obratu.</b> Podnet môže podať ktorýkoľvek
+            návštevník webu a úrady ich riešia.
+          </p>
+        </div>
+        <div class="fact">
+          <span class="f-num">02 / Výkon</span>
+          <h3>Požiadavka Googlu od 03/2024</h3>
+          <p>
+            Bez Consent Mode v2 Google v EÚ <b>obmedzuje remarketing a personalizované publiká.</b> Kampane strácajú
+            výkon bez ohľadu na rozpočet.
+          </p>
+        </div>
+        <div class="fact">
+          <span class="f-num">03 / Dáta</span>
+          <h3>Dáta, o ktoré sa nedá oprieť</h3>
+          <p>
+            Dáta zozbierané bez súhlasu sa <b>spätne legalizovať nedajú.</b> Každý mesiac odkladu znamená ďalšie
+            stratené obdobie.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- Samokontrola -->
   <section class="sec">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal" style="margin-bottom:44px">
         <span class="eyebrow">Rýchla samokontrola</span>
-        <h2 class="display">Štyri otázky, ktoré odhalia stav webu.</h2>
+        <h2 class="h2" style="margin:16px 0 0">Štyri otázky, ktoré odhalia stav webu.</h2>
       </div>
-      <div class="grid grid-2">
-        <div class="card reveal"><h3>1. Zobrazuje web cookie lištu?</h3><p>A to ešte pred spustením meracích a reklamných skriptov, nie až po ich načítaní.</p></div>
-        <div class="card reveal"><h3>2. Dá sa súhlas odmietnuť rovnako ľahko ako prijať?</h3><p>Lišta bez možnosti odmietnutia (alebo so skrytým odmietnutím) nespĺňa podmienky platného súhlasu.</p></div>
-        <div class="card reveal"><h3>3. Je nasadený Consent Mode v2?</h3><p>Staršia verzia consent mode ani samotná lišta bez prepojenia na Google nestačia. Od marca 2024 sa vyžadujú signály v2.</p></div>
-        <div class="card reveal"><h3>4. Rešpektuje web voľbu návštevníka?</h3><p>Odmietnutie musí platiť aj pri ďalšej návšteve a skripty sa nesmú spustiť „potichu“ neskôr.</p></div>
+      <div class="grid grid-2 reveal stagger">
+        <div class="card card--hover">
+          <div class="h3">1. Zobrazuje web cookie lištu?</div>
+          <p>A to ešte pred spustením meracích a reklamných skriptov, nie až po ich načítaní.</p>
+        </div>
+        <div class="card card--hover">
+          <div class="h3">2. Dá sa súhlas odmietnuť rovnako ľahko ako prijať?</div>
+          <p>Lišta bez možnosti odmietnutia (alebo so skrytým odmietnutím) nespĺňa podmienky platného súhlasu.</p>
+        </div>
+        <div class="card card--hover">
+          <div class="h3">3. Je nasadený Consent Mode v2?</div>
+          <p>Staršia verzia consent mode ani samotná lišta bez prepojenia na Google nestačia. Od marca 2024 sa vyžadujú signály v2.</p>
+        </div>
+        <div class="card card--hover">
+          <div class="h3">4. Rešpektuje web voľbu návštevníka?</div>
+          <p>Odmietnutie musí platiť aj pri ďalšej návšteve a skripty sa nesmú spustiť „potichu“ neskôr.</p>
+        </div>
       </div>
-      <p class="lead reveal" style="margin-top:30px">Ak je odpoveď čo i len raz „nie“ alebo „neviem“, web pravdepodobne zbiera dáta bez platného súhlasu. Presnú odpoveď dá <a href="/kontakt" style="color:var(--forest); border-bottom:2px solid var(--lime)">bezplatná kontrola</a>.</p>
+      <div class="callout reveal" style="margin-top:26px">
+        Ak je odpoveď čo i len raz „nie“ alebo „neviem“, web pravdepodobne zbiera dáta bez platného súhlasu. Presnú
+        odpoveď dá <a href="#book">bezplatná kontrola</a>.
+      </div>
     </div>
   </section>
 
-  <section class="sec sec--tint">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">Čo služba zahŕňa</span>
-        <h2 class="display" style="margin-top:16px; font-size:clamp(1.8rem,4.2vw,2.6rem)">Súlad bez zbytočnej straty merania.</h2>
-        <p class="lead" style="margin-top:18px">Cieľom nie je len „mať lištu“, ale nastaviť súhlas tak, aby web spĺňal pravidlá a meranie zostalo použiteľné, vrátane modelovaných konverzií pre návštevníkov, ktorí súhlas odmietnu.</p>
-      </div>
-      <div class="reveal">
-        <div class="feat"><div class="k">01</div><div><h4>Audit skriptov a cookies</h4><p>Čo presne sa načítava pred súhlasom, ktoré cookies sa ukladajú a kam odchádzajú dáta.</p></div></div>
-        <div class="feat"><div class="k">02</div><div><h4>Nasadenie CMP</h4><p>Výber a implementácia consent management platformy certifikovanej Googlom, v dizajne webu.</p></div></div>
-        <div class="feat"><div class="k">03</div><div><h4>Consent Mode v2</h4><p>Prepojenie súhlasu na GA4, Google Ads a Meta cez GTM aj server-side, so správnymi default stavmi.</p></div></div>
-        <div class="feat"><div class="k">04</div><div><h4>Test a dokumentácia</h4><p>Overenie scenárov prijatia aj odmietnutia a odovzdanie so stručnou dokumentáciou.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec">
+  <!-- Priebeh -->
+  <section class="sec sec--mist">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal" style="margin-bottom:20px">
         <span class="eyebrow">Priebeh</span>
-        <h2 class="display">Od kontroly po odovzdanie.</h2>
+        <h2 class="h2" style="margin:16px 0 0">Od kontroly po odovzdanie.</h2>
       </div>
       <div class="steps">
-        <div class="step reveal"><div class="num">01</div><div><h3>Bezplatná kontrola webu</h3><p>Nezáväzné posúdenie aktuálneho stavu: čo sa načítava pred súhlasom a či web spĺňa požiadavky. Výstup do 48 hodín.</p></div></div>
-        <div class="step reveal"><div class="num">02</div><div><h3>Návrh riešenia a cena</h3><p>Konkrétny rozsah podľa zistení: výber CMP, spôsob integrácie a pevná cena vopred.</p></div></div>
-        <div class="step reveal"><div class="num">03</div><div><h3>Nasadenie</h3><p>Implementácia CMP a Consent Mode v2 zvyčajne v priebehu niekoľkých dní, bez zásahu do chodu webu.</p></div></div>
-        <div class="step reveal"><div class="num">04</div><div><h3>Test a odovzdanie</h3><p>Overenie oboch scenárov súhlasu, kontrola merania a odovzdanie s dokumentáciou.</p></div></div>
+        <div class="step reveal">
+          <div class="num">01</div>
+          <div>
+            <h3>Bezplatná kontrola webu</h3>
+            <p>
+              Nezáväzné posúdenie aktuálneho stavu: čo sa načítava pred súhlasom a či web spĺňa požiadavky. Výstup do
+              48 hodín.
+            </p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <div>
+            <h3>Návrh riešenia a cena</h3>
+            <p>Konkrétny rozsah podľa zistení: výber CMP, spôsob integrácie a pevná cena vopred.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <div>
+            <h3>Nasadenie</h3>
+            <p>Implementácia CMP a Consent Mode v2 zvyčajne v priebehu niekoľkých dní, bez zásahu do chodu webu.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="num">04</div>
+          <div>
+            <h3>Test a odovzdanie</h3>
+            <p>Overenie oboch scenárov súhlasu, kontrola merania a odovzdanie s dokumentáciou.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
-  <section class="sec sec--tint">
-    <div class="wrap"><div class="ctaband reveal"><h2>Bezplatná kontrola webu, výstup do 48 hodín.</h2><a href="/kontakt" class="btn btn--primary btn--lg">Vyžiadať kontrolu →</a></div></div>
-  </section>
-</Base>
+</Service>

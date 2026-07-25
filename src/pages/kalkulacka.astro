@@ -4,79 +4,90 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="Kalkulačka ceny | Ecom Capital"
-  description="Orientačná cena správy PPC. Vyber platformy, rozpočet a doplnkové služby a uvidíš odhad mesačnej ceny. Presná ponuka po konzultácii."
+  description="Orientačná cena správy PPC. Vyberte platformy, rozpočet a doplnkové služby a uvidíte odhad mesačnej ceny. Presná ponuka po konzultácii."
 >
-  <header class="hero--ink hero--page">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
+  <section class="phero" style="padding-bottom:48px">
+    <div class="wrap">
       <span class="eyebrow reveal">Kalkulačka ceny</span>
-      <h1 class="reveal" style="margin-top:18px">Orientačná cena správy.</h1>
-      <p class="hero-sub reveal">Výber platforiem, rozpočtu a doplnkových služieb ukáže cenové rozpätie. Presná ponuka vzíde z konzultácie podľa stavu účtu a reálneho rozsahu.</p>
+      <h1 class="h1 reveal">Orientačná cena správy.</h1>
+      <p class="lead lead--lg reveal">
+        Výber platforiem, rozpočtu a doplnkových služieb ukáže cenové rozpätie. Presná ponuka vzíde z konzultácie
+        podľa stavu účtu a reálneho rozsahu.
+      </p>
     </div>
-  </header>
+  </section>
 
-  <section class="sec" style="padding-top:56px">
+  <section class="sec" style="padding-top:0">
     <div class="wrap">
       <div class="calc">
         <div class="calc-controls reveal">
-          <div class="cgroup">
+          <div class="calc-card">
             <div class="clabel">Ktoré platformy riešiť?</div>
             <div class="chint">Jedna alebo viac. Každá platforma znamená ďalšiu správu navyše.</div>
-            <div class="toggles" id="platforms">
-              <button type="button" class="tg pf on" data-h="8" aria-pressed="true"><span class="mk" aria-hidden="true">✓</span> Google Ads</button>
-              <button type="button" class="tg pf on" data-h="7" aria-pressed="true"><span class="mk" aria-hidden="true">✓</span> Meta Ads</button>
-              <button type="button" class="tg pf" data-h="6" aria-pressed="false"><span class="mk" aria-hidden="true"></span> TikTok Ads</button>
-              <button type="button" class="tg pf" data-h="4" aria-pressed="false"><span class="mk" aria-hidden="true"></span> Microsoft Ads</button>
+            <div class="chips" id="platforms">
+              <button type="button" class="chip pf" data-h="8" aria-pressed="true">Google Ads</button>
+              <button type="button" class="chip pf" data-h="7" aria-pressed="true">Meta Ads</button>
+              <button type="button" class="chip pf" data-h="6" aria-pressed="false">TikTok Ads</button>
+              <button type="button" class="chip pf" data-h="4" aria-pressed="false">Microsoft Ads</button>
             </div>
           </div>
 
-          <div class="cgroup">
+          <div class="calc-card">
             <div class="slider-row">
               <label class="clabel" for="budget">Mesačný rozpočet na reklamu</label>
               <div class="slider-val" id="budgetVal" aria-hidden="true">3 000 €</div>
             </div>
             <div class="chint">Plánovaný mesačný výdaj na samotné reklamy (bez odmeny za správu).</div>
-            <input type="range" id="budget" min="200" max="50000" step="100" value="3000" />
+            <input type="range" id="budget" min="200" max="50000" step="100" value="3000" aria-label="Mesačný rozpočet na reklamu" />
             <div class="slider-ends"><span>200 €</span><span>50 000 €+</span></div>
           </div>
 
-          <div class="cgroup">
+          <div class="calc-card">
             <div class="clabel">Počet trhov / jazykov</div>
             <div class="chint">Viac trhov znamená viac kampaní, prekladov a optimalizácie.</div>
-            <div class="seg" id="markets">
-              <button type="button" class="mk-btn on" data-f="1" aria-pressed="true">1 trh</button>
-              <button type="button" class="mk-btn" data-f="1.3" aria-pressed="false">2–3 trhy</button>
-              <button type="button" class="mk-btn" data-f="1.6" aria-pressed="false">4+ trhov</button>
+            <div class="chips" id="markets">
+              <button type="button" class="chip mk-btn" data-f="1" aria-pressed="true">1 trh</button>
+              <button type="button" class="chip mk-btn" data-f="1.3" aria-pressed="false">2–3 trhy</button>
+              <button type="button" class="chip mk-btn" data-f="1.6" aria-pressed="false">4+ trhov</button>
             </div>
           </div>
 
-          <div class="cgroup">
+          <div class="calc-card">
             <div class="clabel">Doplnkové služby</div>
-            <div class="chint">Voliteľné. Tracking, dáta a feedy majú jednorazové nastavenie a menšiu mesačnú údržbu.</div>
-            <div class="ad-grid" id="addons">
-              <button type="button" class="tg ad" data-m="1" data-s="12" aria-pressed="false"><span class="ad-t">Tracking &amp; meranie <span class="mk" aria-hidden="true"></span></span><span class="ad-d">GA4 · sGTM · CAPI</span></button>
-              <button type="button" class="tg ad" data-m="4" data-s="20" aria-pressed="false"><span class="ad-t">Dáta &amp; BigQuery <span class="mk" aria-hidden="true"></span></span><span class="ad-d">dátový sklad · dashboardy</span></button>
-              <button type="button" class="tg ad" data-m="2" data-s="8" aria-pressed="false"><span class="ad-t">Produktové feedy <span class="mk" aria-hidden="true"></span></span><span class="ad-d">Merchant Center · Mergado</span></button>
-              <button type="button" class="tg ad" data-m="3" data-s="0" aria-pressed="false"><span class="ad-t">Pravidelný reporting <span class="mk" aria-hidden="true"></span></span><span class="ad-d">mesačný report + hovor</span></button>
-              <button type="button" class="tg ad" data-m="1" data-s="3.3" aria-pressed="false"><span class="ad-t">Cookie lišta &amp; consent <span class="mk" aria-hidden="true"></span></span><span class="ad-d">CMP · Consent Mode v2</span></button>
+            <div class="chint">
+              Voliteľné. Tracking, dáta a feedy majú jednorazové nastavenie a menšiu mesačnú údržbu.
+            </div>
+            <div class="chips--grid" id="addons">
+              <button type="button" class="chip ad" data-m="1" data-s="12" aria-pressed="false">Tracking &amp; meranie</button>
+              <button type="button" class="chip ad" data-m="4" data-s="20" aria-pressed="false">Dáta &amp; BigQuery</button>
+              <button type="button" class="chip ad" data-m="2" data-s="8" aria-pressed="false">Produktové feedy</button>
+              <button type="button" class="chip ad" data-m="3" data-s="0" aria-pressed="false">Pravidelný reporting</button>
+              <button type="button" class="chip ad" data-m="1" data-s="3.3" aria-pressed="false">Cookie lišta &amp; consent</button>
             </div>
           </div>
         </div>
 
-        <div class="calc-result reveal" id="result">
-          <div class="cr-lbl">Orientačná cena správy</div>
+        <div class="calc-result reveal">
+          <span class="eyebrow">Orientačná cena správy</span>
           <div aria-live="polite">
-            <div class="cr-big" id="rMonthly">…</div>
-            <div class="cr-range" id="rRange">vyber aspoň jednu platformu</div>
+            <div class="price" id="rMonthly">…</div>
+            <div class="pnote" id="rRange">vyberte aspoň jednu platformu</div>
           </div>
 
-          <div class="cr-setup" id="rSetupWrap" hidden>
-            <div class="s-lbl">Jednorazové nastavenie doplnkov</div>
-            <div class="s-val" id="rSetup">≈ 0 €</div>
+          <hr />
+
+          <div class="calc-row">
+            <span>Jednorazové nastavenie</span><b id="rSetup">—</b>
+          </div>
+          <div class="calc-row">
+            <span>Reklamný rozpočet</span><b id="rBudget">3 000 €</b>
           </div>
 
-          <p class="cr-note">Orientačný odhad, nie záväzná ponuka. Presná cena závisí od stavu účtu a rozsahu práce a dohodne sa na konzultácii.</p>
-          <div class="cr-cta"><a href="/kontakt" class="btn btn--lg">Vyžiadať presnú ponuku →</a></div>
+          <p class="disclaimer">
+            Orientačný odhad, nie záväzná ponuka. Presná cena závisí od stavu účtu a rozsahu práce — dohodne sa na
+            konzultácii.
+          </p>
+          <a href="/kontakt" class="btn btn--lime btn--block">Vyžiadať presnú ponuku →</a>
         </div>
       </div>
     </div>
@@ -90,7 +101,7 @@ import Base from '../layouts/Base.astro';
   const elBudgetVal = document.getElementById('budgetVal');
 
   function fmtEur(v: number) {
-    return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' €';
+    return Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' €';
   }
   function roundTo(v: number, s: number) {
     return Math.round(v / s) * s;
@@ -106,25 +117,27 @@ import Base from '../layouts/Base.astro';
   function recompute() {
     if (!elBudget || !elBudgetVal) return;
     const budget = parseInt(elBudget.value, 10);
-    elBudgetVal.textContent = budget >= 50000 ? '50 000 €+' : fmtEur(budget);
+    const budgetLabel = budget >= 50000 ? '50 000 €+' : fmtEur(budget);
+    elBudgetVal.textContent = budgetLabel;
+    document.getElementById('rBudget')!.textContent = budgetLabel;
 
     let platH = 0;
-    document.querySelectorAll<HTMLElement>('#platforms .pf.on').forEach((b) => {
+    let platCount = 0;
+    document.querySelectorAll<HTMLElement>('#platforms .pf[aria-pressed="true"]').forEach((b) => {
       platH += parseFloat(b.dataset.h || '0');
+      platCount++;
     });
     let mkF = 1;
-    const amk = document.querySelector<HTMLElement>('#markets .mk-btn.on');
+    const amk = document.querySelector<HTMLElement>('#markets .mk-btn[aria-pressed="true"]');
     if (amk) mkF = parseFloat(amk.dataset.f || '1');
     let addMonth = 0,
       setupH = 0;
-    document.querySelectorAll<HTMLElement>('#addons .ad.on').forEach((b) => {
+    document.querySelectorAll<HTMLElement>('#addons .ad[aria-pressed="true"]').forEach((b) => {
       addMonth += parseFloat(b.dataset.m || '0');
       setupH += parseFloat(b.dataset.s || '0');
     });
 
-    const mgmtPlat = platH * budgetFactor(budget) * mkF;
-    const totalH = mgmtPlat + addMonth;
-
+    const totalH = platH * budgetFactor(budget) * mkF + addMonth;
     const monthly = totalH > 0 ? Math.max(roundTo(totalH * RATE, 10), FLOOR) : 0;
     const setup = setupH > 0 ? roundTo(setupH * RATE, 50) : 0;
 
@@ -134,46 +147,34 @@ import Base from '../layouts/Base.astro';
       const lo = roundTo(monthly * 0.85, 50),
         hi = roundTo(monthly * 1.15, 50);
       rMonthly.textContent = fmtEur(lo) + ' – ' + fmtEur(hi);
-      rRange.textContent = 'mesačne, podľa zvoleného rozsahu';
+      rRange.textContent = platCount
+        ? `mesačne za správu ${platCount === 1 ? '1 platformy' : platCount + ' platforiem'}`
+        : 'mesačne, podľa zvoleného rozsahu';
     } else {
       rMonthly.textContent = '…';
-      rRange.textContent = 'vyber aspoň jednu platformu alebo službu';
+      rRange.textContent = 'vyberte aspoň jednu platformu alebo službu';
     }
 
-    const sw = document.getElementById('rSetupWrap') as HTMLElement;
-    if (setup > 0) {
-      sw.hidden = false;
-      document.getElementById('rSetup')!.textContent = '≈ ' + fmtEur(setup);
-    } else {
-      sw.hidden = true;
-    }
+    document.getElementById('rSetup')!.textContent = setup > 0 ? '≈ ' + fmtEur(setup) : '—';
   }
 
-  // platform & addon toggles
+  // prepínače (platformy + doplnky)
   document.querySelectorAll<HTMLElement>('#platforms .pf, #addons .ad').forEach((b) => {
     b.addEventListener('click', () => {
-      const on = b.classList.toggle('on');
-      b.setAttribute('aria-pressed', String(on));
-      const mk = b.querySelector('.mk');
-      if (mk) mk.textContent = on ? '✓' : '';
+      b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
       recompute();
     });
   });
-  // markets segmented
+
+  // trhy — výber jednej možnosti
   document.querySelectorAll<HTMLElement>('#markets .mk-btn').forEach((b) => {
     b.addEventListener('click', () => {
-      document.querySelectorAll('#markets .mk-btn').forEach((x) => {
-        x.classList.remove('on');
-        x.setAttribute('aria-pressed', 'false');
-      });
-      b.classList.add('on');
+      document.querySelectorAll('#markets .mk-btn').forEach((x) => x.setAttribute('aria-pressed', 'false'));
       b.setAttribute('aria-pressed', 'true');
       recompute();
     });
   });
-  elBudget?.addEventListener('input', recompute);
 
-  // init marks for pre-selected platforms
-  document.querySelectorAll('#platforms .pf.on .mk').forEach((m) => (m.textContent = '✓'));
+  elBudget?.addEventListener('input', recompute);
   recompute();
 </script>

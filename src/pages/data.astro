@@ -1,86 +1,172 @@
 ---
-import Base from '../layouts/Base.astro';
+import Service from '../layouts/Service.astro';
 ---
 
-<Base
+<Service
   title="Dáta & BigQuery | Ecom Capital"
   description="Marketingové dáta z Google Ads, Meta, GA4 a CRM spojené do jedného zdroja pravdy v BigQuery, s reportingom v Looker Studio. Blended ROAS, CAC, LTV a marža naprieč kanálmi."
+  crumb="Dáta"
+  heading="Dáta & BigQuery."
+  lead="Marketingové dáta z viacerých zdrojov v jednom sklade. Blended ROAS, CAC, LTV a marža — nezávisle od atribúcie platforiem."
+  whatTitle="Jeden zdroj pravdy namiesto piatich reportov."
+  whatLead="Google aj Meta si pripisujú tie isté konverzie. Po sčítaní vyjde viac tržieb, než firma reálne má — dátový sklad tento rozpor odstraňuje."
+  items={[
+    { t: 'Centralizovaný dátový sklad', d: 'BigQuery ako miesto, kde sa schádzajú kampane, GA4, objednávky a náklady.' },
+    { t: 'Blended metriky', d: 'Blended ROAS, CAC, LTV a marža — čísla za celý biznis, nie za jednu platformu.' },
+    { t: 'Looker Studio dashboardy', d: 'Prehľady na mieru pre marketing aj majiteľa — bez ručného kopírovania do tabuliek.' },
+    { t: 'Automatizované reporty', d: 'Report v e-maile v dohodnutom rytme, vždy z rovnakých definícií metrík.' },
+    { t: 'Napojenie CRM a skladu', d: 'Marže, vratky a stav skladu vstupujú do rozhodnutí o rozpočtoch.' },
+    { t: 'Náklady pod kontrolou', d: 'Sklad je navrhnutý tak, aby mesačné náklady na BigQuery zostali v desiatkach eur.' },
+  ]}
+  related={[
+    { href: '/sluzby/meranie', label: 'Meranie & tracking' },
+    { href: '/sluzby/automatizacia', label: 'AI automatizácia' },
+    { href: '/sluzby/audit', label: 'Audit & konzultácie' },
+  ]}
 >
-  <header class="hero--ink hero--page">
-    <div class="hero-orb"></div>
-    <div class="wrap hero-inner">
-      <span class="eyebrow reveal">Dáta &amp; BigQuery</span>
-      <h1 class="reveal" style="margin-top:18px">Marketingové dáta na jednom mieste, <span class="hl">pripravené na rozhodovanie</span>.</h1>
-      <p class="hero-sub reveal">Dáta rozdelené medzi Google Ads, Meta, GA4 a CRM neposkytujú celý obraz. Riešením je ich spojenie do <strong>jedného zdroja pravdy v BigQuery</strong> a reporting, ktorý odpovedá na biznisové otázky, nielen na počet klikov.</p>
-    </div>
-  </header>
-
-  <section class="sec" style="padding-top:56px">
-    <div class="wrap">
-      <div class="pipe-shell reveal" style="margin-top:0">
-        <div class="pipe-cap">Architektúra dátového toku</div>
-        <div class="pipeline reveal stagger">
-          <div class="node"><div class="idx">ZDROJE</div><div class="nm">Zber dát</div><div class="sb">Google Ads &amp; Meta API, GA4, feedy, CRM, e-shop</div></div>
-          <div class="arrow"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h19M14 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <div class="node hot"><div class="idx">SKLAD <span class="dot"></span></div><div class="nm">BigQuery</div><div class="sb">Centralizácia, čistenie a transformácia dát</div></div>
-          <div class="arrow"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M0 7h19M14 1l6 6-6 6" stroke="currentColor" stroke-width="1.6"/></svg></div>
-          <div class="node"><div class="idx">VÝSTUP</div><div class="nm">Looker Studio</div><div class="sb">Dashboardy a automatické reporty pre rozhodovanie</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec sec--ink">
-    <div class="wrap split split--wide">
-      <div class="reveal">
-        <span class="eyebrow">Čo zahŕňa</span>
-        <h2 class="display" style="margin-top:16px; font-size:clamp(1.9rem,4.4vw,2.8rem)">Od rozdelených exportov k jednému systému.</h2>
-        <p class="lead" style="margin-top:18px">Bez ručného sťahovania CSV a spájania v Exceli. Dáta tečú automaticky, sú vždy aktuálne a uchovávajú históriu vrátane medziročných porovnaní a trendov za niekoľko rokov dozadu.</p>
-        <div class="chips" style="margin-top:26px">
-          <span class="chip">BigQuery</span><span class="chip">GA4</span><span class="chip">sGTM</span><span class="chip">Looker Studio</span><span class="chip">Apps Script</span><span class="chip">Google Ads API</span><span class="chip">Meta API</span><span class="chip">Mergado</span>
-        </div>
-      </div>
-      <div class="reveal">
-        <div class="feat"><div class="k">01</div><div><h3>Centralizovaný dátový sklad</h3><p>Google Ads, Meta, GA4, feedy aj CRM v jednom BigQuery projekte. Jedna tabuľka pravdy, z ktorej čerpá všetok reporting.</p></div></div>
-        <div class="feat"><div class="k">02</div><div><h3>Server-side tracking (sGTM)</h3><p>Presné a odolné meranie, ktoré obstojí voči iOS, cookieless prostrediu aj consentu. Viac zachytených konverzií znamená lepšie učenie algoritmov.</p></div></div>
-        <div class="feat"><div class="k">03</div><div><h3>Vlastné metriky naprieč kanálmi</h3><p>Blended ROAS, CAC, LTV a marža počítané cez všetky platformy naraz, nie oddelene v izolovaných rozhraniach.</p></div></div>
-        <div class="feat"><div class="k">04</div><div><h3>Automatizovaný reporting</h3><p>Dashboardy v Looker Studio a pravidelné reporty, ktoré sa aktualizujú samé, bez manuálneho zostavovania.</p></div></div>
-      </div>
-    </div>
-  </section>
-
+  <!-- Architektúra dátového toku -->
   <section class="sec">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="eyebrow">Praktický prínos</span>
-        <h2 class="display">Otázky, na ktoré dáta poskytnú odpoveď.</h2>
-        <p class="lead">Reklamné rozhrania ukazujú počet klikov a ROAS pripísaný danou platformou. Skutočné biznisové otázky sú však inde a tie sa dajú zodpovedať až s dátami na jednom mieste.</p>
+      <div class="sec-head reveal" style="margin-bottom:44px">
+        <span class="eyebrow">Architektúra</span>
+        <h2 class="h2" style="margin:16px 0 14px">Od rozdelených exportov k jednému systému.</h2>
+        <p class="lead">
+          Bez ručného sťahovania CSV a spájania v Exceli. Dáta tečú automaticky, sú vždy aktuálne a uchovávajú
+          históriu vrátane medziročných porovnaní a trendov za niekoľko rokov dozadu.
+        </p>
       </div>
-      <div class="grid grid-2">
-        <div class="card reveal"><h3>Ktorý kanál reálne zarába?</h3><p>Po započítaní marže a vráteného tovaru, nie podľa atribúcie, ktorú si pripíše Google a Meta. Výsledok býva odlišný od čísel v platforme.</p></div>
-        <div class="card reveal"><h3>Aký je náklad na zákazníka naprieč kanálmi?</h3><p>Skutočný blended CAC cez Google, Meta a ostatné kanály namiesto troch oddelených čísel, ktoré sa navzájom prekrývajú.</p></div>
-        <div class="card reveal"><h3>Ktoré produkty ťahajú a ktoré len míňajú?</h3><p>Výkon na úrovni produktov a kategórií prepojený s maržou. Podklad pre rozhodnutie, čo v Shoppingu posilniť a čo utlmiť.</p></div>
-        <div class="card reveal"><h3>Aká je hodnota zákazníka podľa zdroja?</h3><p>LTV podľa kampane a kanála. Drahší kanál sa niekedy zaplatí, pretože privádza zákazníkov, ktorí sa vracajú.</p></div>
+
+      <div class="grid grid-3 reveal stagger">
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar" style="width:78%"></div>
+            <div class="bar" style="width:56%"></div>
+            <div class="bar" style="width:88%"></div>
+            <div class="bar" style="width:42%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">Zdroje</div>
+            <div class="nm">Zber dát</div>
+            <div class="sb">Google Ads &amp; Meta API, GA4, feedy, CRM, e-shop</div>
+          </div>
+        </div>
+
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar" style="width:64%"></div>
+            <div class="bar bar--indigo" style="width:92%"></div>
+            <div class="bar" style="width:50%"></div>
+            <div class="bar" style="width:74%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">Sklad</div>
+            <div class="nm">BigQuery</div>
+            <div class="sb">Centralizácia, čistenie a transformácia dát</div>
+          </div>
+        </div>
+
+        <div class="pipe-card">
+          <div class="pipe-mock">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="bar" style="width:70%"></div>
+            <div class="bar" style="width:48%"></div>
+            <div class="bar bar--lime" style="width:84%"></div>
+            <div class="bar" style="width:60%"></div>
+          </div>
+          <div class="pipe-body">
+            <div class="k">Výstup</div>
+            <div class="nm">Looker Studio</div>
+            <div class="sb">Dashboardy a automatické reporty pre rozhodovanie</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tags reveal" style="margin-top:34px">
+        <span class="tag">BigQuery</span><span class="tag">GA4</span><span class="tag">sGTM</span>
+        <span class="tag">Looker Studio</span><span class="tag">Apps Script</span>
+        <span class="tag">Google Ads API</span><span class="tag">Meta API</span><span class="tag">Mergado</span>
       </div>
     </div>
   </section>
 
-  <section class="sec sec--ink">
+  <!-- Praktický prínos -->
+  <section class="sec sec--mist">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head reveal" style="margin-bottom:44px">
+        <span class="eyebrow">Praktický prínos</span>
+        <h2 class="h2" style="margin:16px 0 14px">Otázky, na ktoré dáta poskytnú odpoveď.</h2>
+        <p class="lead">
+          Reklamné rozhrania ukazujú počet klikov a ROAS pripísaný danou platformou. Skutočné biznisové otázky sú
+          však inde — a tie sa dajú zodpovedať až s dátami na jednom mieste.
+        </p>
+      </div>
+      <div class="grid grid-2 reveal stagger">
+        <div class="card card--hover">
+          <div class="h3">Ktorý kanál reálne zarába?</div>
+          <p>
+            Po započítaní marže a vráteného tovaru, nie podľa atribúcie, ktorú si pripíše Google a Meta. Výsledok býva
+            odlišný od čísel v platforme.
+          </p>
+        </div>
+        <div class="card card--hover">
+          <div class="h3">Aký je náklad na zákazníka naprieč kanálmi?</div>
+          <p>
+            Skutočný blended CAC cez Google, Meta a ostatné kanály namiesto troch oddelených čísel, ktoré sa navzájom
+            prekrývajú.
+          </p>
+        </div>
+        <div class="card card--hover">
+          <div class="h3">Ktoré produkty ťahajú a ktoré len míňajú?</div>
+          <p>
+            Výkon na úrovni produktov a kategórií prepojený s maržou. Podklad pre rozhodnutie, čo v Shoppingu posilniť
+            a čo utlmiť.
+          </p>
+        </div>
+        <div class="card card--hover">
+          <div class="h3">Aká je hodnota zákazníka podľa zdroja?</div>
+          <p>
+            LTV podľa kampane a kanála. Drahší kanál sa niekedy zaplatí, pretože privádza zákazníkov, ktorí sa
+            vracajú.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prečo BigQuery -->
+  <section class="sec sec--indigo">
+    <div class="shape shape--lime" style="right:-40px;top:40px;width:100px;height:80px"></div>
+    <div class="shape shape--lime" style="right:38px;bottom:40px;width:100px;height:80px"></div>
+    <div class="wrap on-top">
+      <div class="sec-head reveal" style="margin-bottom:44px">
         <span class="eyebrow">Prečo BigQuery</span>
-        <h2 class="display" style="margin-top:16px; font-size:clamp(1.8rem,4.2vw,2.5rem)">Prečo nie len Excel alebo Looker priamo?</h2>
-        <p class="lead" style="margin-top:16px">Pretože v určitej fáze prestanú stačiť, zvyčajne práve vtedy, keď firma začne výraznejšie rásť.</p>
+        <h2 class="h2" style="margin:16px 0 14px">Prečo nie len Excel alebo Looker priamo?</h2>
+        <p class="lead">
+          Pretože v určitej fáze prestanú stačiť — zvyčajne práve vtedy, keď firma začne výraznejšie rásť.
+        </p>
       </div>
       <div class="facts reveal stagger">
-        <div class="fact"><span class="f-num">01 / OBJEM</span><h3>Objem a história</h3><p>Spracuje roky dát bez spomalenia. <b>Excel sa pri státisícoch riadkov zadrhne,</b> BigQuery nie.</p></div>
-        <div class="fact"><span class="f-num">02 / SPÁJANIE</span><h3>Spájanie zdrojov</h3><p>Reklamy, objednávky aj CRM prepojené cez jeden kľúč. <b>Samostatný Looker konektor to neumožňuje.</b></p></div>
-        <div class="fact"><span class="f-num">03 / AUTOMAT</span><h3>Jeden zdroj, automaticky</h3><p>Dáta sa naťahujú a transformujú podľa rozvrhu a všetko čerpá z tých istých čísel. <b>Bez ručných refreshov a nezrovnalostí.</b></p></div>
+        <div class="fact">
+          <span class="f-num">01 / Objem</span>
+          <h3>Objem a história</h3>
+          <p>Spracuje roky dát bez spomalenia. <b>Excel sa pri státisícoch riadkov zadrhne,</b> BigQuery nie.</p>
+        </div>
+        <div class="fact">
+          <span class="f-num">02 / Spájanie</span>
+          <h3>Spájanie zdrojov</h3>
+          <p>Reklamy, objednávky aj CRM prepojené cez jeden kľúč. <b>Samostatný Looker konektor to neumožňuje.</b></p>
+        </div>
+        <div class="fact">
+          <span class="f-num">03 / Automat</span>
+          <h3>Jeden zdroj, automaticky</h3>
+          <p>
+            Dáta sa naťahujú a transformujú podľa rozvrhu a všetko čerpá z tých istých čísel.
+            <b>Bez ručných refreshov a nezrovnalostí.</b>
+          </p>
+        </div>
       </div>
     </div>
   </section>
-
-  <section class="sec">
-    <div class="wrap"><div class="ctaband reveal"><h2>Postavme dátový základ, na ktorom sa dá rásť.</h2><a href="/kontakt" class="btn btn--primary btn--lg">Rezervovať konzultáciu →</a></div></div>
-  </section>
-</Base>
+</Service>

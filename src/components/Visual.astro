@@ -1,0 +1,39 @@
+---
+// Značková plocha na mieste fotografie. Kým fotky nie sú nafotené, drží
+// kompozíciu dizajnu (indigo / mist plocha s jemným rastrom a logo-glyfom).
+// Keď fotka pribudne, stačí odovzdať `src` — plocha sa nahradí obrázkom.
+interface Props {
+  tone?: 'indigo' | 'mist' | 'tint';
+  src?: string;
+  alt?: string;
+  class?: string;
+  label?: string;
+}
+
+const { tone = 'indigo', src, alt = '', class: cls = '', label } = Astro.props;
+const toneClass = tone === 'indigo' ? '' : tone === 'mist' ? 'visual--mist' : 'visual--tint';
+const glyphTile = tone === 'indigo' ? '#C7F541' : '#3826F3';
+const glyphInset = tone === 'indigo' ? '#3826F3' : '#C7F541';
+---
+
+{
+  src ? (
+    <img src={src} alt={alt} class={`visual-img ${cls}`} loading="lazy" decoding="async" />
+  ) : (
+    <div class={`visual ${toneClass} ${cls}`} role={label ? 'img' : undefined} aria-label={label}>
+      <svg class="visual-glyph" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="64" height="64" rx="18" fill={glyphTile} opacity="0.9" />
+        <rect x="20" y="20" width="24" height="24" rx="7" transform="rotate(-8 32 32)" fill={glyphInset} />
+      </svg>
+    </div>
+  )
+}
+
+<style>
+  .visual-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
