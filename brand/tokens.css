@@ -1,0 +1,45 @@
+/* Ecom Capital — brand tokens v2.0 (2026)
+   Zdroj: Claude Design → "Brand Manual.dc.html"
+   POZOR: zatiaľ NIE JE napojené na web. Import prebehne pri /design-sync. */
+
+:root {
+  /* — Farby: primárne — */
+  --ec-indigo: #3826F3;        /* primárna značková farba */
+  --ec-lime: #C7F541;          /* akcent (volt lime) */
+  --ec-ink: #17171B;           /* text a nadpisy */
+
+  /* — Farby: doplnkové — */
+  --ec-indigo-deep: #2A1CC8;   /* hover na indigu */
+  --ec-indigo-tint: #EFEDFE;   /* jemný podklad */
+  --ec-lime-deep: #B4E82B;     /* hover na limetke */
+  --ec-lime-soft: #EAFBB4;     /* zvýraznenie */
+  --ec-slate: #5A5B63;         /* sekundárny text */
+  --ec-emerald: #1EBA81;       /* stavová farba, striedmo */
+  --ec-mist: #F2F1FA;          /* pozadie sekcií */
+  --ec-white: #FFFFFF;         /* karty */
+
+  /* Pomer použitia: 60 % svetlé · 30 % indigo + ink · 10 % lime */
+
+  /* — Typografia — */
+  --ec-font-display: 'Sora', system-ui, sans-serif;      /* 600–800, ls -2…-3 %, lh ~1.05 */
+  --ec-font-body: 'Manrope', system-ui, sans-serif;      /* 400–600, 14–16px, lh 1.6 */
+  --ec-font-mono: 'JetBrains Mono', ui-monospace, monospace; /* 400–500, uppercase, ls 12–20 % */
+
+  --ec-tracking-display: -0.03em;
+  --ec-tracking-mono: 0.14em;
+  --ec-leading-display: 1.05;
+  --ec-leading-body: 1.6;
+
+  /* — Tvar — */
+  --ec-radius-card: 16px;      /* karty 14–18 px */
+  --ec-radius-surface: 26px;   /* značkové plochy 24–28 px */
+  --ec-radius-pill: 999px;     /* tlačidlá, štítky */
+  --ec-radius-icon: 8px;
+
+  /* — Linky a tiene — */
+  --ec-hairline: 1px solid rgba(23, 23, 27, 0.12);
+  --ec-shadow-card: 0 10px 30px rgba(23, 23, 27, 0.07);
+}
+
+/* Google Fonts:
+   https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap */

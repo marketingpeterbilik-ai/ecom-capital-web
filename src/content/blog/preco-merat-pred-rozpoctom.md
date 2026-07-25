@@ -5,7 +5,7 @@ pubDate: 2026-06-20
 tags: ["tracking", "ppc"]
 ---
 
-Väčšina účtov, ktoré prejdú auditom, nemá primárny problém so stratégiou. Má ho s **dátami**, na ktorých tá stratégia stojí. Keď sú dáta deravé, optimalizuje sa bez kontroly — bez ohľadu na skúsenosť osoby, ktorá účet spravuje.
+Väčšina účtov, ktoré prejdú auditom, nemá primárny problém so stratégiou. Má ho s **dátami**, na ktorých tá stratégia stojí. Keď sú dáta deravé, optimalizuje sa bez kontroly, bez ohľadu na skúsenosť osoby, ktorá účet spravuje.
 
 ## Algoritmus je len taký spoľahlivý ako jeho vstup
 
@@ -19,15 +19,15 @@ algoritmus sa učí na skreslenom obraze reality. Výsledok potom nezodpovedá o
 
 ## Odporúčané poradie krokov
 
-1. **Audit merania** — čo sa reálne meria a čo uniká.
-2. **Server-side tracking (sGTM)** — aby konverzie obstáli voči iOS a cookieless prostrediu.
-3. **Čisté konverzie do Google a Meta** — enhanced conversions, CAPI.
+1. **Audit merania:** čo sa reálne meria a čo uniká.
+2. **Server-side tracking (sGTM):** aby konverzie obstáli voči iOS a cookieless prostrediu.
+3. **Čisté konverzie do Google a Meta:** enhanced conversions, CAPI.
 4. **Až následne** spustenie a škálovanie rozpočtov.
 
 > Spustiť kampaň pred nastavením merania je porovnateľné s rozhodovaním bez podkladov.
 
 ## Prínos
 
-Keď meranie sedí, súbežne nastanú dve veci: algoritmus sa učí rýchlejšie a je zrejmé, ktorý kanál reálne zarába. To je základ pre udržateľný rast — všetko ostatné je odhad.
+Keď meranie sedí, súbežne nastanú dve veci: algoritmus sa učí rýchlejšie a je zrejmé, ktorý kanál reálne zarába. To je základ pre udržateľný rast. Všetko ostatné je odhad.
 
 Pri pochybnostiach o stave merania je vhodným prvým krokom [audit](/kontakt).

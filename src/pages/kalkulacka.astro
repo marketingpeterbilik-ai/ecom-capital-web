@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 ---
 
 <Base
-  title="Kalkulačka ceny — Ecom Capital"
+  title="Kalkulačka ceny | Ecom Capital"
   description="Orientačná cena správy PPC. Vyber platformy, rozpočet a doplnkové služby a uvidíš odhad mesačnej ceny. Presná ponuka po konzultácii."
 >
   <header class="hero--ink hero--page">
@@ -66,7 +66,7 @@ import Base from '../layouts/Base.astro';
         <div class="calc-result reveal" id="result">
           <div class="cr-lbl">Orientačná cena správy</div>
           <div aria-live="polite">
-            <div class="cr-big" id="rMonthly">—</div>
+            <div class="cr-big" id="rMonthly">…</div>
             <div class="cr-range" id="rRange">vyber aspoň jednu platformu</div>
           </div>
 
@@ -75,7 +75,7 @@ import Base from '../layouts/Base.astro';
             <div class="s-val" id="rSetup">≈ 0 €</div>
           </div>
 
-          <p class="cr-note">Orientačný odhad, nie záväzná ponuka. Presná cena závisí od stavu účtu a rozsahu práce — dohodne sa na konzultácii.</p>
+          <p class="cr-note">Orientačný odhad, nie záväzná ponuka. Presná cena závisí od stavu účtu a rozsahu práce a dohodne sa na konzultácii.</p>
           <div class="cr-cta"><a href="/kontakt" class="btn btn--lg">Vyžiadať presnú ponuku →</a></div>
         </div>
       </div>
@@ -136,7 +136,7 @@ import Base from '../layouts/Base.astro';
       rMonthly.textContent = fmtEur(lo) + ' – ' + fmtEur(hi);
       rRange.textContent = 'mesačne, podľa zvoleného rozsahu';
     } else {
-      rMonthly.textContent = '—';
+      rMonthly.textContent = '…';
       rRange.textContent = 'vyber aspoň jednu platformu alebo službu';
     }
 

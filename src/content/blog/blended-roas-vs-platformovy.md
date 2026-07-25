@@ -20,10 +20,10 @@ Blended ROAS = **reálne tržby / všetky náklady na reklamu**. Jedno číslo, 
 | Platformový | Výkon kanála *podľa platformy* | Nadhodnotený, prekrýva sa |
 | Blended | Skutočná návratnosť celého marketingu | Neukáže, ktorý kanál za to môže |
 
-Najlepšie funguje **kombinácia oboch** — blended ako kontrola reality a platformový (s rozumom) na riadenie jednotlivých kampaní.
+Najlepšie funguje **kombinácia oboch**: blended ako kontrola reality a platformový (s rozumom) na riadenie jednotlivých kampaní.
 
 ## Kde sa to počíta
 
-Práve preto sa dáta spájajú do BigQuery. Reklamné náklady z Google a Meta API, tržby z e-shopu a CRM na jednom mieste — a nad nimi blended metriky, ktoré sa aktualizujú automaticky. Bez ručného spájania CSV v Exceli.
+Práve preto sa dáta spájajú do BigQuery. Reklamné náklady z Google a Meta API, tržby z e-shopu a CRM na jednom mieste a nad nimi blended metriky, ktoré sa aktualizujú automaticky. Bez ručného spájania CSV v Exceli.
 
 Viac o tom, ako to celé funguje, nájdete na stránke [Dáta &amp; BigQuery](/data).

@@ -1,0 +1,31 @@
+BRAND: Ecom Capital — performance marketing & data studio (PPC, tracking, GA4, BigQuery)
+
+LOGO
+- Icon: rounded square (radius ~28%), indigo #3826F3, with a lime #C7F541 rounded square inset lower-left
+- Wordmark "ecom capital." — always lowercase, Sora ExtraBold, letter-spacing -3%, trailing period
+- Inverse on indigo: lime icon tile + white wordmark (lime period); on lime: indigo icon + ink wordmark
+- Never: uppercase, gradients, shadows, outlines, distortion, extra symbols
+
+COLORS (60 / 30 / 10)
+- 60% light: white #FFFFFF, mist #F2F1FA
+- 30% brand + text: indigo #3826F3 (surfaces, primary), ink #17171B (text); deep #2A1CC8, slate #5A5B63
+- 10% accent: volt lime #C7F541 (buttons, badges, highlights); deep #B4E82B, soft #EAFBB4
+- Functional: emerald #1EBA81 (status, used sparingly)
+- Allowed pairs: ink-on-white, white-on-indigo, ink-on-lime, lime-on-indigo
+- Forbidden: lime text on white, white text on lime, lime as a large text-block background
+
+TYPOGRAPHY (Google Fonts)
+- Display / UI: Sora 600–800, letter-spacing -2 to -3%, line-height ~1.05
+- Body: Manrope 400–600, 14–16px, line-height 1.6
+- Labels / data / numbers: JetBrains Mono 400–500, uppercase, letter-spacing 12–20%
+
+COMPONENTS
+- Buttons are pills (radius 999px): primary = lime bg + ink text; solid = indigo bg + white text; secondary = indigo outline. Use "→" on CTAs.
+- Badges: lime pill, JetBrains Mono uppercase
+- Cards: white, radius 14–18px, hairline border rgba(23,23,27,.12), soft shadow
+- Signature: indigo rounded surface (radius ~24–28px) with a lime rounded square rotated ~12° floating at a corner
+
+STYLE
+- Clean, airy, precise; generous whitespace; data-driven, confident, fintech tone
+- One lime accent per composition; never full-lime backgrounds behind text
+- No emoji. Photography sits on indigo or white surfaces; use placeholders until real assets exist.
