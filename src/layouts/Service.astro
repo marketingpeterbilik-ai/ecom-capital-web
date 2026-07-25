@@ -13,6 +13,10 @@ interface Related {
   href: string;
   label: string;
 }
+interface Value {
+  t: string;
+  d: string;
+}
 
 interface Props {
   title: string;
@@ -21,6 +25,13 @@ interface Props {
   heading: string;
   lead: string;
   cta?: { href: string; label: string; style?: 'indigo' | 'lime' }[];
+  heroCardTitle?: string;
+  heroPoints?: string[];
+  heroNote?: string;
+  valueEyebrow?: string;
+  valueTitle?: string;
+  valueLead?: string;
+  values?: Value[];
   whatEyebrow?: string;
   whatTitle: string;
   whatLead?: string;
@@ -40,6 +51,17 @@ const {
   heading,
   lead,
   cta = [{ href: '#book', label: 'Rezervovať konzultáciu →', style: 'indigo' }],
+  heroCardTitle = 'Čo z toho máte',
+  heroPoints = [
+    '<b>Bez viazanosti</b> — spolupráca beží z mesiaca na mesiac.',
+    '<b>Jeden kontakt</b> na reklamu, meranie aj dáta.',
+    '<b>Odpoveď do 48 hodín</b> na e-mail aj počas spolupráce.',
+  ],
+  heroNote = 'Účty, prístupy aj dáta zostávajú vaše — aj po skončení spolupráce.',
+  valueEyebrow = 'Prečo to funguje',
+  valueTitle,
+  valueLead,
+  values = [],
   whatEyebrow = 'Čo zahŕňa',
   whatTitle,
   whatLead,
@@ -55,21 +77,59 @@ const {
 
 <Base title={title} description={description} jsonLd={jsonLd}>
   <section class="phero">
-    <div class="wrap">
-      <div class="crumb reveal"><a href="/sluzby">Služby</a> / {crumb}</div>
-      <h1 class="h1 reveal">{heading}</h1>
-      <p class="lead lead--lg reveal">{lead}</p>
-      <div class="btn-row reveal">
+    <div class="wrap phero-grid">
+      <div class="reveal">
+        <div class="crumb"><a href="/sluzby">Služby</a> / {crumb}</div>
+        <h1 class="h1">{heading}</h1>
+        <p class="lead lead--lg">{lead}</p>
+        <div class="btn-row">
+          {
+            cta.map((c) => (
+              <a href={c.href} class={`btn ${c.style === 'lime' ? 'btn--lime' : 'btn--indigo'}`}>
+                {c.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="phero-card reveal">
+        <span class="eyebrow">{heroCardTitle}</span>
         {
-          cta.map((c) => (
-            <a href={c.href} class={`btn ${c.style === 'lime' ? 'btn--lime' : 'btn--indigo'}`}>
-              {c.label}
-            </a>
+          heroPoints.map((p) => (
+            <div class="tick">
+              <i>✓</i>
+              <span set:html={p} />
+            </div>
           ))
         }
+        {heroNote && <p class="phero-note">{heroNote}</p>}
       </div>
     </div>
   </section>
+
+  {
+    values.length > 0 && (
+      <section class="sec sec--ink sec--tight">
+        <div class="wrap">
+          <div class="reveal" style="margin-bottom:40px">
+            <span class="eyebrow">{valueEyebrow}</span>
+            {valueTitle && <h2 class="h2" style="margin:16px 0 14px">{valueTitle}</h2>}
+            {valueLead && <p class="lead">{valueLead}</p>}
+          </div>
+          <div class="facts reveal stagger">
+            {values.map((v, i) => (
+              <div class="fact">
+                <span class="f-num">{String(i + 1).padStart(2, '0')}</span>
+                <h3>{v.t}</h3>
+                <p set:html={v.d} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <section class="sec sec--mist">
     <div class="wrap">

@@ -226,45 +226,32 @@ const fmt = (d: Date) => d.toLocaleDateString('sk-SK', { year: 'numeric', month:
     </div>
   </section>
 
-  <!-- PRE KOHO -->
-  <section class="sec">
+  <!-- CTA BAND -->
+  <section class="sec sec--tight" style="padding-top:16px">
     <div class="wrap">
-      <div class="sec-head--split reveal">
-        <div>
-          <h2 class="h2">Pre koho je to vhodné — a pre koho menej.</h2>
-          <p class="lead">
-            Spolupráca funguje najlepšie tam, kde je reklama dôležitý kanál a je ochota investovať do merania.
-          </p>
-        </div>
-        <div class="btn-row">
-          <a href="/sluzby" class="btn btn--outline">Prehľad služieb</a>
-        </div>
-      </div>
-
-      <div class="grid grid-2">
-        <div class="fit-card reveal">
-          <div class="fit-head fit-head--ink"><span>Vhodné, ak…</span></div>
-          <div class="fit-body">
-            <div>firma má e-shop alebo B2B a reklama je dôležitý kanál</div>
-            <div>cieľom je rozumieť dátam a rozhodovať sa podľa nich</div>
-            <div>hľadá sa dlhodobý partner, nie najlacnejší dodávateľ</div>
-            <div>preferuje sa priama komunikácia a jeden kontakt</div>
+      <div class="ctaband reveal">
+        <div class="shape shape--lime" style="right:-40px;top:-24px;width:104px;height:84px"></div>
+        <div class="shape shape--lime" style="right:36px;top:64px;width:104px;height:84px"></div>
+        <div class="ctaband-inner">
+          <div style="max-width:600px">
+            <h2 class="h2">Reklama aj dáta pod jednou strechou.</h2>
+            <p>
+              Jeden kontakt na kampane, tracking aj dátový sklad. Bez viazanosti — spolupráca beží z mesiaca na mesiac
+              a účty aj dáta zostávajú vaše.
+            </p>
           </div>
-        </div>
-        <div class="fit-card reveal">
-          <div class="fit-head fit-head--lime"><span>Menej vhodné, ak…</span></div>
-          <div class="fit-body">
-            <div>očakávaním je rýchly výsledok bez investície do merania</div>
-            <div>záujmom sú len „najlacnejšie kliky“ bez ohľadu na výsledok</div>
-            <div>nie je priestor meniť tracking ani dáta</div>
-            <div>potrebný je veľký brandový tím namiesto výkonu</div>
+          <div class="btn-row">
+            <a href="#book" class="btn btn--lime">Rezervovať konzultáciu →</a>
+            <a href="/kalkulacka" class="btn btn--onindigo">Spočítať cenu</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- BLOG -->
+  <Booking />
+
+  <!-- BLOG (posledná sekcia stránky, pod rezervačným formulárom) -->
   {
     posts.length > 0 && (
       <section class="sec">
@@ -275,9 +262,6 @@ const fmt = (d: Date) => d.toLocaleDateString('sk-SK', { year: 'numeric', month:
               <p class="lead">Praktické postrehy o reklame, trackingu a dátach. Po slovensky, z reálnych účtov.</p>
             </div>
             <div class="btn-row">
-              <a href="#book" class="btn btn--lime">
-                Rezervovať konzultáciu →
-              </a>
               <a href="/blog" class="btn btn--outline">
                 Všetky články
               </a>
@@ -305,30 +289,6 @@ const fmt = (d: Date) => d.toLocaleDateString('sk-SK', { year: 'numeric', month:
     )
   }
 
-  <!-- CTA BAND -->
-  <section class="sec sec--tight" style="padding-top:16px">
-    <div class="wrap">
-      <div class="ctaband reveal">
-        <div class="shape shape--lime" style="right:-40px;top:-24px;width:104px;height:84px"></div>
-        <div class="shape shape--lime" style="right:36px;top:64px;width:104px;height:84px"></div>
-        <div class="ctaband-inner">
-          <div style="max-width:600px">
-            <h2 class="h2">Reklama aj dáta pod jednou strechou.</h2>
-            <p>
-              Jeden kontakt na kampane, tracking aj dátový sklad. Bez viazanosti — spolupráca beží z mesiaca na mesiac
-              a účty aj dáta zostávajú vaše.
-            </p>
-          </div>
-          <div class="btn-row">
-            <a href="#book" class="btn btn--lime">Rezervovať konzultáciu →</a>
-            <a href="/kalkulacka" class="btn btn--onindigo">Spočítať cenu</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <Booking />
   <StickyCta />
 </Base>
 

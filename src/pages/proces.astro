@@ -1,6 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
 import Booking from '../components/Booking.astro';
+import Steps from '../components/Steps.astro';
+
+const steps = [
+  {
+    t: 'Audit &amp; analýza',
+    d: 'Zoznámenie s biznisom, cieľmi a maržami, posúdenie reklamných účtov aj stavu merania. Identifikácia toho, kde sa míňa neefektívne a kde chýbajú dáta.',
+  },
+  {
+    t: 'Architektúra',
+    d: 'Návrh dátového toku a plánu meraní, definícia KPI a metrík, ktoré sa budú reálne sledovať a na ktorých budú založené rozhodnutia.',
+  },
+  {
+    t: 'Implementácia',
+    d: 'Nastavenie trackingu a dátových pipeline, vybudovanie alebo prestavba kampaní a príprava dashboardov v Looker Studio.',
+  },
+  {
+    t: 'Optimalizácia',
+    d: 'Týždenná správa a ladenie výkonu: negatíva, bidy, kreatívy, rozpočty. Účet sa upravuje priebežne, nie raz za kvartál.',
+  },
+  {
+    t: 'Reporting &amp; rast',
+    d: 'Pravidelný reporting v slovenčine, spoločné rozhodnutia a škálovanie toho, čo funguje. Dáta určujú smer rastu.',
+  },
+];
 ---
 
 <Base
@@ -14,63 +38,17 @@ import Booking from '../components/Booking.astro';
       <p class="lead lead--lg reveal">
         Päť krokov od prvého hovoru po pravidelný rast. Priebeh spolupráce je známy vopred.
       </p>
+      <div class="phero-ticks reveal">
+        <div class="tick"><i>✓</i><span>Audit účtu a merania na začiatku</span></div>
+        <div class="tick"><i>✓</i><span>Týždenné ladenie, nie raz za kvartál</span></div>
+        <div class="tick"><i>✓</i><span>Mesačný report v slovenčine</span></div>
+      </div>
     </div>
   </section>
 
   <section class="sec" style="padding-top:0">
     <div class="wrap">
-      <div class="steps">
-        <div class="step reveal">
-          <div class="num">01</div>
-          <div>
-            <h3>Audit &amp; analýza</h3>
-            <p>
-              Zoznámenie s biznisom, cieľmi a maržami, posúdenie reklamných účtov aj stavu merania. Identifikácia
-              toho, kde sa míňa neefektívne a kde chýbajú dáta.
-            </p>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="num">02</div>
-          <div>
-            <h3>Architektúra</h3>
-            <p>
-              Návrh dátového toku a plánu meraní, definícia KPI a metrík, ktoré sa budú reálne sledovať a na ktorých
-              budú založené rozhodnutia.
-            </p>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="num">03</div>
-          <div>
-            <h3>Implementácia</h3>
-            <p>
-              Nastavenie trackingu a dátových pipeline, vybudovanie alebo prestavba kampaní a príprava dashboardov
-              v Looker Studio.
-            </p>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="num">04</div>
-          <div>
-            <h3>Optimalizácia</h3>
-            <p>
-              Týždenná správa a ladenie výkonu: negatíva, bidy, kreatívy, rozpočty. Účet sa upravuje priebežne, nie
-              raz za kvartál.
-            </p>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="num">05</div>
-          <div>
-            <h3>Reporting &amp; rast</h3>
-            <p>
-              Pravidelný reporting v slovenčine, spoločné rozhodnutia a škálovanie toho, čo funguje. Dáta určujú smer
-              rastu.
-            </p>
-          </div>
-        </div>
-      </div>
+      <Steps steps={steps} />
 
       <div class="callout reveal" style="margin-top:32px">
         Spolupráca môže prebiehať jednorazovo (audit, setup trackingu, dátový sklad) alebo dlhodobo (kompletná správa

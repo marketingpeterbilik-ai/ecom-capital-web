@@ -4,26 +4,33 @@ interface Props {
   elementId?: string;
   height?: string;
   noscriptText?: string;
+  /** Detaily typu udalosti (názov, dĺžka, zóna) — na webe ich duplikuje text vedľa embedu. */
+  showEventDetails?: boolean;
+  /** Zmenšenie embedu, aby kalendár nezaberal celú obrazovku. */
+  scale?: number;
 }
 
 const {
   calLink = 'ecom-capital/15min',
   elementId = 'my-cal-inline',
-  height = '640px',
+  height = '460px',
   noscriptText = 'To book a slot, enable JavaScript, or write directly to',
+  showEventDetails = false,
+  scale = 0.85,
 } = Astro.props;
 ---
 
 {/* min-height, nie height — Cal si iframe po načítaní zväčší podľa obsahu
-    a s pevnou výškou by sa kalendár orezal a scrolloval vnútri panela. */}
-<div class="cal-embed" id={elementId} style={`width:100%;min-height:${height}`}></div>
+    a s pevnou výškou by sa kalendár orezal a scrolloval vnútri panela.
+    zoom zmenšuje celý embed vrátane výšky, ktorú si Cal nastaví sám. */}
+<div class="cal-embed" id={elementId} style={`width:100%;min-height:${height};zoom:${scale}`}></div>
 <noscript>
   <p style="color:var(--slate); margin-top:12px"
     >{noscriptText} <a href="mailto:peter@ecomcapital.sk" style="font-weight:700">peter@ecomcapital.sk</a>.</p
   >
 </noscript>
 
-<script is:inline define:vars={{ CAL_LINK: calLink, ELEMENT_ID: elementId }}>
+<script is:inline define:vars={{ CAL_LINK: calLink, ELEMENT_ID: elementId, SHOW_DETAILS: showEventDetails }}>
   (function (C, A, L) {
     let p = function (a, ar) {
       a.q.push(ar);
@@ -69,7 +76,9 @@ const {
     // zdedenú zo systému návštevníka preto vypíname natvrdo.
     theme: 'light',
     cssVarsPerTheme: { light: { 'cal-brand': '#3826F3' } },
-    hideEventTypeDetails: false,
+    // Názov, dĺžka a spôsob stretnutia sú uvedené vedľa embedu — v kalendári
+    // by sa opakovali a zbytočne ho predlžovali.
+    hideEventTypeDetails: !SHOW_DETAILS,
     layout: 'month_view',
   });
 </script>

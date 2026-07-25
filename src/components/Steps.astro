@@ -1,0 +1,28 @@
+---
+// Číslované kroky priebehu spolupráce. Používa /proces aj detail služby,
+// aby bol postup viditeľný priamo tam, kde sa o službe rozhoduje.
+interface Step {
+  t: string;
+  d: string;
+}
+
+interface Props {
+  steps: Step[];
+}
+
+const { steps } = Astro.props;
+---
+
+<div class="steps">
+  {
+    steps.map((s, i) => (
+      <div class="step reveal">
+        <div class="num">{String(i + 1).padStart(2, '0')}</div>
+        <div>
+          <h3 set:html={s.t} />
+          <p set:html={s.d} />
+        </div>
+      </div>
+    ))
+  }
+</div>

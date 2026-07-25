@@ -103,7 +103,7 @@ h4{font-size:1.1rem; font-weight:700; letter-spacing:-.02em}
 .lead{font-size:1.06rem; color:var(--slate); max-width:62ch; text-wrap:pretty}
 .lead--lg{font-size:1.1rem}
 .lead strong{color:var(--ink); font-weight:700}
-.sec--indigo .lead{color:rgba(255,255,255,.8)}
+.sec--indigo .lead,.sec--ink .lead{color:rgba(255,255,255,.8)}
 .sec--indigo .lead strong,.sec--ink .lead strong{color:var(--paper)}
 .muted{color:var(--slate)}
 
@@ -249,11 +249,50 @@ header.site{
   flex:0 0 auto; font-style:normal;
 }
 
-/* stránkový hero (podstránky) */
-.phero{padding:80px 0 56px}
+/* stránkový hero (podstránky)
+   Podklad je jemný mist prechod + značkové skew tvary cez pseudo-elementy,
+   aby vrch podstránky nebol prázdny biely pás bez ohľadu na markup stránky. */
+.phero{
+  padding:80px 0 60px;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(180deg,var(--mist) 0%,rgba(242,241,250,.45) 58%,var(--paper) 100%);
+  border-bottom:1px solid var(--hairline-soft);
+}
+.phero::before,.phero::after{
+  content:""; position:absolute; transform:skewX(-20deg); pointer-events:none; z-index:0;
+}
+.phero::before{background:var(--lime); right:-30px; top:-26px; width:104px; height:84px}
+.phero::after{background:var(--indigo-tint); right:56px; top:64px; width:104px; height:84px}
+.phero>.wrap{position:relative; z-index:1}
 .phero .h1{margin:18px 0 20px; max-width:20ch}
-.phero .lead{max-width:66ch; font-size:1.1rem}
+.phero .lead{max-width:62ch; font-size:1.1rem}
 .phero .btn-row{margin-top:30px}
+
+/* hero detailu služby: text vľavo, karta s prínosmi vpravo */
+.phero-grid{display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr); gap:56px; align-items:center}
+.phero-grid .h1{max-width:none}
+.phero-grid .lead{max-width:54ch}
+.phero-card{
+  background:var(--paper); border:1px solid var(--hairline-soft); border-radius:var(--r-card);
+  box-shadow:var(--shadow-card); padding:28px 30px 26px;
+}
+.phero-card .eyebrow{margin-bottom:20px}
+.phero-card .tick{align-items:flex-start; gap:13px; font-weight:600; line-height:1.5}
+.phero-card .tick+.tick{margin-top:15px}
+.phero-card .tick i{margin-top:1px}
+.phero-card .tick span{font-size:.94rem}
+.phero-card .tick b{font-weight:700}
+/* riadok prínosov pod textom hero (stránky bez pravej karty) */
+.phero-ticks{display:flex; flex-wrap:wrap; gap:16px 34px; margin-top:32px}
+.phero-ticks .tick{font-size:.92rem}
+.phero-note{
+  margin-top:22px; padding-top:18px; border-top:1px solid var(--hairline-soft);
+  font-size:.86rem; color:var(--slate); line-height:1.5;
+}
+@media(max-width:980px){
+  .phero-grid{grid-template-columns:1fr; gap:36px}
+}
 .crumb{font-family:var(--font-mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--slate)}
 .crumb a{color:var(--slate)}
 .crumb a:hover{color:var(--indigo)}

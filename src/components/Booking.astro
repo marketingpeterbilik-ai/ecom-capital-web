@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="sec sec--indigo" id="book">
+<section class="sec sec--indigo sec--tight" id="book">
   <div class="shape shape--lime" style="left:-46px;bottom:80px;width:94px;height:76px"></div>
   <div class="shape shape--lime" style="left:14px;bottom:-2px;width:94px;height:76px"></div>
 
@@ -67,7 +67,7 @@ const {
       </div>
 
       <div class="book-cal">
-        <CalEmbed height="600px" noscriptText="Pre rezerváciu termínu zapnite JavaScript, alebo napíšte priamo na" />
+        <CalEmbed height="440px" noscriptText="Pre rezerváciu termínu zapnite JavaScript, alebo napíšte priamo na" />
       </div>
     </div>
   </div>
@@ -79,11 +79,13 @@ const {
     border-radius: 22px;
     overflow: hidden;
     display: grid;
-    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     color: var(--ink);
+    max-width: 1000px;
+    margin: 0 auto;
   }
   .book-side {
-    padding: 44px 42px;
+    padding: 36px 34px;
     background: var(--mist);
   }
   .book-side .check-list {
@@ -101,7 +103,7 @@ const {
     font-weight: 700;
   }
   .book-cal {
-    padding: 14px;
+    padding: 10px;
   }
   @media (max-width: 980px) {
     .book-panel {

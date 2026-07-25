@@ -1,5 +1,29 @@
 ---
 import Service from '../../layouts/Service.astro';
+import Steps from '../../components/Steps.astro';
+
+const steps = [
+  {
+    t: 'Audit &amp; analýza',
+    d: 'Prechod účtov, marží a stavu merania. Kde sa míňa neefektívne, ktoré kampane ťahajú tržby a kde chýbajú dáta na rozhodovanie.',
+  },
+  {
+    t: 'Architektúra',
+    d: 'Návrh štruktúry účtu, plánu meraní a KPI. Definuje sa, na čo sa kampane optimalizujú — tržby, marža alebo nový zákazník.',
+  },
+  {
+    t: 'Implementácia',
+    d: 'Prestavba alebo vybudovanie kampaní, nastavenie trackingu a feedu, príprava reportu v Looker Studio.',
+  },
+  {
+    t: 'Optimalizácia',
+    d: 'Týždenné ladenie: negatíva, bidy, kreatívy, rozpočty a testy. Účet sa upravuje priebežne, nie raz za kvartál.',
+  },
+  {
+    t: 'Reporting &amp; rast',
+    d: 'Mesačný report v slovenčine, spoločné rozhodnutia a škálovanie toho, čo funguje. Ďalší krok vychádza z čísel.',
+  },
+];
 ---
 
 <Service
@@ -8,6 +32,28 @@ import Service from '../../layouts/Service.astro';
   crumb="PPC"
   heading="Správa PPC kampaní."
   lead="Dlhodobá správa Google a Meta Ads vrátane merania. Kampane sa optimalizujú podľa zisku a marže a rozhodnutia sa dajú spätne overiť v dátach."
+  heroPoints={[
+    '<b>Meranie v cene správy</b> — GA4 a server-side tracking nie sú príplatok.',
+    '<b>Optimalizácia na maržu</b>, nie na ROAS vykázaný platformou.',
+    '<b>Týždenné ladenie</b> a mesačný report v slovenčine.',
+  ]}
+  heroNote="Bez viazanosti — spolupráca beží z mesiaca na mesiac. Účty, prístupy aj dáta zostávajú vaše."
+  valueTitle="Rozdiel je v tom, na čom sa kampane učia."
+  valueLead="Kampane sú len tak dobré ako dáta, ktoré do nich vstupujú. Preto meranie nie je samostatná položka, ale súčasť správy."
+  values={[
+    {
+      t: 'Optimalizácia podľa zisku, nie podľa ROAS z platformy',
+      d: 'Do kampaní vstupujú marže a hodnota objednávky, takže rozpočet tečie k produktom, ktoré reálne zarábajú — nie k tým s najkrajším číslom v rozhraní.',
+    },
+    {
+      t: 'Meranie je súčasťou ceny',
+      d: 'GA4, server-side tracking a čisté konverzie sú v cene správy. Bez nich sa kampane optimalizujú odhadom a rozdiel zaplatíte na rozpočte.',
+    },
+    {
+      t: 'Jeden kontakt na reklamu aj dáta',
+      d: 'Kampane, tracking aj reporting rieši jeden človek. Odpadá dohadovanie medzi agentúrou, vývojárom a analytikom o tom, čie sú to čísla.',
+    },
+  ]}
   whatTitle="Kampane aj meranie, na ktorom stoja."
   whatLead="Súčasťou správy je aj tracking — bez spoľahlivých dát sa kampane optimalizujú len odhadom. Nastavenie merania preto nie je samostatná položka, ale základ služby."
   items={[
@@ -18,10 +64,35 @@ import Service from '../../layouts/Service.astro';
     { t: 'Týždenná optimalizácia', d: 'Negatíva, bidy, kreatívy a rozpočty sa ladia priebežne, nie raz za kvartál.' },
     { t: 'Mesačný report', d: 'V slovenčine: čo sa stalo, prečo a čo ďalej.' },
   ]}
-  callout='Spolupráca je bez viazanosti — dá sa ukončiť kedykoľvek, beží z mesiaca na mesiac. Účty, prístupy aj dáta zostávajú vaše. Priebeh spolupráce je popísaný na stránke <a href="/proces">Proces</a>.'
+  callout='Spolupráca je bez viazanosti — dá sa ukončiť kedykoľvek, beží z mesiaca na mesiac. Účty, prístupy aj dáta zostávajú vaše.'
   related={[
     { href: '/sluzby/meranie', label: 'Meranie & tracking' },
     { href: '/data', label: 'Dáta & BigQuery' },
     { href: '/kalkulacka', label: 'Kalkulačka ceny' },
   ]}
-/>
+>
+  <!-- Priebeh spolupráce (obsah stránky Proces priamo tu) -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head--split reveal">
+        <div>
+          <span class="eyebrow">Priebeh spolupráce</span>
+          <h2 class="h2" style="margin:16px 0 14px">Päť krokov od prvého hovoru po pravidelný rast.</h2>
+          <p class="lead">
+            Postup je známy vopred — od auditu účtu cez nastavenie merania po týždennú optimalizáciu a reporting.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a href="/proces" class="btn btn--outline">Detail procesu</a>
+        </div>
+      </div>
+
+      <Steps steps={steps} />
+
+      <div class="callout reveal" style="margin-top:32px">
+        Prvé týždne sú o audite, meraní a prestavbe účtu. Výsledky správy sa vyhodnocujú na dátach, ktoré dovtedy
+        vzniknú. <a href="/kalkulacka">Spočítať orientačnú cenu →</a>
+      </div>
+    </div>
+  </section>
+</Service>
