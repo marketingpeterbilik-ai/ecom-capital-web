@@ -8,7 +8,6 @@ export default defineConfig({
   site: 'https://ecom-capital-web.pages.dev',
   integrations: [sitemap()],
   redirects: {
-    '/o-mne': '/',
     '/sluzby/feedy': '/sluzby/ppc',
   },
 });

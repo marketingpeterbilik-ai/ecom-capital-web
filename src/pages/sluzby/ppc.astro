@@ -65,6 +65,61 @@ const steps = [
     { t: 'Mesačný report', d: 'V slovenčine: čo sa stalo, prečo a čo ďalej.' },
   ]}
   callout='Spolupráca je bez viazanosti — dá sa ukončiť kedykoľvek, beží z mesiaca na mesiac. Účty, prístupy aj dáta zostávajú vaše.'
+  serviceName="Správa PPC kampaní"
+  serviceType="Správa Google Ads a Meta Ads pre e-shopy"
+  summary={`
+    <h2>Ako správa PPC v Ecom Capital funguje</h2>
+    <p>
+      Správa PPC kampaní v Ecom Capital znamená dlhodobú starostlivosť o účty v Google Ads
+      a Meta Ads vrátane merania, na ktorom tieto kampane stoja. Kampane sa neoptimalizujú
+      podľa ROAS vykázaného platformou, ale podľa príspevkovej marže — do účtu vstupujú
+      marže a skutočná hodnota objednávky, takže rozpočet tečie k produktom, ktoré reálne
+      zarábajú.
+    </p>
+    <p>
+      Nastavenie merania nie je samostatná položka na faktúre. GA4, server-side tracking
+      a čisté konverzie sú súčasťou ceny správy, pretože bez spoľahlivých dát sa kampane
+      optimalizujú odhadom a rozdiel klient zaplatí na rozpočte. Kampane, tracking aj
+      reporting rieši jeden človek, takže odpadá dohadovanie medzi agentúrou, vývojárom
+      a analytikom o tom, čie sú to čísla.
+    </p>
+    <p>
+      Účet sa ladí týždenne — negatívne kľúčové slová, bidy, kreatívy, rozpočty a testy —
+      a raz mesačne príde report v slovenčine, ktorý hovorí, čo sa stalo, prečo a čo ďalej.
+      Spolupráca beží z mesiaca na mesiac bez viazanosti. Reklamné účty, prístupy aj dáta
+      zostávajú klientovi aj po jej skončení.
+    </p>
+  `}
+  faq={[
+    {
+      q: 'Koľko stojí správa PPC kampaní?',
+      a: 'Cena sa odvíja od počtu platforiem, výšky mesačného rozpočtu a počtu trhov. Pri jednej platforme a rozpočte do 5 000 € mesačne sa orientačná cena pohybuje okolo 200 až 300 € mesačne, pri Google aj Meta Ads okolo 400 až 500 €. Orientačné pásma sú na stránke kalkulačky, presná cena vzíde z konzultácie podľa stavu účtu.',
+    },
+    {
+      q: 'Je meranie v cene správy, alebo sa platí zvlášť?',
+      a: 'Meranie je súčasťou ceny správy. GA4, server-side tracking a čisté konverzie nie sú príplatok, pretože bez nich sa kampane optimalizujú odhadom. Samostatne sa účtuje len rozsiahlejšie jednorazové nastavenie, napríklad vybudovanie dátového skladu v BigQuery.',
+    },
+    {
+      q: 'Ako dlho trvá, kým sa prejavia výsledky?',
+      a: 'Prvé týždne sú o audite, nastavení merania a prestavbe účtu. Dáta, na ktorých sa dá vyhodnocovať, vznikajú približne od štvrtého týždňa a prvé spoľahlivé porovnanie býva po dvoch až troch mesiacoch. Rýchlejšie sa prejavia len zásahy typu zastavenie zjavne stratových kampaní.',
+    },
+    {
+      q: 'Musím podpisovať viazanosť?',
+      a: 'Nie. Spolupráca beží z mesiaca na mesiac a dá sa ukončiť kedykoľvek. Neexistuje minimálny počet mesiacov ani výpovedná pokuta.',
+    },
+    {
+      q: 'Kto vlastní reklamné účty a dáta po skončení spolupráce?',
+      a: 'Klient. Kampane sa stavajú v jeho vlastných účtoch Google Ads a Meta Ads, meranie beží v jeho GA4 a GTM kontajneri a prípadný dátový sklad je v jeho Google Cloud projekte. Po skončení spolupráce si klient odoberie prístupy a všetko mu zostáva funkčné.',
+    },
+    {
+      q: 'Prečo optimalizovať podľa marže a nie podľa ROAS?',
+      a: 'ROAS aj PNO porovnávajú náklady na reklamu s tržbou, nie so ziskom. Pri jednom cieli na celý katalóg tak e-shop pri produktoch s vysokou maržou zbytočne brzdí a pri produktoch s nízkou maržou platí za objednávky, na ktorých stráca. Keď do kampaní vstupuje príspevková marža, rozpočet ide tam, kde firma reálne zarába.',
+    },
+    {
+      q: 'Spravujete aj kampane na viacerých trhoch?',
+      a: 'Áno. Viac trhov znamená viac kampaní, jazykových verzií a feedov, čo sa premieta do ceny správy — pri dvoch až troch trhoch približne o tretinu, pri štyroch a viac zhruba o 60 %.',
+    },
+  ]}
   related={[
     { href: '/sluzby/meranie', label: 'Meranie & tracking' },
     { href: '/data', label: 'Dáta & BigQuery' },

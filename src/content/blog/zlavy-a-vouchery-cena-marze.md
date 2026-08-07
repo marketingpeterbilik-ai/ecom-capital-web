@@ -50,7 +50,7 @@ Zľavy sa nedajú hodnotiť ako jedna kategória. Rozdiel je v tom, **či menia 
 
 Uvítací voucher pre nového návštevníka, prvý nákup, výmena za e-mail. Tu má zľava reálnu šancu byť inkrementálna — človek značku nepozná a potrebuje dôvod skúsiť ju.
 
-Podmienka je, aby sa dala **vyhodnotiť cez celý životný cyklus**, nie cez prvú objednávku. Prvý nákup so zľavou 15 % môže byť stratový a napriek tomu dobrý biznis, ak sa zákazník vráti. Ak sa nevráti, kúpili ste si jednorazovú stratu.
+Podmienka je, aby sa dala **vyhodnotiť cez celý životný cyklus**, nie cez prvú objednávku. Prvý nákup so zľavou 15 % môže byť stratový a napriek tomu dobrý biznis, ak sa zákazník vráti. Ak sa nevráti, kúpili ste si jednorazovú stratu. Ako oddeliť jedno od druhého, rozoberám v článku o [novom a vracajúcom sa zákazníkovi](/blog/novy-vs-vracajuci-sa-zakaznik).
 
 ### 2. Zľava, ktorá odmeňuje rozhodnutie, ktoré už padlo
 
@@ -119,7 +119,9 @@ Minimum, ktoré má sedieť v hodnote nákupnej udalosti:
 - **bez dopravy**,
 - ideálne rovno **príspevková marža** namiesto tržby, ak to e-shop vie posielať.
 
-Posledný bod je najväčší skok v kvalite riadenia kampaní a zároveň ten, na ktorý sa dá dostať postupne — najprv správna tržba, potom marža. Ako vyzerá takto postavené meranie, popisujem v článku o [meraní pred rozpočtom](/blog/preco-merat-pred-rozpoctom).
+Je to tá istá logika ako pri [vratkách](/blog/vratky-a-ppc-ciste-trzby): hodnota, ktorú platforma nikdy neuvidí, sa vám vráti ako pokrivené rozhodovanie algoritmu. Zľava ju znižuje dopredu, vratka spätne — a v oboch prípadoch skončíte s cieľom postaveným na čísle, ktoré do firmy nikdy neprišlo.
+
+Posledný bod je najväčší skok v kvalite riadenia kampaní a zároveň ten, na ktorý sa dá dostať postupne — najprv správna tržba, potom marža. Čo všetko má v hodnote konverzie sedieť, rozoberá [hygiena konverzií v Google Ads](/blog/hygiena-konverzii-google-ads); prečo tento krok patrí pred plánovanie rozpočtu, článok o [meraní pred rozpočtom](/blog/preco-merat-pred-rozpoctom).
 
 ## Zhrnutie
 

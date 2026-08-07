@@ -1,11 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
 import Booking from '../components/Booking.astro';
+import { SITE, breadcrumbLd } from '../data/site';
+
+const jsonLd = [
+  {
+    '@type': 'ContactPoint',
+    '@id': new URL('/kontakt', Astro.site).href + '#contactpoint',
+    contactType: 'sales',
+    email: SITE.email,
+    areaServed: 'SK',
+    availableLanguage: ['sk', 'cs', 'en'],
+  },
+  breadcrumbLd(Astro.site, [
+    { name: 'Domov', href: '/' },
+    { name: 'Kontakt', href: '/kontakt' },
+  ]),
+];
 ---
 
 <Base
   title="Kontakt | Ecom Capital"
   description="Nezáväzná konzultácia: krátky hovor o stave účtu a merania. Termín priamo v kalendári, alebo e-mailom na peter@ecomcapital.sk."
+  pageType="ContactPage"
+  mainEntityId={new URL('/kontakt', Astro.site).href + '#contactpoint'}
+  jsonLd={jsonLd}
 >
   <section class="phero">
     <div class="wrap">

@@ -1,10 +1,83 @@
 ---
 import Base from '../layouts/Base.astro';
+import { ID, breadcrumbLd, faqLd } from '../data/site';
+
+// Rovnaké pásma, aké počíta skript nižšie (30 €/h, 1 trh, bez doplnkov).
+// V HTML musia byť aj staticky — inak nemá vyhľadávač ani jazykový model čo citovať.
+const bands = [
+  { budget: 'do 1 000 €', google: '150 – 200 €', both: '300 – 400 €' },
+  { budget: '1 000 – 5 000 €', google: '200 – 300 €', both: '400 – 500 €' },
+  { budget: '5 000 – 15 000 €', google: '250 – 350 €', both: '500 – 700 €' },
+  { budget: '15 000 – 30 000 €', google: '300 – 450 €', both: '600 – 850 €' },
+  { budget: 'nad 30 000 €', google: '400 – 550 €', both: '750 – 1 050 €' },
+];
+
+const setups = [
+  { name: 'Tracking & meranie (GA4 + server-side)', price: '≈ 350 €' },
+  { name: 'Dáta & BigQuery (dátový sklad + dashboard)', price: '≈ 600 €' },
+  { name: 'Produktové feedy & Merchant Center', price: '≈ 250 €' },
+  { name: 'Cookie lišta & Consent Mode v2', price: '≈ 100 €' },
+];
+
+const faq = [
+  {
+    q: 'Koľko stojí správa PPC kampaní pre e-shop?',
+    a: 'Orientačne od 150 € mesačne pri jednej platforme a malom rozpočte, cez 200 až 300 € pri Google Ads a rozpočte do 5 000 € mesačne, až po 750 až 1 050 € pri Google aj Meta Ads a rozpočte nad 30 000 € mesačne. Cena rastie s počtom platforiem, výškou rozpočtu a počtom trhov.',
+  },
+  {
+    q: 'Ako sa cena správy počíta?',
+    a: 'Z odhadovaného času potrebného na správu, sadzbou 30 € za hodinu. Čas závisí od počtu platforiem, výšky mesačného rozpočtu (väčší rozpočet znamená viac kampaní a jemnejšiu optimalizáciu) a počtu trhov či jazykov. Minimálna mesačná odmena je 150 €.',
+  },
+  {
+    q: 'Platí sa percento z reklamného rozpočtu?',
+    a: 'Nie. Odmena je pevná mesačná suma podľa dohodnutého rozsahu, nie percento zo spendu. Percentuálny model motivuje míňať viac, čo je v rozpore s optimalizáciou podľa marže.',
+  },
+  {
+    q: 'Koľko stojí jednorazové nastavenie?',
+    a: 'Nastavenie trackingu a merania vychádza približne na 350 €, dátový sklad v BigQuery s prvým dashboardom okolo 600 €, produktové feedy a Merchant Center okolo 250 € a nasadenie cookie lišty s Consent Mode v2 približne 100 €. Ide o jednorazové položky nad rámec mesačnej správy.',
+  },
+  {
+    q: 'Ako sa cena mení pri viacerých trhoch?',
+    a: 'Pri dvoch až troch trhoch je správa približne o tretinu drahšia, pri štyroch a viac zhruba o 60 %. Dôvodom sú ďalšie kampane, jazykové verzie, feedy a samostatná optimalizácia pre každý trh.',
+  },
+  {
+    q: 'Je odhad z kalkulačky záväzný?',
+    a: 'Nie, je orientačný. Presná cena vzíde z konzultácie podľa stavu účtu, stavu merania a reálneho rozsahu práce — účet, ktorý treba najprv prestavať, si vyžiada iný rozsah ako účet v poriadku.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@type': 'Offer',
+    '@id': new URL('/kalkulacka', Astro.site).href + '#offer',
+    name: 'Správa PPC kampaní — mesačná odmena',
+    description:
+      'Mesačná odmena za správu PPC kampaní v Google Ads a Meta Ads vrátane merania. Cena závisí od počtu platforiem, výšky rozpočtu a počtu trhov.',
+    priceCurrency: 'EUR',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      priceCurrency: 'EUR',
+      minPrice: 150,
+      maxPrice: 1050,
+      unitText: 'mesiac',
+      valueAddedTaxIncluded: false,
+    },
+    availability: 'https://schema.org/InStock',
+    seller: { '@id': ID.org(Astro.site) },
+    areaServed: { '@type': 'Country', name: 'Slovensko' },
+  },
+  breadcrumbLd(Astro.site, [
+    { name: 'Domov', href: '/' },
+    { name: 'Kalkulačka ceny', href: '/kalkulacka' },
+  ]),
+  faqLd(faq),
+];
 ---
 
 <Base
   title="Kalkulačka ceny | Ecom Capital"
-  description="Orientačná cena správy PPC. Vyberte platformy, rozpočet a doplnkové služby a uvidíte odhad mesačnej ceny. Presná ponuka po konzultácii."
+  description="Orientačná cena správy PPC: od 150 € mesačne pri jednej platforme po zhruba 1 050 € pri Google aj Meta a rozpočte nad 30 000 €. Vyberte platformy, rozpočet a doplnky."
+  jsonLd={jsonLd}
 >
   <section class="phero" style="padding-bottom:48px">
     <div class="wrap">
@@ -89,6 +162,92 @@ import Base from '../layouts/Base.astro';
           </p>
           <a href="/kontakt" class="btn btn--lime btn--block">Vyžiadať presnú ponuku →</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statický prehľad pásiem: rovnaké čísla ako kalkulačka, len bez klikania -->
+  <section class="sec sec--mist sec--tight">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:32px">
+        <span class="eyebrow">Cenové pásma</span>
+        <h2 class="h2" style="margin:16px 0 14px">Koľko stojí správa PPC podľa rozpočtu.</h2>
+        <p class="lead">
+          Mesačná odmena za správu pri jednom trhu a bez doplnkových služieb. Meranie je v cene správy.
+          Odmena je pevná suma podľa rozsahu, nie percento z reklamného rozpočtu.
+        </p>
+      </div>
+
+      <div class="table-scroll reveal">
+        <table class="ptable">
+          <thead>
+            <tr>
+              <th scope="col">Mesačný rozpočet na reklamu</th>
+              <th scope="col">Len Google Ads</th>
+              <th scope="col">Google + Meta Ads</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              bands.map((b) => (
+                <tr>
+                  <th scope="row">{b.budget}</th>
+                  <td>{b.google}</td>
+                  <td>{b.both}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid grid-2 reveal" style="margin-top:32px;align-items:start">
+        <div class="card">
+          <div class="h3">Jednorazové nastavenie</div>
+          <ul class="plist">
+            {
+              setups.map((s) => (
+                <li>
+                  <span>{s.name}</span>
+                  <b>{s.price}</b>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div class="card">
+          <div class="h3">Čo cenu posúva</div>
+          <ul class="plist">
+            <li><span>2–3 trhy alebo jazyky</span><b>+ ~30 %</b></li>
+            <li><span>4 a viac trhov</span><b>+ ~60 %</b></li>
+            <li><span>TikTok Ads navyše</span><b>+ ~180 €/mes</b></li>
+            <li><span>Microsoft Ads navyše</span><b>+ ~120 €/mes</b></li>
+            <li><span>Pravidelný reporting</span><b>+ ~90 €/mes</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="disclaimer reveal" style="margin-top:24px">
+        Ceny sú orientačné a bez DPH. Presná ponuka vzíde z konzultácie podľa stavu účtu a reálneho rozsahu práce.
+      </p>
+    </div>
+  </section>
+
+  <section class="sec sec--tight">
+    <div class="wrap article">
+      <div class="reveal">
+        <span class="eyebrow">Časté otázky</span>
+        <h2 class="h2" style="margin:16px 0 28px">Otázky k cene.</h2>
+      </div>
+      <div class="prose reveal">
+        {
+          faq.map((f) => (
+            <>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </>
+          ))
+        }
       </div>
     </div>
   </section>

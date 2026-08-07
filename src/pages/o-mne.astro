@@ -1,0 +1,172 @@
+---
+import Base from '../layouts/Base.astro';
+import Booking from '../components/Booking.astro';
+import { ID, SITE, breadcrumbLd, faqLd } from '../data/site';
+
+// TODO (Peter): over čísla praxe a doplň LinkedIn do src/data/site.ts (personLd.sameAs).
+const faq = [
+  {
+    q: 'Kto stojí za Ecom Capital?',
+    a: 'Peter Bílik, performance & data konzultant z Bratislavy. Ecom Capital s.r.o. je jeho štúdio — klient teda pracuje priamo s človekom, ktorý účty aj spravuje, nie s account manažérom, ktorý zadania posúva ďalej.',
+  },
+  {
+    q: 'S akými klientmi Ecom Capital pracuje?',
+    a: 'Prevažne s e-shopmi a e-commerce firmami na Slovensku a v strednej Európe, od jednotrhových projektov po značky bežiace na viacerých trhoch súčasne. Komunikácia prebieha v slovenčine, češtine a angličtine.',
+  },
+  {
+    q: 'Je Ecom Capital agentúra alebo freelancer?',
+    a: 'Malé štúdio postavené okolo jedného konzultanta. To znamená, že kampane, meranie aj reporting rieši jeden človek a klient má jeden kontakt. Kapacita je preto obmedzená a spolupráce sa neberú nad rámec toho, čo sa dá odviesť poriadne.',
+  },
+  {
+    q: 'Prečo spájať PPC a dáta u jedného dodávateľa?',
+    a: 'Pretože kampane sú len tak dobré ako dáta, ktoré do nich vstupujú. Keď reklamu spravuje agentúra, tracking rieši vývojár a reporting analytik, väčšina času padne na dohadovanie, čie čísla platia. U jedného dodávateľa tento krok odpadá.',
+  },
+];
+
+const jsonLd = [
+  breadcrumbLd(Astro.site, [
+    { name: 'Domov', href: '/' },
+    { name: 'O mne', href: '/o-mne' },
+  ]),
+  faqLd(faq),
+];
+---
+
+<Base
+  title="O mne — Peter Bílik | Ecom Capital"
+  description="Za Ecom Capital stojí Peter Bílik, performance & data konzultant z Bratislavy. Google a Meta Ads, GA4, server-side tracking a BigQuery pre e-shopy na Slovensku a v strednej Európe."
+  pageType="AboutPage"
+  mainEntityId={ID.person(Astro.site)}
+  jsonLd={jsonLd}
+>
+  <section class="phero">
+    <div class="wrap">
+      <span class="eyebrow reveal">O mne</span>
+      <h1 class="h1 reveal">Peter Bílik.</h1>
+      <p class="lead lead--lg reveal" style="margin-bottom:44px">
+        Performance & data konzultant z Bratislavy. Spravujem PPC kampane v Google a Meta Ads a stavím meranie,
+        na ktorom tie kampane stoja — GA4, server-side tracking a dátové sklady v BigQuery.
+      </p>
+
+      <div class="info-grid reveal stagger">
+        <div class="info-cell">
+          <div class="l">Lokalita</div>
+          <div class="v">Bratislava, Slovensko</div>
+        </div>
+        <div class="info-cell">
+          <div class="l">Záber</div>
+          <div class="v">Google Ads · Meta Ads · GA4 · sGTM · BigQuery</div>
+        </div>
+        <div class="info-cell">
+          <div class="l">Trhy</div>
+          <div class="v">Slovensko a stredná Európa</div>
+        </div>
+        <div class="info-cell">
+          <div class="l">Jazyky</div>
+          <div class="v">Slovenčina · Čeština · Angličtina</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:8px">
+    <div class="wrap article">
+      <div class="prose reveal">
+        <h2>Ako som sa k tomu dostal</h2>
+        <p>
+          Roky robím výkonnostný marketing pre e-commerce, väčšinu z toho na viacerých európskych trhoch súčasne.
+          Multi-market prostredie človeka rýchlo naučí jednu vec: bez poriadnych dát sa nedá spravovať ani jeden
+          účet, nieto osem. Keď sa čísla v Google Ads, Meta a v e-shope rozchádzajú, väčšina času nepadne na
+          optimalizáciu, ale na dohadovanie, ktoré číslo vlastne platí.
+        </p>
+        <p>
+          Preto sa moja práca postupne presunula z čistej správy kampaní do spojenia troch vrstiev: reklamy,
+          merania a dát. Ecom Capital je štúdio postavené presne okolo tohto spojenia — kampane, tracking aj
+          reporting rieši jeden človek a klient má jeden kontakt namiesto troch dodávateľov, ktorí si navzájom
+          posúvajú zodpovednosť.
+        </p>
+
+        <h2>Ako pracujem</h2>
+        <p>
+          <strong>Meranie je súčasťou ceny správy, nie príplatok.</strong> Kampane sa učia na tom, čo im pošlete.
+          Keď časť konverzií chýba, algoritmus optimalizuje na neúplný obraz a rozdiel zaplatíte na rozpočte —
+          takže nastavovať meranie zvlášť a účtovať ho ako extra položku nedáva zmysel.
+        </p>
+        <p>
+          <strong>Optimalizujem podľa marže, nie podľa ROAS z platformy.</strong> ROAS aj PNO porovnávajú náklady
+          s tržbou, nie so ziskom. Jeden cieľ na celý katalóg znamená, že pri produktoch s vysokou maržou zbytočne
+          brzdíte a pri tých s nízkou platíte za objednávky, na ktorých strácate.
+        </p>
+        <p>
+          <strong>Bez viazanosti a bez rukojemníctva.</strong> Spolupráca beží z mesiaca na mesiac. Reklamné účty,
+          kontajnery, dátový sklad aj dokumentácia sú od začiatku vo vlastných účtoch klienta — po skončení
+          spolupráce stačí odobrať prístupy a všetko zostáva funkčné.
+        </p>
+        <p>
+          <strong>Píšem po slovensky a bez omáčky.</strong> Mesačný report hovorí, čo sa stalo, prečo a čo ďalej.
+          Ak niečo nefunguje, píšem to hneď, nie na najbližšom kvartálnom stretnutí.
+        </p>
+
+        <h2>S čím viem pomôcť</h2>
+        <ul>
+          <li>
+            <a href="/sluzby/ppc">Správa PPC kampaní</a> — Google Ads (Search, Shopping, Performance Max)
+            a Meta Ads vrátane produktových feedov.
+          </li>
+          <li>
+            <a href="/sluzby/meranie">Meranie a tracking</a> — GA4, server-side tracking cez sGTM, Meta CAPI,
+            enhanced conversions.
+          </li>
+          <li>
+            <a href="/data">Dáta a BigQuery</a> — dátový sklad, blended ROAS a CAC, dashboardy v Looker Studiu.
+          </li>
+          <li>
+            <a href="/cookie-consent">Cookie lišta a Consent Mode v2</a> — súlad merania s GDPR aj podmienkami
+            Googlu.
+          </li>
+          <li>
+            <a href="/sluzby/audit">Audit a konzultácie</a> — nezávislé posúdenie účtov a merania s akčným plánom.
+          </li>
+        </ul>
+        <p>
+          Píšem aj <a href="/blog">blog</a> o tom, ako sa dá marketing riadiť podľa čísel, ktoré sedia — o maržiach,
+          blended metrikách a meraní, ktoré prežije blokovače.
+        </p>
+
+        <h2>Firemné údaje</h2>
+        <p>
+          {SITE.legalName}, {SITE.city}, Slovensko. IČO {SITE.ico}. Kontakt:
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, odpoveď do 48 hodín.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--mist sec--tight">
+    <div class="wrap article">
+      <div class="reveal">
+        <span class="eyebrow">Časté otázky</span>
+        <h2 class="h2" style="margin:16px 0 28px">Čo sa ľudia pýtajú ešte pred hovorom.</h2>
+      </div>
+      <div class="prose reveal">
+        {
+          faq.map((f) => (
+            <>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <Booking
+    title="Krátky hovor o stave účtu a merania."
+    items={[
+      { b: 'Stav účtu a merania', t: ' — čo funguje a čo nie.' },
+      { b: 'Priority', t: ' — čo má zmysel riešiť ako prvé.' },
+      { b: 'Ďalší postup', t: ' — či a ako dáva zmysel pokračovať.' },
+    ]}
+  />
+</Base>

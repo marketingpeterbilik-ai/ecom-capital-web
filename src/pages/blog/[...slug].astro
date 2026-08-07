@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { AUTHOR, ID, breadcrumbLd, faqLd as buildFaqLd } from '../../data/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -21,9 +22,10 @@ const published = post.data.pubDate.toISOString();
 const modified = (post.data.updatedDate ?? post.data.pubDate).toISOString();
 
 // Article schema — čistá, strojovo čitateľná fakticita pre AI vyhľadávače aj Google.
+// Autor je konkrétny človek: bez identifikovateľného autora nemá odborný text v AI odpovediach váhu.
 const articleLd = {
-  '@context': 'https://schema.org',
   '@type': 'BlogPosting',
+  '@id': url + '#article',
   headline: post.data.title,
   description: post.data.description,
   inLanguage: 'sk-SK',
@@ -32,29 +34,29 @@ const articleLd = {
   keywords: post.data.tags.join(', '),
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   url,
-  author: { '@type': 'Organization', name: 'Ecom Capital', url: new URL('/', Astro.site).href },
-  publisher: {
-    '@type': 'Organization',
-    name: 'Ecom Capital',
-    logo: { '@type': 'ImageObject', url: new URL('/og.png', Astro.site).href },
+  author: { '@id': ID.person(Astro.site) },
+  publisher: { '@id': ID.org(Astro.site) },
+  isPartOf: { '@id': ID.website(Astro.site) },
+  image: {
+    '@type': 'ImageObject',
+    url: new URL('/og.png', Astro.site).href,
+    width: 1200,
+    height: 630,
   },
-  image: new URL('/og.png', Astro.site).href,
 };
 
-// FAQ schema — priamo citovateľné otázky a odpovede, ktoré AI odpovede radi preberajú.
-const faqLd = post.data.faq?.length
-  ? {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: post.data.faq.map((f) => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
-    }
-  : null;
+const crumbLd = breadcrumbLd(Astro.site, [
+  { name: 'Domov', href: '/' },
+  { name: 'Blog', href: '/blog' },
+  { name: post.data.title, href: `/blog/${post.id}` },
+]);
 
-const jsonLd = faqLd ? [articleLd, faqLd] : [articleLd];
+// FAQ schema — priamo citovateľné otázky a odpovede, ktoré AI odpovede radi preberajú.
+const jsonLd = [
+  articleLd,
+  crumbLd,
+  ...(post.data.faq?.length ? [buildFaqLd(post.data.faq)] : []),
+];
 ---
 
 <Base
@@ -69,7 +71,7 @@ const jsonLd = faqLd ? [articleLd, faqLd] : [articleLd];
     <div class="wrap article">
       <a href="/blog" class="link-arrow reveal">← Späť na blog</a>
       <div class="post-meta reveal" style="margin-top:18px">
-        {fmt(post.data.pubDate)}
+        <a href={AUTHOR.path} rel="author">{AUTHOR.name}</a> · {fmt(post.data.pubDate)}
         {post.data.tags.length ? ` · ${post.data.tags.join(' · ')}` : ''}
       </div>
       <h1 class="reveal" style="margin-top:10px">{post.data.title}</h1>
@@ -81,6 +83,17 @@ const jsonLd = faqLd ? [articleLd, faqLd] : [articleLd];
     <div class="wrap article">
       <div class="prose reveal">
         <Content />
+      </div>
+
+      <div class="author-box reveal">
+        <div>
+          <div class="author-box__name">{AUTHOR.name}</div>
+          <p>
+            {AUTHOR.jobTitle} z Bratislavy. Spravuje PPC kampane v Google a Meta Ads a stavia meranie,
+            na ktorom stoja — GA4, server-side tracking a dátové sklady v BigQuery.
+            <a href={AUTHOR.path}>Viac o mne →</a>
+          </p>
+        </div>
       </div>
 
       {post.data.faq?.length ? (

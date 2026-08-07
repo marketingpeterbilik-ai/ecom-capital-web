@@ -4,6 +4,7 @@
 // voliteľný obsah (slot) → súvisiace služby → konzultácia.
 import Base from './Base.astro';
 import Booking from '../components/Booking.astro';
+import { ID, breadcrumbLd, faqLd } from '../data/site';
 
 interface Item {
   t: string;
@@ -41,6 +42,13 @@ interface Props {
   related?: Related[];
   bookingTitle?: string;
   bookingItems?: { b: string; t: string }[];
+  /** Súvislý odsek o službe. Karty sa citujú zle — model potrebuje celé vety. */
+  summary?: string;
+  /** Otázky, ktoré ľudia reálne píšu. Renderujú sa aj do HTML, aj do FAQPage schema. */
+  faq?: { q: string; a: string }[];
+  /** Názov služby pre schema.org (bez bodky na konci, ktorú má nadpis). */
+  serviceName?: string;
+  serviceType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -71,11 +79,54 @@ const {
   related = [],
   bookingTitle,
   bookingItems,
+  summary,
+  faq = [],
+  serviceName,
+  serviceType,
   jsonLd,
 } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const name = serviceName ?? heading.replace(/\.$/, '');
+
+const serviceLd = {
+  '@type': 'Service',
+  '@id': new URL(path, Astro.site).href + '#service',
+  name,
+  serviceType: serviceType ?? name,
+  description: summary ?? lead,
+  url: new URL(path, Astro.site).href,
+  provider: { '@id': ID.org(Astro.site) },
+  areaServed: [
+    { '@type': 'Country', name: 'Slovensko' },
+    { '@type': 'Place', name: 'Európska únia' },
+  ],
+  audience: { '@type': 'BusinessAudience', name: 'E-shopy a e-commerce firmy' },
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: whatTitle,
+    itemListElement: items.map((i) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: i.t, description: i.d.replace(/<[^>]+>/g, '') },
+    })),
+  },
+};
+
+const crumbLd = breadcrumbLd(Astro.site, [
+  { name: 'Domov', href: '/' },
+  { name: 'Služby', href: '/sluzby' },
+  { name: crumb, href: path },
+]);
+
+const graph = [
+  serviceLd,
+  crumbLd,
+  ...(faq.length ? [faqLd(faq)] : []),
+  ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []),
+];
 ---
 
-<Base title={title} description={description} jsonLd={jsonLd}>
+<Base title={title} description={description} jsonLd={graph}>
   <section class="phero">
     <div class="wrap phero-grid">
       <div class="reveal">
@@ -155,6 +206,41 @@ const {
   </section>
 
   <slot />
+
+  {
+    summary && (
+      <section class="sec sec--tight">
+        <div class="wrap article">
+          <div class="prose reveal">
+            <Fragment set:html={summary} />
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    faq.length > 0 && (
+      <section class="sec sec--mist sec--tight">
+        <div class="wrap article">
+          <div class="reveal">
+            <span class="eyebrow">Časté otázky</span>
+            <h2 class="h2" style="margin:16px 0 28px">
+              Na čo sa klienti pýtajú najčastejšie.
+            </h2>
+          </div>
+          <div class="prose reveal">
+            {faq.map((f) => (
+              <>
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   {
     related.length > 0 && (

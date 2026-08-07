@@ -67,7 +67,7 @@ Rýchly test: zoberte päť najpredávanejších produktov a pozrite si v Google
 Domáce spotrebiče > Kuchyňa > Kávovary > Automatické
 ```
 
-Podľa nej sa potom skladajú skupiny produktov v kampaniach — a to na akejkoľvek úrovni potrebujete. Ak sa product_type kopíruje z URL alebo je pre celý katalóg rovnaký, prídete o možnosť oddeliť kategórie s inou maržou, inou konkurenciou a iným cieľom.
+Podľa nej sa potom skladajú skupiny produktov v kampaniach — a to na akejkoľvek úrovni potrebujete. Ak sa product_type kopíruje z URL alebo je pre celý katalóg rovnaký, prídete o možnosť oddeliť kategórie s inou maržou, inou konkurenciou a iným cieľom. V Performance Max je to o to dôležitejšie, že iné cielenie k dispozícii nie je — viac v článku o tom, ako [spraviť PMax čitateľným](/blog/performance-max-citatelny).
 
 Odporúčanie: tri až štyri úrovne, konzistentne, bez diakritických prekvapení a bez toho, aby sa hierarchia menila pri každom preklikovaní kategórií v e-shope.
 
@@ -78,7 +78,7 @@ Päť voľných polí, ktoré sa dajú použiť na čokoľvek. Google im nerozum
 Čo sa oplatí do nich dať:
 
 - **`custom_label_0` — pásmo marže.** Priame prepojenie na [tri typy marže](/blog/tri-typy-marze-namiesto-pno): produkt s príspevkovou maržou 55 % znesie úplne iný cieľ než produkt s 18 %. Bez tohto poľa im v kampani nastavíte rovnaký.
-- **`custom_label_1` — vratkovosť.** Kategórie s vysokou vratkovosťou potrebujú prísnejší cieľ, lebo časť tržby sa vráti.
+- **`custom_label_1` — vratkovosť.** Kategórie s vysokou vratkovosťou potrebujú prísnejší cieľ, lebo časť tržby sa vráti — podrobne v článku o [vratkách a čistých tržbách](/blog/vratky-a-ppc-ciste-trzby).
 - **`custom_label_2` — stav skladu.** Pomalá obrátka do samostatnej kampane s vyšším tlakom, kritické zásoby von.
 - **`custom_label_3` — sezónnosť.** Aby sa nemuselo pred sezónou prestavovať pol účtu.
 - **`custom_label_4` — bestsellery.** Top produkty podľa tržieb za posledných 90 dní, prepočítavané automaticky.

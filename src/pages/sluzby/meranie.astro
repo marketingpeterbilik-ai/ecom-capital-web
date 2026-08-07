@@ -46,4 +46,54 @@ import Service from '../../layouts/Service.astro';
     { href: '/cookie-consent', label: 'Cookie lišta & Consent Mode v2' },
     { href: '/data', label: 'Dáta & BigQuery' },
   ]}
+  serviceName="Meranie a tracking pre e-shopy"
+  serviceType="Implementácia GA4, server-side trackingu a Consent Mode v2"
+  summary={`
+    <h2>Čo meranie a tracking zahŕňa</h2>
+    <p>
+      Meranie a tracking znamená nastaviť dátový tok tak, aby konverzie v Google Ads
+      a Meta Ads sedeli s objednávkami v e-shope. Bežný webový tracking beží v prehliadači
+      návštevníka, takže časť dát zablokujú rozšírenia, Safari aj firemné siete. Server-side
+      tracking cez vlastný kontajner Google Tag Manageru na vlastnej doméne túto stratu
+      výrazne znižuje.
+    </p>
+    <p>
+      Prakticky ide o štyri veci: implementáciu a audit GA4 vrátane e-commerce eventov,
+      server-side kontajner (sGTM), odosielanie konverzií cez Meta Conversions API
+      a enhanced conversions s deduplikáciou, a nastavenie Consent Mode v2 tak, aby
+      meranie zodpovedalo GDPR aj podmienkam Googlu bez zbytočnej straty dát.
+    </p>
+    <p>
+      Súčasťou je pravidelné porovnanie troch zdrojov — platforiem, GA4 a objednávok
+      v e-shope. Keď sa čísla rozchádzajú, vie sa prečo a o koľko. Kontajnery, prístupy
+      aj dokumentácia dátového toku zostávajú klientovi, takže prevzatie iným tímom je
+      otázka odovzdania prístupov, nie prestavby.
+    </p>
+  `}
+  faq={[
+    {
+      q: 'Čo je server-side tracking a čím sa líši od bežného merania?',
+      a: 'Pri bežnom meraní posiela dáta priamo prehliadač návštevníka na servery Googlu či Mety, čo blokujú rozšírenia, Safari aj časť sietí. Pri server-side trackingu ide požiadavka najprv na vlastný kontajner Google Tag Manageru na vlastnej doméne a až odtiaľ na platformy. Meranie je tak odolnejšie voči blokovačom a ITP.',
+    },
+    {
+      q: 'Oplatí sa server-side tracking aj malému e-shopu?',
+      a: 'Rozhoduje objem, nie veľkosť. Server-side tracking dáva zmysel od chvíle, keď strata dát v eurách prevýši náklad na jeho nasadenie a prevádzku. Pri e-shope s nízkym mesačným rozpočtom na reklamu býva lacnejšie najprv poriadne nastaviť GA4 a enhanced conversions.',
+    },
+    {
+      q: 'Prečo sa čísla v Google Ads, Meta a GA4 nezhodujú?',
+      a: 'Každý systém používa iné okno atribúcie a iný model priradenia konverzie. Google aj Meta si navyše pripisujú tie isté objednávky, takže po sčítaní vyjde viac tržieb, než firma reálne má. Zhodu nedosiahnete, ale rozdiel má byť vysvetliteľný a stabilný — a to sa dá odsledovať porovnaním s objednávkami v e-shope.',
+    },
+    {
+      q: 'Ako dlho trvá nasadenie merania?',
+      a: 'Audit a implementácia GA4 s e-commerce eventmi býva otázkou niekoľkých dní. Server-side kontajner vrátane Meta CAPI a testovania zaberie podľa zložitosti e-shopu spravidla jeden až dva týždne.',
+    },
+    {
+      q: 'Dá sa meranie objednať samostatne, bez správy kampaní?',
+      a: 'Áno. Meranie je bežný jednorazový projekt, napríklad pred spustením kampaní alebo pred nástupom novej agentúry. Ak potom nasleduje správa PPC, meranie je už súčasťou jej ceny.',
+    },
+    {
+      q: 'Zostane meranie funkčné, keď spolupráca skončí?',
+      a: 'Áno. Všetko beží vo vlastných kontajneroch a účtoch klienta a súčasťou dodávky je dokumentácia eventov a dátového toku. Nasledujúci tím nemusí nič prestavovať, stačí mu odovzdať prístupy.',
+    },
+  ]}
 />

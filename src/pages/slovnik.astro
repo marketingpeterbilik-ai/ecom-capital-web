@@ -1,0 +1,216 @@
+---
+import Base from '../layouts/Base.astro';
+import Booking from '../components/Booking.astro';
+import { ID, breadcrumbLd } from '../data/site';
+
+// Definičný obsah: krátke, samostatne stojace odpovede na „čo je X".
+// Presne toto generatívne vyhľadávače preberajú do odpovedí najčastejšie.
+type Term = { id: string; term: string; short?: string; body: string; link?: { href: string; label: string } };
+
+const groups: { name: string; terms: Term[] }[] = [
+  {
+    name: 'Výkonnosť a peniaze',
+    terms: [
+      {
+        id: 'pno',
+        term: 'PNO',
+        short: 'podiel nákladov na obrate',
+        body: 'Podiel nákladov na obrate: náklady na reklamu delené tržbami, vyjadrené v percentách. Ak z každých 100 € tržieb ide 20 € do reklamy, PNO je 20 %. Je to prevrátená hodnota ROAS — PNO 20 % zodpovedá ROAS 5. Obe čísla porovnávajú reklamu s tržbou, nie so ziskom, takže samy osebe nehovoria, či sa kampaň oplatí.',
+        link: { href: '/blog/tri-typy-marze-namiesto-pno', label: 'Prečo neoptimalizovať podľa PNO' },
+      },
+      {
+        id: 'roas',
+        term: 'ROAS',
+        short: 'return on ad spend',
+        body: 'Tržby vydelené nákladmi na reklamu. ROAS 5 znamená, že na každé euro v reklame pripadá päť eur tržieb. Číslo vykázané platformou zahŕňa len konverzie, ktoré si daná platforma pripíše podľa vlastného modelu atribúcie — Google aj Meta si preto často pripíšu tú istú objednávku.',
+      },
+      {
+        id: 'blended-roas',
+        term: 'Blended ROAS',
+        body: 'Celkové tržby firmy delené celkovými nákladmi na reklamu naprieč všetkými kanálmi. Na rozdiel od ROAS v jednotlivých platformách neobsahuje dvojité započítanie tej istej objednávky, takže býva nižší, ale bližšie k realite. Počíta sa z objednávok, nie z atribúcie platforiem.',
+        link: { href: '/blog/blended-roas-vs-platformovy', label: 'Blended vs. platformový ROAS' },
+      },
+      {
+        id: 'hruba-marza',
+        term: 'Hrubá marža',
+        body: 'Tržba mínus nákupná cena predaného tovaru. Nezohľadňuje dopravu, obal, poplatky platobnej brány ani vratky, preto je pre riadenie reklamy príliš optimistická.',
+      },
+      {
+        id: 'prispevkova-marza',
+        term: 'Príspevková marža',
+        body: 'Hrubá marža mínus všetky náklady, ktoré vznikajú s každou objednávkou: doprava, obal, poplatok platobnej brány a vratky. Určuje, koľko môže e-shop zaplatiť za reklamu. Bod zvratu sa rovná príspevkovej marži v percentách — pri marži 44 % je e-shop pri PNO 44 % na nule.',
+        link: { href: '/blog/tri-typy-marze-namiesto-pno', label: 'Tri typy marže' },
+      },
+      {
+        id: 'cac',
+        term: 'CAC',
+        short: 'customer acquisition cost',
+        body: 'Náklad na získanie jedného nového zákazníka: marketingové náklady delené počtom nových zákazníkov za dané obdobie. Blended CAC ráta všetky kanály spolu, čím sa vyhne prekrývaniu atribúcie medzi platformami.',
+      },
+      {
+        id: 'ltv',
+        term: 'LTV',
+        short: 'lifetime value',
+        body: 'Celková hodnota, ktorú zákazník firme prinesie za celý čas vzťahu, nie len pri prvej objednávke. Drahší kanál sa môže vyplatiť, ak privádza zákazníkov, ktorí sa vracajú — to sa ale ukáže až pri pohľade na LTV podľa zdroja.',
+      },
+    ],
+  },
+  {
+    name: 'Meranie',
+    terms: [
+      {
+        id: 'ga4',
+        term: 'GA4',
+        short: 'Google Analytics 4',
+        body: 'Aktuálna generácia Google Analytics, postavená na modeli udalostí namiesto relácií. Pre e-shop je kľúčové správne odosielanie e-commerce udalostí (zobrazenie produktu, pridanie do košíka, nákup) vrátane hodnoty objednávky a identifikátora transakcie.',
+      },
+      {
+        id: 'sgtm',
+        term: 'Server-side tracking (sGTM)',
+        body: 'Meranie, pri ktorom dáta neputujú z prehliadača priamo na servery Googlu či Mety, ale najprv na vlastný kontajner Google Tag Manageru na vlastnej doméne. Je odolnejšie voči blokovačom reklám, obmedzeniam Safari a firemným sieťam, takže sa do platforiem dostane viac konverzií.',
+        link: { href: '/blog/server-side-tracking-kedy-sa-oplati', label: 'Kedy sa server-side oplatí' },
+      },
+      {
+        id: 'capi',
+        term: 'Meta CAPI',
+        short: 'Conversions API',
+        body: 'Rozhranie, cez ktoré sa konverzie posielajú Mete zo servera namiesto z prehliadača. Používa sa spolu s pixelom a deduplikáciou podľa identifikátora udalosti, aby sa tá istá objednávka nezapočítala dvakrát.',
+      },
+      {
+        id: 'enhanced-conversions',
+        term: 'Enhanced conversions',
+        body: 'Funkcia Google Ads, ktorá k údajom o konverzii pripojí zahašované kontaktné údaje zákazníka (e-mail, telefón). Google tak vie priradiť konverziu aj vtedy, keď zlyhá cookie, čo zvyšuje mieru zhody a presnosť merania.',
+      },
+      {
+        id: 'consent-mode',
+        term: 'Consent Mode v2',
+        body: 'Spôsob, akým web posiela Googlu informáciu, či návštevník súhlasil s meraním a s reklamnými cookies. Pre weby cieliace na Európsky hospodársky priestor ho Google vyžaduje od marca 2024 ako podmienku remarketingu a personalizovaných publík. Pri správnom nasadení Google časť konverzií pri odmietnutom súhlase dopočíta modelovaním.',
+        link: { href: '/cookie-consent', label: 'Nasadenie Consent Mode v2' },
+      },
+      {
+        id: 'atribucia',
+        term: 'Atribúcia',
+        body: 'Pravidlo, ktorému kanálu sa konverzia pripíše, keď zákazník pred nákupom prišiel do kontaktu s viacerými. Každá platforma používa vlastný model a vlastné okno, preto sa čísla v Google Ads, Meta a GA4 nikdy nezhodnú úplne — rozdiel má však byť vysvetliteľný a stabilný.',
+      },
+      {
+        id: 'bigquery',
+        term: 'BigQuery',
+        body: 'Dátový sklad od Googlu, do ktorého sa dajú zviesť reklamné dáta, GA4, objednávky, marže aj CRM a spájať ich cez spoločný kľúč. Na rozdiel od priamych konektorov v Looker Studiu uchováva históriu, zvládne veľké objemy a umožní počítať metriky za celý biznis.',
+        link: { href: '/data', label: 'Dáta & BigQuery' },
+      },
+    ],
+  },
+  {
+    name: 'Kampane a feedy',
+    terms: [
+      {
+        id: 'pmax',
+        term: 'Performance Max',
+        body: 'Typ kampane v Google Ads, ktorý jedným rozpočtom obsluhuje Search, Shopping, YouTube, Display, Gmail aj Discover. Kampaň sa riadi cieľom a signálmi, ktoré do nej vstupujú, takže jej výkon priamo závisí od kvality konverzných dát a produktového feedu.',
+      },
+      {
+        id: 'feed',
+        term: 'Produktový feed',
+        body: 'Štruktúrovaný súbor s produktmi, ich cenami, dostupnosťou a atribútmi, ktorý sa odovzdáva do Google Merchant Centra alebo katalógu Mety. Kvalita feedu určuje, na aké dopyty sa produkty zobrazia — pri Shopping aj Performance Max kampaniach nahrádza kľúčové slová.',
+      },
+      {
+        id: 'custom-labels',
+        term: 'Custom labels',
+        body: 'Vlastné štítky vo feede, ktorými sa produkty rozdelia napríklad podľa pásma marže, obrátkovosti alebo sezónnosti. Umožnia riadiť kampane podľa toho, koľko produkt reálne zarába, nie len podľa jeho ceny.',
+      },
+      {
+        id: 'negativa',
+        term: 'Negatívne kľúčové slová',
+        body: 'Výrazy, na ktoré sa reklama zobrazovať nemá. Bránia míňaniu rozpočtu na dopyty, ktoré s ponukou nesúvisia, a pri kampaniach s voľnou zhodou sú hlavným nástrojom, ako držať relevanciu.',
+      },
+    ],
+  },
+];
+
+const all = groups.flatMap((g) => g.terms);
+
+const jsonLd = [
+  {
+    '@type': 'DefinedTermSet',
+    '@id': new URL('/slovnik', Astro.site).href + '#termset',
+    name: 'Slovník pojmov PPC, merania a e-commerce dát',
+    description:
+      'Definície pojmov z výkonnostného marketingu, merania a práce s dátami pre e-shopy: PNO, ROAS, blended ROAS, príspevková marža, server-side tracking, Consent Mode v2, BigQuery a ďalšie.',
+    inLanguage: 'sk-SK',
+    url: new URL('/slovnik', Astro.site).href,
+    publisher: { '@id': ID.org(Astro.site) },
+    hasDefinedTerm: all.map((t) => ({
+      '@type': 'DefinedTerm',
+      '@id': new URL('/slovnik', Astro.site).href + '#' + t.id,
+      name: t.short ? `${t.term} (${t.short})` : t.term,
+      description: t.body,
+      inDefinedTermSet: new URL('/slovnik', Astro.site).href + '#termset',
+    })),
+  },
+  breadcrumbLd(Astro.site, [
+    { name: 'Domov', href: '/' },
+    { name: 'Slovník pojmov', href: '/slovnik' },
+  ]),
+];
+---
+
+<Base
+  title="Slovník pojmov — PPC, meranie a dáta | Ecom Capital"
+  description="Čo znamená PNO, ROAS, blended ROAS, príspevková marža, server-side tracking, Consent Mode v2 alebo Performance Max. Stručné definície pojmov z výkonnostného marketingu pre e-shopy."
+  pageType="CollectionPage"
+  mainEntityId={new URL('/slovnik', Astro.site).href + '#termset'}
+  jsonLd={jsonLd}
+>
+  <section class="phero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Slovník pojmov</span>
+      <h1 class="h1 reveal">Pojmy, ktoré padajú na hovoroch.</h1>
+      <p class="lead lead--lg reveal">
+        Stručné definície z výkonnostného marketingu, merania a práce s dátami — bez žargónu a bez
+        vysvetľovania cez ďalší žargón.
+      </p>
+
+      <nav class="btn-row reveal" style="margin-top:32px" aria-label="Obsah slovníka">
+        {groups.map((g) => <a href={`#${g.name.replace(/\s+/g, '-').toLowerCase()}`} class="pill-link">{g.name} →</a>)}
+      </nav>
+    </div>
+  </section>
+
+  {
+    groups.map((g, gi) => (
+      <section class={`sec sec--tight ${gi % 2 === 1 ? 'sec--mist' : ''}`} id={g.name.replace(/\s+/g, '-').toLowerCase()}>
+        <div class="wrap article">
+          <div class="reveal">
+            <span class="eyebrow">{g.name}</span>
+          </div>
+          <div class="prose reveal" style="margin-top:18px">
+            {g.terms.map((t) => (
+              <>
+                <h2 id={t.id}>
+                  {t.term}
+                  {t.short ? <span class="term-short"> — {t.short}</span> : null}
+                </h2>
+                <p>{t.body}</p>
+                {t.link ? (
+                  <p>
+                    <a href={t.link.href}>{t.link.label} →</a>
+                  </p>
+                ) : null}
+              </>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+
+  <Booking title="Niečo z toho riešite na vlastnom účte?" />
+</Base>
+
+<style>
+  .term-short {
+    font-weight: 400;
+    color: var(--slate);
+    font-size: 0.7em;
+  }
+</style>

@@ -45,6 +45,49 @@ import Service from '../../layouts/Service.astro';
     { href: '/data', label: 'Dáta & BigQuery' },
     { href: '/sluzby/ppc', label: 'Správa PPC kampaní' },
   ]}
+  serviceName="AI automatizácia firemných procesov"
+  serviceType="Návrh a nasadenie AI automatizácií a integrácií"
+  summary={`
+    <h2>Ako prebieha automatizácia procesov</h2>
+    <p>
+      Automatizácia sa nezačína výberom nástroja, ale mapovaním procesov. Zisťuje sa,
+      kde tím trávi najviac času rutinou, a odhaduje sa, koľko hodín mesačne sa dá reálne
+      ušetriť. Prvým výstupom je teda číslo, nie softvér — a podľa neho sa rozhoduje,
+      čo sa vôbec oplatí stavať.
+    </p>
+    <p>
+      Typicky ide o tri okruhy: AI asistenti pre zákaznícku podporu, spracovanie e-mailov
+      a vyhľadávanie v internej dokumentácii; prepojenie systémov, aby si CRM, e-shop,
+      sklad a fakturácia posielali dáta samé; a automatický reporting, kde podklady,
+      komentáre aj upozornenia na odchýlky vznikajú z dát v sklade.
+    </p>
+    <p>
+      Súčasťou dodávky je aj beh v produkcii — nasadenie, dohľad a úpravy, keď sa proces
+      zmení. Automatizácia sa prispôsobuje firme, nie firma automatizácii.
+    </p>
+  `}
+  faq={[
+    {
+      q: 'Ktoré procesy sa v e-shope oplatí automatizovať ako prvé?',
+      a: 'Tie, ktoré sa opakujú denne, majú jasné pravidlá a prechádza nimi veľa prípadov: odpovede na najčastejšie otázky zákazníkov, triedenie a predspracovanie e-mailov, prepis dát medzi e-shopom, skladom a fakturáciou a zostavovanie pravidelných reportov.',
+    },
+    {
+      q: 'Ako sa počíta návratnosť automatizácie?',
+      a: 'Porovnáva sa čas, ktorý proces dnes zaberá, s časom po nasadení, a k tomu náklad na vybudovanie a prevádzku. Ak sa ušetrené hodiny nevrátia v rozumnom horizonte, automatizácia sa neodporúča — a v mapovaní procesov to vyjde najavo skôr, než sa začne stavať.',
+    },
+    {
+      q: 'Nahradí AI zákaznícku podporu?',
+      a: 'Nie. Zmysluplné nasadenie preberá opakované otázky s jasnou odpoveďou a zvyšok posúva človeku aj s pripraveným kontextom. Cieľom je skrátiť čas na vybavenie, nie odstrániť ľudí z procesu.',
+    },
+    {
+      q: 'Čo sa stane, keď sa proces vo firme zmení?',
+      a: 'Automatizácia sa upraví. Preto je súčasťou služby aj správa, nielen jednorazové nasadenie — automatizácia bez dohľadu sa po pár mesiacoch zmien v procesoch stane skôr prekážkou.',
+    },
+    {
+      q: 'S akými systémami sa dá prepojiť?',
+      a: 'S čímkoľvek, čo má API alebo pravidelný export: bežné e-shopové platformy, CRM, skladové a fakturačné systémy, Google Workspace, BigQuery a reklamné platformy. Pri systémoch bez API sa hľadá cesta cez exporty alebo databázu.',
+    },
+  ]}
   bookingTitle="Krátky hovor o tom, čo sa u vás dá automatizovať."
   bookingItems={[
     { b: 'Vaše procesy', t: ' — kde tím stráca najviac času rutinou.' },

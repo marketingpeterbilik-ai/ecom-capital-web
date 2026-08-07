@@ -45,6 +45,56 @@ import Service from '../layouts/Service.astro';
     { href: '/sluzby/automatizacia', label: 'AI automatizácia' },
     { href: '/sluzby/audit', label: 'Audit & konzultácie' },
   ]}
+  serviceName="Dátový sklad a reporting v BigQuery"
+  serviceType="Marketingový dátový sklad, blended metriky a Looker Studio"
+  summary={`
+    <h2>Načo je e-shopu dátový sklad</h2>
+    <p>
+      Dátový sklad je jedno miesto, kde sa schádzajú kampane z Google Ads a Meta Ads,
+      dáta z GA4, objednávky z e-shopu, marže a náklady. Dôvod je jednoduchý: Google
+      aj Meta si pripisujú tie isté konverzie, takže po sčítaní rozhraní vyjde viac
+      tržieb, než firma reálne má. Keď sa metriky počítajú z objednávok, tento rozpor
+      zmizne a čísla začnú sedieť s účtovníctvom.
+    </p>
+    <p>
+      Z takého skladu sa dajú počítať metriky, ktoré žiadne reklamné rozhranie neponúka:
+      blended ROAS a blended CAC za celý biznis, LTV podľa kampane a kanála, marža na
+      úrovni produktu či kategórie a výkon po odpočítaní vratiek. Výstupom sú dashboardy
+      v Looker Studiu a automatické reporty v dohodnutom rytme, vždy z rovnakých definícií
+      metrík.
+    </p>
+    <p>
+      Sklad beží v Google Cloud projekte klienta, takže dáta aj prístupy sú jeho.
+      Návrh počíta s tým, aby mesačné náklady na BigQuery zostali pri bežnom slovenskom
+      e-shope v desiatkach eur.
+    </p>
+  `}
+  faq={[
+    {
+      q: 'Koľko stojí prevádzka BigQuery?',
+      a: 'Pri bežnom slovenskom e-shope sa mesačné náklady na BigQuery držia v desiatkach eur. Účtuje sa uložisko a objem naskenovaných dát pri dotazoch, takže sklad sa navrhuje s partíciami a agregovanými tabuľkami, aby dashboardy neskenovali zbytočne veľa dát.',
+    },
+    {
+      q: 'Čo je blended ROAS a prečo sa líši od ROAS v platforme?',
+      a: 'Blended ROAS sú celkové tržby firmy delené celkovými nákladmi na reklamu naprieč všetkými kanálmi. Na rozdiel od ROAS v Google Ads či Meta neobsahuje dvojité započítanie tej istej objednávky, ktorú si pripíšu obe platformy súčasne. Preto býva nižší a zároveň bližšie k realite.',
+    },
+    {
+      q: 'Nestačí nám Looker Studio pripojené priamo na Google Ads a GA4?',
+      a: 'Na jednoduchý prehľad áno. Priame konektory ale nevedia spojiť reklamné dáta s objednávkami, maržami a vratkami cez spoločný kľúč, neuchovávajú históriu a pri väčších objemoch sa spomalia. BigQuery medzi zdroje a report vloží vrstvu, kde sa dáta čistia a spájajú.',
+    },
+    {
+      q: 'Ako dlho trvá postaviť dátový sklad?',
+      a: 'Základná verzia so zdrojmi Google Ads, Meta, GA4 a objednávkami býva hotová za dva až štyri týždne vrátane prvého dashboardu. Napojenie CRM, skladu a marží sa zvyčajne pridáva v druhej fáze.',
+    },
+    {
+      q: 'Komu patrí dátový sklad po skončení spolupráce?',
+      a: 'Klientovi. Sklad je od začiatku v jeho vlastnom Google Cloud projekte, dashboardy v jeho Looker Studiu. Po skončení spolupráce stačí odobrať prístupy, všetko zostáva funkčné a prenositeľné.',
+    },
+    {
+      q: 'Aké zdroje dát sa dajú napojiť?',
+      a: 'Bežne Google Ads, Meta Ads, GA4, Google Search Console, Merchant Center a produktové feedy, objednávky z e-shopu (Shoptet, WooCommerce, Shopify a podobne), CRM a skladový systém. Napojiť sa dá čokoľvek, čo má API alebo pravidelný export.',
+    },
+  ]}
 >
   <!-- Architektúra dátového toku -->
   <section class="sec">

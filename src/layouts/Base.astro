@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ID, SITE, organizationLd, personLd } from '../data/site';
 
 interface Props {
   title?: string;
@@ -11,6 +12,12 @@ interface Props {
   ogType?: 'website' | 'article';
   publishedTime?: string;
   modifiedTime?: string;
+  /** Dátum poslednej revízie stránky (ISO). Čerstvosť je pri AI odpovediach rankingový signál. */
+  dateModified?: string;
+  /** Podtyp WebPage pre schema.org — napr. ContactPage, AboutPage, CollectionPage. */
+  pageType?: string;
+  /** Entita, o ktorej stránka primárne je (odkaz na @id v grafe). */
+  mainEntityId?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -22,6 +29,9 @@ const {
   ogType = 'website',
   publishedTime,
   modifiedTime,
+  dateModified,
+  pageType = 'WebPage',
+  mainEntityId,
   jsonLd,
 } = Astro.props;
 
@@ -29,26 +39,45 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og.png', Astro.site).href;
 const siteUrl = new URL('/', Astro.site).href;
 
-// Základná entita webu — pomáha AI vyhľadávačom aj klasickému SEO rozpoznať značku.
-const orgLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Ecom Capital',
-  legalName: 'Ecom Capital s.r.o.',
-  url: siteUrl,
-  logo: new URL('/og.png', Astro.site).href,
-  description:
-    'Performance & data štúdio: správa PPC kampaní, meranie a dátová infraštruktúra pre e-shopy.',
-  areaServed: 'SK',
-};
+// Entity webu (firma + človek za ňou) a stránka samotná. Všetko v jednom @graph-e
+// s krížovými @id — z toho si vyhľadávače aj jazykové modely skladajú knowledge graph.
 const siteLd = {
-  '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Ecom Capital',
+  '@id': ID.website(Astro.site),
+  name: SITE.name,
   url: siteUrl,
   inLanguage: 'sk-SK',
+  publisher: { '@id': ID.org(Astro.site) },
 };
-const graph = [orgLd, siteLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
+
+// WebPage len tam, kde stránka nie je článok — články si nesú vlastný BlogPosting.
+const pageLd =
+  ogType === 'article'
+    ? null
+    : {
+        '@type': pageType,
+        '@id': canonical + '#webpage',
+        url: canonical,
+        name: title,
+        description,
+        inLanguage: 'sk-SK',
+        isPartOf: { '@id': ID.website(Astro.site) },
+        about: { '@id': ID.org(Astro.site) },
+        ...(mainEntityId ? { mainEntity: { '@id': mainEntityId } } : {}),
+        ...(dateModified ? { dateModified } : {}),
+      };
+
+const extra = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    organizationLd(Astro.site),
+    personLd(Astro.site),
+    siteLd,
+    ...(pageLd ? [pageLd] : []),
+    ...extra,
+  ],
+};
 ---
 
 <!DOCTYPE html>

@@ -510,6 +510,25 @@ header.site{
 .note-box p+p{margin-top:10px}
 .callout{background:var(--indigo-tint); border-radius:var(--r-card); padding:24px 28px; font-size:.97rem; color:var(--ink)}
 
+/* podpis autora pod článkom — kto text napísal, je pre dôveryhodnosť rovnako dôležité ako obsah */
+.author-box{margin-top:44px; padding:24px 26px; background:var(--mist); border-radius:var(--r-card)}
+.author-box__name{font-family:var(--font-display); font-weight:700; font-size:1.02rem; margin-bottom:6px}
+.author-box p{font-size:.93rem; color:var(--slate); line-height:1.65}
+.author-box p a{font-weight:700; white-space:nowrap}
+
+/* cenová tabuľka + zoznamy s cenou */
+.table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+.ptable{width:100%; border-collapse:collapse; background:#fff; border-radius:var(--r-card); overflow:hidden; min-width:520px}
+.ptable th,.ptable td{padding:14px 18px; text-align:left; font-size:.95rem; border-bottom:1px solid var(--hairline-soft)}
+.ptable thead th{font-family:var(--font-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); font-weight:600}
+.ptable tbody th{font-weight:600; color:var(--ink)}
+.ptable tbody td{font-weight:700; font-variant-numeric:tabular-nums}
+.ptable tbody tr:last-child th,.ptable tbody tr:last-child td{border-bottom:0}
+.plist{list-style:none; margin-top:14px; display:flex; flex-direction:column; gap:10px}
+.plist li{display:flex; justify-content:space-between; align-items:baseline; gap:16px; font-size:.93rem; color:var(--slate)}
+.plist li b{color:var(--ink); white-space:nowrap; font-variant-numeric:tabular-nums}
+.sec .disclaimer{font-size:.85rem; color:var(--slate); line-height:1.6}
+
 /* ---------- kalkulačka ---------- */
 .calc{display:grid; grid-template-columns:1.25fr .75fr; gap:32px; align-items:start}
 .calc-controls{display:flex; flex-direction:column; gap:22px}

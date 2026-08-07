@@ -34,6 +34,55 @@ import Service from '../layouts/Service.astro';
     { href: '/sluzby/meranie', label: 'Meranie & tracking' },
     { href: '/sluzby/audit', label: 'Audit & konzultácie' },
   ]}
+  serviceName="Nasadenie cookie lišty a Consent Mode v2"
+  serviceType="CMP, Consent Mode v2 a súlad merania s GDPR"
+  summary={`
+    <h2>Prečo cookie lišta sama osebe nestačí</h2>
+    <p>
+      Cookie lišta je len viditeľná časť súhlasu. Rozhodujúce je, čo sa deje pod ňou:
+      či sa pred prijatím súhlasu nenačítavajú reklamné skripty a či sa signál o súhlase
+      dostane cez Google Tag Manager až do GA4, Google Ads a Mety. Presne toto rieši
+      Consent Mode v2, ktorý Google v Európskom hospodárskom priestore vyžaduje od marca 2024.
+    </p>
+    <p>
+      Bez neho Google obmedzuje remarketing a personalizované publiká, takže kampane
+      strácajú výkon bez ohľadu na výšku rozpočtu. Zároveň platí, že správne nasadený
+      consent nie je proti meraniu — pri odmietnutom súhlase Google časť konverzií dopočíta
+      modelovaním, ale len vtedy, keď mu signály chodia v správnom formáte.
+    </p>
+    <p>
+      Nasadenie zahŕňa audit skriptov a cookies, výber a nasadenie CMP certifikovanej
+      Googlom, prepojenie súhlasu cez GTM aj server-side kontajner, test správania pri
+      prijatí aj odmietnutí a písomnú dokumentáciu, ktorú je možné predložiť pri kontrole.
+      Bežne je to otázka dní. Dáta zozbierané bez súhlasu sa spätne legalizovať nedajú.
+    </p>
+  `}
+  faq={[
+    {
+      q: 'Čo je Consent Mode v2 a kedy je povinný?',
+      a: 'Consent Mode v2 je spôsob, akým web posiela Googlu informáciu o tom, či návštevník súhlasil s meraním a s reklamnými cookies. Google ho pre weby cieliace na Európsky hospodársky priestor vyžaduje od marca 2024 ako podmienku používania remarketingu a personalizovaných publík.',
+    },
+    {
+      q: 'Čo sa stane, keď Consent Mode v2 nemám nasadený?',
+      a: 'Google v EHP obmedzí remarketingové publiká a personalizovanú reklamu a prestane dopočítavať modelované konverzie. Kampane tak strácajú výkon nezávisle od rozpočtu. K tomu sa pridáva riziko podnetu na úrad podľa GDPR.',
+    },
+    {
+      q: 'Stačí mi cookie lišta z e-shopovej platformy?',
+      a: 'Často nie. Väčšina vstavaných líšt síce zobrazí text, ale nezablokuje reklamné skripty pred súhlasom a neposiela signály Consent Mode v2 do GTM. Práve to sa pri kontrole webu preveruje.',
+    },
+    {
+      q: 'Prídem kvôli súhlasu o dáta v GA4?',
+      a: 'O časť dát áno, tomu sa vyhnúť nedá. Pri správne nasadenom Consent Mode v2 sa však odosielajú anonymné signály aj pri odmietnutí a Google na ich základe dopočíta modelované konverzie, takže strata je výrazne menšia než pri úplnom zablokovaní meracích tagov.',
+    },
+    {
+      q: 'Ako dlho trvá nasadenie?',
+      a: 'Pri bežnom e-shope niekoľko dní vrátane auditu, nasadenia CMP, prepojenia s GTM a testov oboch scenárov súhlasu. Bezplatná kontrola stavu webu má výstup do 48 hodín.',
+    },
+    {
+      q: 'Sú dáta zozbierané pred nasadením súhlasu použiteľné?',
+      a: 'Spätne sa legalizovať nedajú. Preto sa oprava neodkladá — čím dlhšie meranie beží bez platného súhlasu, tým väčší objem dát je sporný.',
+    },
+  ]}
   bookingTitle="Bezplatná kontrola webu, výstup do 48 hodín."
   bookingItems={[
     { b: 'Stav súhlasu', t: ' — čo sa na webe načítava pred prijatím cookies.' },
