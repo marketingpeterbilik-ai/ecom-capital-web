@@ -1,0 +1,6 @@
+# Cloudflare Pages — presmerovania. Skutočné 301, nie meta refresh.
+
+# Astro generuje sitemap ako sitemap-index.xml, ale nástroje aj ľudia skúšajú
+# najprv /sitemap.xml. Bez tohto riadku tam dostanú 404 a usúdia, že sitemap chýba.
+/sitemap.xml   /sitemap-index.xml   301
+/sitemap_index.xml   /sitemap-index.xml   301

@@ -84,12 +84,52 @@ Z [WEB-AUDIT.md](WEB-AUDIT.md) a [GEO-AUDIT.md](GEO-AUDIT.md), zoradené podľa 
 7. **`dateModified` na statických stránkach** — `Base.astro` má prop pripravený,
    stačí ho pri revízii stránky vyplniť. Čerstvosť je pri AI odpovediach rankingový signál.
 
+## Reakcia na externý audit (Manus AI, 15. 8. 2026)
+
+Audit crawloval **produkciu**, teda stav pred nasadením týchto zmien. Preto jeho dva
+kritické nálezy popisujú presne to, čo je v tejto vetve opravené, ale ešte nie je live.
+
+| Nález auditu | Stav |
+|---|---|
+| 30/30 URL má canonical na `ecom-capital-web.pages.dev` | ✅ opravené v kóde — nasadí sa mergnutím |
+| Sitemap v `robots.txt` neexistuje | ✅ opravené v kóde — `https://ecomcapital.eu/sitemap-index.xml` |
+| `/sitemap.xml` vracia 404 | ✅ opravené — 301 na `sitemap-index.xml` v `public/_redirects` |
+| `site:ecomcapital.eu` nevracia dokumenty | Očakávané: nová doména + canonical mieril inam. Preverí sa až po nasadení a odoslaní sitemapy. |
+| HTTP variant vracia 200 bez presmerovania | ⚠️ **rieši sa v Cloudflare, nie v repozitári** — SSL/TLS → Edge Certificates → *Always Use HTTPS* |
+| V `robots.txt` sú pred vlastnými pravidlami bloky od Cloudflare | ⚠️ **overiť v dashboarde** — viď nižšie |
+
+### Cloudflare blokuje AI botov nezávisle od nášho robots.txt
+
+Ak Cloudflare do `robots.txt` vkladá vlastné `Disallow` pravidlá, priamo si odporujú
+s našimi `Allow` pravidlami pre GPTBot, ClaudeBot, PerplexityBot a spol. — a keďže
+Cloudflare navyše vie tých botov blokovať na úrovni siete, `Allow` v našom súbore
+by bol bezpredmetný. Skontroluj v dashboarde:
+
+- **Security → Bots → AI Crawl Control** (staršie: *Block AI Scrapers and Crawlers*) — vypnúť,
+- **Security → WAF → Managed Rules** — či nejaké pravidlo neblokuje AI crawlerov,
+- porovnaj `curl -s https://ecomcapital.eu/robots.txt` s `public/robots.txt` v repozitári;
+  ak sa líšia, rozdiel pridáva Cloudflare.
+
+Toto je vedomé rozhodnutie: obsah webu **chceme** v ChatGPT, Perplexity a Claude,
+pretože GEO vrstva (`llms.txt`, FAQ schema, entita) je na tom postavená.
+
+### Čo audit nemohol vyhodnotiť
+
+Organický trend, kľúčové slová, branded mix, backlinky a Core Web Vitals sú v audite
+označené ako nedostupné — nie zlé. Všetkých päť vyžaduje pripojené GSC a GA4,
+čo je bod 1 tohto checklistu. Ku Core Web Vitals platí, že CrUX dáta vzniknú až
+po niekoľkých týždňoch reálnej návštevnosti; do vtedy má zmysel iba laboratórne
+meranie v PageSpeed Insights.
+
 ## Po nasadení over
 
 ```bash
 curl -sI https://ecomcapital.eu/                    # 200, HTTPS
 curl -s  https://ecomcapital.eu/robots.txt          # sitemap na .eu
 curl -s  https://ecomcapital.eu/sitemap-index.xml   # existuje
+curl -sI https://ecomcapital.eu/sitemap.xml         # 301 na sitemap-index.xml
+curl -sI http://ecomcapital.eu/                     # 301 na https
+curl -s  https://ecomcapital.eu/robots.txt          # zhoda s public/robots.txt (bez Cloudflare blokov)
 curl -s  https://ecomcapital.eu/rss.xml | head      # validné XML
 curl -s  https://ecomcapital.eu/llms.txt | head     # entita sedí
 curl -sI https://www.ecomcapital.eu/                # 301 na apex
