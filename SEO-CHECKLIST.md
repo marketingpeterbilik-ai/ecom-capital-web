@@ -40,7 +40,12 @@ Overovací kód patrí do `VERIFICATION.bing`.
 
 ### 3. Cloudflare — presmerovanie www a vynútenie HTTPS
 
-V projekte Pages pridaj ako custom domain **aj** `www.ecomcapital.eu`, potom
+> Pozn.: web nebeží ako Pages projekt, ale ako **Worker so statickými assetmi**
+> (`ecom-capital-web`, konfigurácia v `wrangler.jsonc`). Custom domény sa preto
+> nastavujú v **Workers & Pages → ecom-capital-web → Settings → Domains & Routes**,
+> nie v sekcii Pages.
+
+Pridaj ako custom domain **aj** `www.ecomcapital.eu`, potom
 v **Rules → Redirect Rules** vytvor pravidlo:
 `hostname eq "www.ecomcapital.eu"` → dynamické presmerovanie 301 na
 `concat("https://ecomcapital.eu", http.request.uri.path)`.
@@ -97,6 +102,18 @@ kritické nálezy popisujú presne to, čo je v tejto vetve opravené, ale ešte
 | `site:ecomcapital.eu` nevracia dokumenty | Očakávané: nová doména + canonical mieril inam. Preverí sa až po nasadení a odoslaní sitemapy. |
 | HTTP variant vracia 200 bez presmerovania | ⚠️ **rieši sa v Cloudflare, nie v repozitári** — SSL/TLS → Edge Certificates → *Always Use HTTPS* |
 | V `robots.txt` sú pred vlastnými pravidlami bloky od Cloudflare | ⚠️ **overiť v dashboarde** — viď nižšie |
+
+### Bonus: koncové lomky (nález mimo auditu)
+
+Web beží ako Worker so statickými assetmi, kde `html_handling` **defaultne**
+používa `auto-trailing-slash`. Astro generuje `/sluzby/index.html`, takže server
+by taký súbor servoval na `/sluzby/` a `/sluzby` naň presmerovával — kým canonical
+aj sitemap uvádzajú tvar **bez** lomky. Každá URL v sitemape by tak končila
+presmerovaním na inú adresu, než akú web označuje za kanonickú.
+
+Vyriešené explicitným `"html_handling": "drop-trailing-slash"` vo `wrangler.jsonc`.
+Po nasadení over `curl -sI https://ecomcapital.eu/sluzby/` — má vrátiť presmerovanie
+na `/sluzby`, nie obsah stránky.
 
 ### Cloudflare blokuje AI botov nezávisle od nášho robots.txt
 

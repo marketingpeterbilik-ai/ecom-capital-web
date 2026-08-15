@@ -4,6 +4,12 @@
   "compatibility_date": "2025-06-27",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+    // Astro generuje adresárový výstup (/sluzby/index.html). Default
+    // "auto-trailing-slash" by taký súbor servoval na /sluzby/ a /sluzby
+    // presmerovával naň — lenže canonical aj sitemap uvádzajú tvar BEZ lomky.
+    // Explicitné "drop-trailing-slash" zosúladí, čo server servuje, s tým,
+    // čo web o sebe tvrdí. Bez toho každá URL v sitemape končí presmerovaním.
+    "html_handling": "drop-trailing-slash"
   }
 }

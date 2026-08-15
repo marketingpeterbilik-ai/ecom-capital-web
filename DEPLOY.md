@@ -32,6 +32,12 @@ gh repo create ecom-capital-web --public --source=. --remote=origin --push
 
 ---
 
+> **Aktuálny stav (15. 8. 2026):** web už nasadený nie je ako Pages projekt, ale ako
+> **Worker so statickými assetmi** — konfigurácia je vo `wrangler.jsonc`, meno workera
+> `ecom-capital-web`. Postup nižšie popisuje pôvodné nastavenie cez Pages a je platný
+> pre nový projekt; pri existujúcom hľadaj nastavenia v **Workers & Pages →
+> ecom-capital-web → Settings**. Deploy naďalej beží automaticky z vetvy `main`.
+
 ## Fáza 2 — Cloudflare Pages
 
 1. Zaregistruj sa zadarmo na <https://dash.cloudflare.com> (ak ešte nemáš účet).
