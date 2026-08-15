@@ -62,12 +62,17 @@ Súbor commitni a pushni — Cloudflare to nasadí automaticky. URL bude `/blog/
 2. Tvoj link má tvar `pouzivatel/typ-eventu`, napr. `ecom-capital/konzultacia`.
 3. V súbore `src/pages/kontakt.astro` zmeň konštantu `CAL_LINK` na svoj link.
 
-## Pred spustením naživo zmeň
+## Doména a SEO
 
-- `astro.config.mjs` → `site` na svoju reálnu doménu
-- `public/robots.txt` → URL sitemapy
-- `src/pages/kontakt.astro` → `CAL_LINK`
-- E-mail `peter@ecomcapital.sk` a IČO v `src/components/Footer.astro` a `src/pages/kontakt.astro`
+Produkčná doména je **ecomcapital.eu** — nastavená v `astro.config.mjs` (`site`),
+z ktorej sa odvodzuje canonical, `og:url`, sitemap aj všetky `@id` v JSON-LD grafe.
+Meniť ju treba vždy spolu s posledným riadkom `public/robots.txt`.
+
+Zoznam toho, čo je hotové a čo ešte treba nastaviť mimo repozitára (Search Console,
+presmerovanie www, `sameAs` profily), je v [SEO-CHECKLIST.md](SEO-CHECKLIST.md).
+
+Zostáva doplniť: `src/pages/kontakt.astro` → `CAL_LINK`
+a overovacie kódy v `src/data/site.ts` → `VERIFICATION`.
 
 ## Nasadenie na Cloudflare Pages
 

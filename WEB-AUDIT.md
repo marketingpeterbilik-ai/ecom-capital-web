@@ -13,12 +13,16 @@ schema graf drží pokope, obsah je celý v HTML. Čo chýba, nie je kód — s�
 
 ## P0 — beží to naostro a nemalo by
 
-### 1. Doména je stále placeholder
+### 1. Doména je stále placeholder — ✅ vyriešené 15. 8. 2026
+
+> `site` je `https://ecomcapital.eu`, sitemap URL v `robots.txt` sedí a e-mail je
+> zjednotený na `info@ecomcapital.eu`. Zvyšné kroky sú v [SEO-CHECKLIST.md](SEO-CHECKLIST.md).
+> Text nižšie zostáva ako kontext pôvodného nálezu.
 
 `astro.config.mjs:9` → `site: 'https://ecom-capital-web.pages.dev'`
 
 Z toho tečie canonical, `og:url`, celý sitemap aj všetky `@id` v JSON-LD grafe.
-V pätičke a v schema je pritom `peter@ecomcapital.sk`. Zatiaľ existuješ pre Google
+V pätičke a v schema je pritom `info@ecomcapital.eu`. Zatiaľ existuješ pre Google
 aj pre AI modely ako dve polovičné entity.
 
 Toto blokuje všetko ostatné — kým to nie je opravené, nemá zmysel riešiť ani indexáciu,

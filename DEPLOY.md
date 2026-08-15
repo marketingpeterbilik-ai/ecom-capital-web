@@ -53,9 +53,17 @@ Odteraz: **každý `git push` do `main` = automatický deploy.** Žiadne ručné
 
 ---
 
-## Vlastná doména (voliteľné)
+## Vlastná doména
 
-V projekte na Cloudflare Pages: **Custom domains → Set up a domain** a zadaj napr. `ecomcapital.sk`. Cloudflare ťa prevedie nastavením DNS. Potom nezabudni v `astro.config.mjs` zmeniť `site` na túto doménu a pushnúť.
+Produkčná doména je **ecomcapital.eu** a `astro.config.mjs` už na ňu ukazuje.
+
+V projekte na Cloudflare Pages: **Custom domains → Set up a domain** → `ecomcapital.eu`,
+a rovnakým spôsobom pridaj aj `www.ecomcapital.eu`. Pre www potom vytvor 301 presmerovanie
+na apex (postup je v [SEO-CHECKLIST.md](SEO-CHECKLIST.md)) — bez neho beží web na dvoch
+hostnameoch a delí si SEO signály.
+
+Ak by si doménu niekedy menil, prepíš `site` v `astro.config.mjs` **aj** posledný
+riadok `public/robots.txt`.
 
 ---
 

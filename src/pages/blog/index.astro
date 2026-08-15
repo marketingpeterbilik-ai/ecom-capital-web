@@ -2,17 +2,55 @@
 import Base from '../../layouts/Base.astro';
 import Visual from '../../components/Visual.astro';
 import { getCollection } from 'astro:content';
+import { ID, breadcrumbLd } from '../../data/site';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const fmt = (d: Date) => d.toLocaleDateString('sk-SK', { year: 'numeric', month: 'long', day: 'numeric' });
+
+// Blog ako entita + zoznam článkov. Vyhľadávač tak z jednej stránky vidí celý
+// archív aj s dátumami, bez toho, aby musel prejsť každý článok zvlášť.
+const blogUrl = new URL('/blog', Astro.site).href;
+const blogLd = {
+  '@type': 'Blog',
+  '@id': blogUrl + '#blog',
+  url: blogUrl,
+  name: 'Blog — Ecom Capital',
+  description:
+    'Praktické články o PPC, meraní, trackingu a dátach v BigQuery. Z reálnej praxe, po slovensky.',
+  inLanguage: 'sk-SK',
+  publisher: { '@id': ID.org(Astro.site) },
+  author: { '@id': ID.person(Astro.site) },
+  isPartOf: { '@id': ID.website(Astro.site) },
+  blogPost: posts.map((p) => ({
+    '@type': 'BlogPosting',
+    '@id': new URL(`/blog/${p.id}`, Astro.site).href + '#article',
+    headline: p.data.title,
+    description: p.data.description,
+    url: new URL(`/blog/${p.id}`, Astro.site).href,
+    datePublished: p.data.pubDate.toISOString(),
+    dateModified: (p.data.updatedDate ?? p.data.pubDate).toISOString(),
+    author: { '@id': ID.person(Astro.site) },
+  })),
+};
+
+const jsonLd = [
+  blogLd,
+  breadcrumbLd(Astro.site, [
+    { name: 'Domov', href: '/' },
+    { name: 'Blog', href: '/blog' },
+  ]),
+];
 ---
 
 <Base
-  title="Blog | Ecom Capital"
+  title="Blog — PPC, meranie a dáta z praxe | Ecom Capital"
   description="Praktické články o PPC, meraní, trackingu a dátach v BigQuery. Z reálnej praxe, po slovensky, bez omáčky."
+  pageType="CollectionPage"
+  dateModified={(posts[0]?.data.updatedDate ?? posts[0]?.data.pubDate)?.toISOString()}
+  jsonLd={jsonLd}
 >
   <section class="phero">
     <div class="wrap">

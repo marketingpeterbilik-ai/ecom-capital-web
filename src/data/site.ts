@@ -5,13 +5,26 @@
 export const SITE = {
   name: 'Ecom Capital',
   legalName: 'Ecom Capital s.r.o.',
-  email: 'peter@ecomcapital.sk',
+  email: 'info@ecomcapital.eu',
   ico: '53419952',
   city: 'Bratislava',
   country: 'SK',
   // Doplň reálne profily — sameAs je najsilnejší signál, že entita existuje aj mimo webu.
   sameAs: ['https://www.finstat.sk/53419952'] as string[],
 } as const;
+
+/**
+ * Overovacie kódy webmaster nástrojov. Vlož iba obsah atribútu `content`
+ * z meta tagu, ktorý ti nástroj ponúkne — prázdna hodnota sa nevykreslí.
+ * Google Search Console: Nastavenia → Overenie vlastníctva → Značka HTML.
+ */
+export const VERIFICATION = {
+  google: '', // napr. 'AbC123...' z <meta name="google-site-verification" content="…">
+  bing: '', // Bing Webmaster Tools → <meta name="msvalidate.01" content="…">
+} as const;
+
+/** OG obrázok webu. Rozmery patria do meta tagov aj do schema ImageObject. */
+export const OG_IMAGE = { path: '/og.png', width: 1200, height: 630 } as const;
 
 export const AUTHOR = {
   name: 'Peter Bílik',

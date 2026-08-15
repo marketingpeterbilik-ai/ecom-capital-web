@@ -21,7 +21,7 @@ FAQ schema na blogu). Slabina je entita a citovateľnosť.
 Z toho vyplýva všetko ostatné: canonical, `og:url`, `Organization.url`, `WebSite.url`,
 sitemap aj `mainEntityOfPage` v článkoch ukazujú na pages.dev. Ak beží aj
 `ecomcapital.sk`, existuješ pre AI modely ako dve polovičné entity a ani jedna nemá
-brand signál. E-mail v pätičke je pritom `peter@ecomcapital.sk` — nesúlad.
+brand signál. E-mail v pätičke je pritom `info@ecomcapital.eu` — nesúlad.
 
 ```js
 // astro.config.mjs
@@ -65,7 +65,7 @@ const orgLd = {
   url: siteUrl,
   logo: new URL('/og.png', Astro.site).href,
   image: new URL('/og.png', Astro.site).href,
-  email: 'peter@ecomcapital.sk',
+  email: 'info@ecomcapital.eu',
   description: '…',
   identifier: [{ '@type': 'PropertyValue', name: 'IČO', value: '53419952' }],
   vatID: 'SK…',            // ak si platca
@@ -86,7 +86,7 @@ const orgLd = {
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'sales',
-    email: 'peter@ecomcapital.sk',
+    email: 'info@ecomcapital.eu',
     availableLanguage: ['sk', 'en'],
   },
 };
@@ -193,7 +193,7 @@ Meranie je súčasťou ceny správy, spolupráca je bez viazanosti,
 …
 
 ## Kontakt
-peter@ecomcapital.sk
+info@ecomcapital.eu
 ```
 
 ### 9. robots.txt nerieši AI crawlerov explicitne
@@ -290,7 +290,7 @@ súvislý odstavcový blok (150–250 slov), ktorý vysvetlí službu vetami:
 
 | # | Zásah | Stav |
 |---|---|---|
-| 1 | Reálna doména v `astro.config.mjs` + robots.txt | ⛔ čaká na potvrdenie domény |
+| 1 | Reálna doména v `astro.config.mjs` + robots.txt | ✅ hotové (15. 8. 2026, `ecomcapital.eu`) |
 | 2 | Rozšírená `Organization` schema (`src/data/site.ts`) | ✅ hotové |
 | 3 | `/llms.txt` (generuje sa z obsahu, `src/pages/llms.txt.ts`) | ✅ hotové |
 | 4 | AI crawlery v robots.txt | ✅ hotové |
@@ -306,7 +306,10 @@ súvislý odstavcový blok (150–250 slov), ktorý vysvetlí službu vetami:
 
 ### Čo ešte treba doplniť ručne
 
-- **`astro.config.mjs`** — `site` na reálnu doménu, potom aj sitemap URL v `public/robots.txt`.
+> Doména je od 15. 8. 2026 vyriešená — `ecomcapital.eu`. Nadväzujúce kroky mimo
+> repozitára (Search Console, presmerovanie www, overenie indexácie) sú
+> v [SEO-CHECKLIST.md](SEO-CHECKLIST.md).
+
 - **`src/data/site.ts`** — `SITE.sameAs` (LinkedIn firmy) a `personLd().sameAs` (osobný
   LinkedIn). Bez nich má entita len jeden externý dôkaz existencie (Finstat).
 - **`src/data/site.ts`** — `foundingDate` firmy, ak ho chceš uviesť.

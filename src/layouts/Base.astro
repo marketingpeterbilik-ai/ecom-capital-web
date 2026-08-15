@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { ID, SITE, organizationLd, personLd } from '../data/site';
+import { AUTHOR, ID, OG_IMAGE, SITE, VERIFICATION, organizationLd, personLd } from '../data/site';
 
 interface Props {
   title?: string;
@@ -18,6 +18,10 @@ interface Props {
   pageType?: string;
   /** Entita, o ktorej stránka primárne je (odkaz na @id v grafe). */
   mainEntityId?: string;
+  /** Vyradí stránku z indexu (404, technické stránky). Canonical zostáva. */
+  noindex?: boolean;
+  /** Alternatívny text OG obrázka — čítačky obrazovky aj náhľady na sieťach. */
+  ogImageAlt?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -32,12 +36,27 @@ const {
   dateModified,
   pageType = 'WebPage',
   mainEntityId,
+  noindex = false,
+  ogImageAlt = 'Ecom Capital — performance & data štúdio',
   jsonLd,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = new URL('/og.png', Astro.site).href;
+// Canonical bez koncovej lomky (okrem koreňa). Jedna URL = jedna stránka;
+// dve varianty tej istej adresy si inak konkurujú a delia si signály.
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const canonical = new URL(path, Astro.site).href;
+const ogImage = new URL(OG_IMAGE.path, Astro.site).href;
 const siteUrl = new URL('/', Astro.site).href;
+
+// Jazyk stránky riadi og:locale aj inLanguage — launch LP bežia v angličtine.
+const locale = lang === 'en' ? 'en_US' : 'sk_SK';
+const inLanguage = lang === 'en' ? 'en' : 'sk-SK';
+
+// max-snippet:-1 a max-image-preview:large otvárajú dlhé úryvky a veľké náhľady
+// v Google aj v AI Overviews. Bez nich Google skracuje úryvok na default dĺžku.
+const robots = noindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
 // Entity webu (firma + človek za ňou) a stránka samotná. Všetko v jednom @graph-e
 // s krížovými @id — z toho si vyhľadávače aj jazykové modely skladajú knowledge graph.
@@ -50,6 +69,13 @@ const siteLd = {
   publisher: { '@id': ID.org(Astro.site) },
 };
 
+const ogImageLd = {
+  '@type': 'ImageObject',
+  url: ogImage,
+  width: OG_IMAGE.width,
+  height: OG_IMAGE.height,
+};
+
 // WebPage len tam, kde stránka nie je článok — články si nesú vlastný BlogPosting.
 const pageLd =
   ogType === 'article'
@@ -60,9 +86,10 @@ const pageLd =
         url: canonical,
         name: title,
         description,
-        inLanguage: 'sk-SK',
+        inLanguage,
         isPartOf: { '@id': ID.website(Astro.site) },
         about: { '@id': ID.org(Astro.site) },
+        primaryImageOfPage: ogImageLd,
         ...(mainEntityId ? { mainEntity: { '@id': mainEntityId } } : {}),
         ...(dateModified ? { dateModified } : {}),
       };
@@ -88,19 +115,36 @@ const graph = {
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  <meta name="robots" content={robots} />
+  <meta name="author" content={AUTHOR.name} />
+
   <meta property="og:type" content={ogType} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImage} />
-  <meta property="og:locale" content="sk_SK" />
+  <meta property="og:image:width" content={String(OG_IMAGE.width)} />
+  <meta property="og:image:height" content={String(OG_IMAGE.height)} />
+  <meta property="og:image:alt" content={ogImageAlt} />
+  <meta property="og:locale" content={locale} />
   <meta property="og:site_name" content="Ecom Capital" />
   {publishedTime && <meta property="article:published_time" content={publishedTime} />}
   {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+  {ogType === 'article' && <meta property="article:author" content={AUTHOR.name} />}
+
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
+
+  {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google} />}
+  {VERIFICATION.bing && <meta name="msvalidate.01" content={VERIFICATION.bing} />}
+
   <script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Ecom Capital — blog" href="/rss.xml" />
   <script is:inline>document.documentElement.classList.add('js');</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
